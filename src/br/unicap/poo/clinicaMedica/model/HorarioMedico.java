@@ -21,12 +21,9 @@ import java.util.List;
 public class HorarioMedico {
     private ArrayList<Horario> horarios;
     
-    public HorarioMedico(Horario horario) throws HorarioMedicoException{
+    public HorarioMedico(Horario horario){
         ArrayList<Horario> horarios = new ArrayList<>();
         horarios.add(horario);
-        if(horario==null){
-            throw new SemHorarioException();
-        }
     }
     public List<Horario> getHorarios(){
         ArrayList<Horario> clone = new ArrayList();

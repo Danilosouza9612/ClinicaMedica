@@ -24,16 +24,10 @@ public class Medico extends Pessoa{
     private HorarioMedico horarioMedico;
     
 
-    public Medico(int codigo, HorarioMedico horarioMedico, Especialidade especialidade) throws PessoaException, MedicoException {
+    public Medico(int codigo, Horario horario, Especialidade especialidade) {
         super();
-        this.planoSaudeMedico = new PlanoSaudeMedico(false);
-        if(horarioMedico==null){
-            throw new MedicoException("Informe o horário do médico");
-        }
-        this.horarioMedico=horarioMedico;
-        if(especialidade==null){
-            throw new MedicoException("Informe a especialidade do médico");
-        }
+        this.planoSaudeMedico = new PlanoSaudeMedico(true);
+        this.horarioMedico = new HorarioMedico(horario);
         especialidades.add(especialidade);
         this.codigo=codigo;
     }

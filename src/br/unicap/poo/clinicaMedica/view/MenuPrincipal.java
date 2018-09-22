@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class MenuPrincipal {
     private ProcedimentoView procedimentoView;
     private PacienteView pacienteView;
+    private MedicoView medicoView;
     public void menu(){
         Scanner l = new Scanner(System.in);
         int opcao;
@@ -39,6 +40,8 @@ public class MenuPrincipal {
                     pacienteView.menu();
                     break;
                 case 5:
+                    medicoView = new MedicoView();
+                    medicoView.menu();
                     break;
                 case 6:
                     break;
