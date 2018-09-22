@@ -14,7 +14,7 @@ import java.util.List;
  * @author Danilo
  */
 public class TipoExameDAO implements TipoExameRepBridge{
-    ArrayList<TipoExame> dataBase;
+    private ArrayList<TipoExame> dataBase;
     
     public TipoExameDAO(){
         dataBase = new ArrayList();
@@ -40,7 +40,17 @@ public class TipoExameDAO implements TipoExameRepBridge{
 
     @Override
     public boolean remover(TipoExame item) {
-        return dataBase.remove(item);
+        int cont=0;
+        for(TipoExame data : dataBase){
+            if(item.getCodigo()==data.getCodigo()){
+                dataBase.remove(cont);
+                return true;
+            }else if(item.getCodigo()<data.getCodigo()){
+                return false;
+            }
+            cont++;
+        }
+        return false;
     }
 
     @Override

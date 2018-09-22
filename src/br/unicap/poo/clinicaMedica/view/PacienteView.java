@@ -21,6 +21,7 @@ public class PacienteView {
         Scanner l = new Scanner(System.in);
         int opcao;
         do{
+            System.out.println("..................................");
             System.out.println("1 - Cadastrar Paciente");
             System.out.println("2 - Pré-cadastrar Paciente");
             System.out.println("3 - Selecionar Paciente");

@@ -16,6 +16,7 @@ import java.util.Scanner;
 public class PacienteSelecaoView {
     private PacienteAlterarView pacienteAlterarView;
     private PacienteExcluirView pacienteExcluirView;
+    private PacienteInfoView info;
     public PacienteSelecaoView(){
         
     }
@@ -23,20 +24,10 @@ public class PacienteSelecaoView {
     public void selecaoPaciente(Paciente paciente){
         Scanner l = new Scanner(System.in);
         int opcao;
-        System.out.println("..................................");
-        System.out.println("Nome:"+paciente.getNome());
-        System.out.println("Telefone:"+paciente.getTelefone());
-        System.out.println("CPF:"+paciente.getCpf());
-        System.out.println("Data de Nascimento:"+paciente.getDataNasc());
-        System.out.println("Número de Visitas:"+paciente.getNumeroVisitas());
-        System.out.println("Endereço:");
-        System.out.println("CEP"+paciente.getEndereco().getCep()+" Nº"+paciente.getEndereco().getNumero()+" Complemento:"+paciente.getEndereco().getComplemento());
-        System.out.println("Plano de Saúde:");
-        if(paciente.getPlanoDeSaude()!=null){
-            System.out.println("Seguradora:"+paciente.getPlanoDeSaude().getSeguradoraPlano().getDescricao());
-            System.out.println("Número da carteira:"+paciente.getPlanoDeSaude().getNumeroCarteira());
-            System.out.println("Data de Validade:"+paciente.getPlanoDeSaude().getDataValidade());
-        }
+        
+        info = new PacienteInfoView();
+        info.info(paciente);
+        
         
         do{
             System.out.println("1 - Alterar Paciente");
@@ -48,10 +39,14 @@ public class PacienteSelecaoView {
                 case 1:
                     pacienteAlterarView = new PacienteAlterarView();
                     pacienteAlterarView.alterar(paciente);
+                    info.info(paciente);
                     break;
                 case 2:
                     pacienteExcluirView = new PacienteExcluirView();
-                    pacienteExcluirView.excluirPaciente(paciente);
+                    if(pacienteExcluirView.excluirPaciente(paciente)){
+                        return;
+                    }
+                    info.info(paciente);
                     break;
                 case 3:
                     break;

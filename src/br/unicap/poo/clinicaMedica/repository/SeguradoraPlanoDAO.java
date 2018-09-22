@@ -14,7 +14,7 @@ import java.util.List;
  * @author Danilo
  */
 public class SeguradoraPlanoDAO implements SeguradoraPlanoRepBridge{
-    ArrayList<SeguradoraPlano> dataBase;
+    private ArrayList<SeguradoraPlano> dataBase;
     
     public SeguradoraPlanoDAO(){
         dataBase = new ArrayList();
@@ -40,7 +40,17 @@ public class SeguradoraPlanoDAO implements SeguradoraPlanoRepBridge{
 
     @Override
     public boolean remover(SeguradoraPlano item) {
-        return dataBase.remove(item);
+        int cont=0;
+        for(SeguradoraPlano data : dataBase){
+            if(item.getCodigo()==data.getCodigo()){
+                dataBase.remove(cont);
+                return true;
+            }else if(item.getCodigo()<data.getCodigo()){
+                return false;
+            }
+            cont++;
+        }
+        return false;
     }
 
     @Override

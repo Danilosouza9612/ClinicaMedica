@@ -7,6 +7,7 @@ package br.unicap.poo.clinicaMedica.model;
 
 import br.unicap.poo.clinicaMedica.model.exceptions.CpfInvalidoException;
 import br.unicap.poo.clinicaMedica.model.exceptions.PessoaException;
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -30,7 +31,6 @@ public class Paciente extends Pessoa{
             this.cpf = cpf;
         }
         endereco = new Endereco();
-        planoDeSaude = new PlanoDeSaude();
     }
 
     public PlanoDeSaude getPlanoDeSaude() {
@@ -47,13 +47,8 @@ public class Paciente extends Pessoa{
         Calendar calendar = Calendar.getInstance(); 
         StringBuilder sb = new StringBuilder();
         calendar.setTime(this.dataNasc);
-        
-        sb.append(calendar.get(Calendar.DAY_OF_MONTH))
-                .append("/")
-                .append(calendar.get(Calendar.MONTH))
-                .append("/")
-                .append(calendar.get(Calendar.YEAR));
-        return sb.toString();
+        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
+        return df.format(calendar.getTime());
     }
 
     public void setDataNasc(Date dataNasc) {

@@ -41,6 +41,7 @@ public class Endereco {
                 throw new CepInvalidoException("Caracteres inválidos para um CEP");
             }
         }
+        this.cep=cep;
     }
 
     public int getNumero() {
@@ -51,6 +52,7 @@ public class Endereco {
         if(numero<0){
             throw new NumeroInvalidoException();
         }
+        this.numero=numero;
     }
 
     public String getComplemento() {

@@ -14,6 +14,7 @@ import java.util.Scanner;
  * @author Danilo
  */
 public class PacienteSelecionarView {
+    private PacienteSelecaoView selecaoPaciente;
     private PacienteService service;
     public PacienteSelecionarView(){
         
@@ -26,13 +27,19 @@ public class PacienteSelecionarView {
         service = PacienteService.getInstance();
         do{
             System.out.println("..................................");
-            System.out.println("Digite o CPF do Paciente:");
+            System.out.println("Digite o CPF do Paciente (Digite FIM para voltar):");
             cpf = l.nextLine();
             selecao=service.selecionar(cpf);
+            if(cpf.equalsIgnoreCase("FIM")){
+                return;
+            }
             if(selecao==null){
                 System.out.println("Paciente não encontrado");
             }
         }while(selecao==null);
+        
+        selecaoPaciente = new PacienteSelecaoView();
+        selecaoPaciente.selecaoPaciente(selecao);
         
     }
 }

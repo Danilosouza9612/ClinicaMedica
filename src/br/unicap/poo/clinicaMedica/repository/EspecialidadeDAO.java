@@ -40,8 +40,17 @@ public class EspecialidadeDAO implements EspecialidadeRepBridge{
 
     @Override
     public boolean remover(Especialidade item) {
-        return dataBase.remove(item);
-    }
+        int cont=0;
+        for(Especialidade data : dataBase){
+            if(item.getCodigo()==data.getCodigo()){
+                dataBase.remove(cont);
+                return true;
+            }else if(item.getCodigo()<data.getCodigo()){
+                return false;
+            }
+            cont++;
+        }
+        return false;    }
 
     @Override
     public List<Especialidade> listar() {

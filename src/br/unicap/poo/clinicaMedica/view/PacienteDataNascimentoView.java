@@ -7,6 +7,7 @@ package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.Paciente;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 /**
@@ -18,7 +19,7 @@ public class PacienteDataNascimentoView {
         
     }
     public void alterarDataNascimento(Paciente paciente){
-        Calendar calendar = Calendar.getInstance();
+        Calendar calendar;
         String dataString;
         String[] quebra;
         Scanner l = new Scanner(System.in);
@@ -26,7 +27,10 @@ public class PacienteDataNascimentoView {
         System.out.println("Digite a data de nascimento (DD/MM/YYYY):");
         dataString = l.nextLine();
         quebra = dataString.split("/");
-        calendar.set(Integer.parseInt(quebra[0]), Integer.parseInt(quebra[1]), Integer.parseInt(quebra[2]));
+        calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(quebra[0]));
+        calendar.set(Calendar.MONTH, Integer.parseInt(quebra[1])-1);
+        calendar.set(Calendar.YEAR, Integer.parseInt(quebra[2]));
         paciente.setDataNasc(calendar.getTime());
     }
 }

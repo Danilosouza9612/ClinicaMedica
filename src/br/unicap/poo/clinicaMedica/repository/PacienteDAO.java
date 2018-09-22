@@ -14,7 +14,7 @@ import java.util.List;
  * @author Danilo
  */
 public class PacienteDAO implements PacienteRepBridge{
-    ArrayList<Paciente> dataBase;
+    private ArrayList<Paciente> dataBase;
     
     public PacienteDAO(){
         dataBase = new ArrayList();
@@ -40,7 +40,15 @@ public class PacienteDAO implements PacienteRepBridge{
 
     @Override
     public boolean remover(Paciente item) {
-        return dataBase.remove(item);
+        int cont=0;
+        for(Paciente data : dataBase){
+            if(data.getCpf().equals(item.getCpf())){
+                dataBase.remove(cont);
+                return true;
+            }
+            cont++;
+        }
+        return false;    
     }
 
     @Override
@@ -56,6 +64,7 @@ public class PacienteDAO implements PacienteRepBridge{
             if(data.getCpf().equals(cpf)){
                 return dataBase.get(cont);
             }
+            cont++;
         }
         return null;
     }

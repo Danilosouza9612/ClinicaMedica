@@ -40,8 +40,17 @@ public class ExameDAO implements ExameRepBridge{
 
     @Override
     public boolean remover(Exame item) {
-        return dataBase.remove(item);
-    }
+        int cont=0;
+        for(Exame data : dataBase){
+            if(item.getCodigo()==data.getCodigo()){
+                dataBase.remove(cont);
+                return true;
+            }else if(item.getCodigo()<data.getCodigo()){
+                return false;
+            }
+            cont++;
+        }
+        return false;    }
 
     @Override
     public List<Exame> listar() {

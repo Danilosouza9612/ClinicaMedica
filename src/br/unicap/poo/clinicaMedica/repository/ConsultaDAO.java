@@ -41,8 +41,17 @@ public class ConsultaDAO implements ConsultaRepBridge {
 
     @Override
     public boolean remover(Consulta item) {
-        return dataBase.remove(item);
-    }
+        int cont=0;
+        for(Consulta data : dataBase){
+            if(item.getCodigo()==data.getCodigo()){
+                dataBase.remove(cont);
+                return true;
+            }else if(item.getCodigo()<data.getCodigo()){
+                return false;
+            }
+            cont++;
+        }
+        return false;    }
 
     @Override
     public List<Consulta> listar() {

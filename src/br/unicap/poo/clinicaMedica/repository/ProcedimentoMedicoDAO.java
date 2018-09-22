@@ -14,7 +14,7 @@ import java.util.List;
  * @author Danilo
  */
 public class ProcedimentoMedicoDAO implements ProcedimentoMedicoRepBridge{
-    ArrayList<ProcedimentoMedico> dataBase;
+    private ArrayList<ProcedimentoMedico> dataBase;
     
     public ProcedimentoMedicoDAO(){
         dataBase = new ArrayList();
@@ -40,7 +40,17 @@ public class ProcedimentoMedicoDAO implements ProcedimentoMedicoRepBridge{
 
     @Override
     public boolean remover(ProcedimentoMedico item) {
-        return dataBase.remove(item);
+        int cont=0;
+        for(ProcedimentoMedico data : dataBase){
+            if(item.getCodigo()==data.getCodigo()){
+                dataBase.remove(cont);
+                return true;
+            }else if(item.getCodigo()<data.getCodigo()){
+                return false;
+            }
+            cont++;
+        }
+        return false;
     }
 
     @Override

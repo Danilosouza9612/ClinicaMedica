@@ -28,7 +28,7 @@ public class PacientePlanoSaudeView {
         int codigo;
         Scanner l = new Scanner(System.in);
         service = SeguradoraPlanoService.getInstance();
-        SeguradoraPlano selecao;
+        SeguradoraPlano selecao=null;
         
         listaSeguradoraPlanoView = new ListaSeguradoraPlanoView();
         do{
@@ -37,8 +37,12 @@ public class PacientePlanoSaudeView {
             
             System.out.println("Digite o código da seguradora");
             codigo=l.nextInt();
-            selecao = service.selecionar(codigo);
-        }while(selecao==null || codigo!=-1);
+            l.nextLine();
+            if(codigo!=-2){
+                selecao = service.selecionar(codigo);
+            }
+            
+        }while(selecao==null && codigo!=-2);
         
         if(codigo!=-2){
             paciente.setPlanoDeSaude(new PlanoDeSaude());

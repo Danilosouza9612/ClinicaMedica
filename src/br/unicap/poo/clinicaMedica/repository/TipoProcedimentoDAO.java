@@ -14,7 +14,7 @@ import java.util.List;
  * @author Danilo
  */
 public class TipoProcedimentoDAO implements TipoProcedimentoRepBridge{
-    ArrayList<TipoProcedimento> dataBase;
+    private ArrayList<TipoProcedimento> dataBase;
     
     public TipoProcedimentoDAO(){
         dataBase = new ArrayList();
@@ -43,9 +43,10 @@ public class TipoProcedimentoDAO implements TipoProcedimentoRepBridge{
         int cont=0;
         for(TipoProcedimento data : dataBase){
             if(item.getCodigo()==data.getCodigo()){
-                System.out.println(item.getCodigo() + " "+ item.getDescricao());
                 dataBase.remove(cont);
                 return true;
+            }else if(item.getCodigo()<data.getCodigo()){
+                return false;
             }
             cont++;
         }

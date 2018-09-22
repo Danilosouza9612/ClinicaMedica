@@ -49,34 +49,37 @@ public class PacienteCadastrarView {
                 } catch (PessoaException ex) {
                     System.out.println(ex.getMessage());
                     valido=false;
-                } finally{
-                    pacienteNomeView = new PessoaNomeView();
-                    pacienteNomeView.editarNome(novo);
-                    
-                    pacienteTelefoneView = new PessoaTelefoneView();
-                    pacienteTelefoneView.editarTelefone(novo);
-                    
-                    if(!preCadastro){
-                        pacienteCEPView = new PacienteEnderecoCEPView();
-                        pacienteCEPView.editarTelefone(novo);
-
-                        pacienteEnderecoNumeroView = new PacienteEnderecoNumeroView();
-                        pacienteEnderecoNumeroView.editarNumero(novo);
-
-                        pacienteEnderecoComplementoView = new PacienteEnderecoComplementoView();
-                        pacienteEnderecoComplementoView.editarComplemento(novo);
-                        
-                        pacientePlanoSaudeView = new PacientePlanoSaudeView();
-                        pacientePlanoSaudeView.alterarSeguradoraView(novo);
-                        
-                        pacienteDataNascimentoView = new PacienteDataNascimentoView();
-                        pacienteDataNascimentoView.alterarDataNascimento(novo);
-                    }
-                    service.cadastrarPaciente(novo);
-                }
-                
+                } 
             }
         }while(!valido);
+        
+        if(valido){
+            pacienteNomeView = new PessoaNomeView();
+            pacienteNomeView.editarNome(novo);
+                    
+            pacienteTelefoneView = new PessoaTelefoneView();
+            pacienteTelefoneView.editarTelefone(novo);
+                  
+            if(!preCadastro){
+                pacienteCEPView = new PacienteEnderecoCEPView();
+                pacienteCEPView.editarTelefone(novo);
+
+                pacienteEnderecoNumeroView = new PacienteEnderecoNumeroView();
+                pacienteEnderecoNumeroView.editarNumero(novo);
+
+                pacienteEnderecoComplementoView = new PacienteEnderecoComplementoView();
+                pacienteEnderecoComplementoView.editarComplemento(novo);
+                        
+                pacientePlanoSaudeView = new PacientePlanoSaudeView();
+                pacientePlanoSaudeView.alterarSeguradoraView(novo);
+                        
+                pacienteDataNascimentoView = new PacienteDataNascimentoView();
+                pacienteDataNascimentoView.alterarDataNascimento(novo);
+            }
+            service.cadastrarPaciente(novo);    
+        }
+        
+        
         
         
     }     

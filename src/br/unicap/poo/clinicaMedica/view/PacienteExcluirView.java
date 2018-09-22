@@ -19,7 +19,7 @@ public class PacienteExcluirView {
     public PacienteExcluirView(){
         
     }
-    public void excluirPaciente(Paciente paciente){
+    public boolean excluirPaciente(Paciente paciente){
         Scanner l = new Scanner(System.in);
         char op;
         do{
@@ -29,7 +29,10 @@ public class PacienteExcluirView {
             if(op=='s'){
                 service = PacienteService.getInstance();
                 service.removerPaciente(paciente);
+                return true;
             }
         }while(op!='s' && op!='n');
+        
+        return false;
     }
 }
