@@ -9,6 +9,10 @@ package br.unicap.poo.clinicaMedica.model;
  *
  * @author aluno
  */
+import br.unicap.poo.clinicaMedica.model.exceptions.EspecialidadeMedicoNaoEncontradaException;
+import br.unicap.poo.clinicaMedica.model.exceptions.PessoaException;
+import br.unicap.poo.clinicaMedica.model.exceptions.EspecialidadeMedicoRepetidaException;
+import br.unicap.poo.clinicaMedica.model.exceptions.MedicoException;
 import br.unicap.poo.clinicaMedica.noRepeatArrayList.NoRepeatArrayList;
 import java.util.ArrayList;
 import java.util.Date;

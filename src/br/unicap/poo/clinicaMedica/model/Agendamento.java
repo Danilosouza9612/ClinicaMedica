@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package br.unicap.poo.clinicaMedica.model;
+import br.unicap.poo.clinicaMedica.model.exceptions.AgendamentoException;
+import br.unicap.poo.clinicaMedica.model.exceptions.DataInvalidaException;
 import br.unicap.poo.clinicaMedica.repository.Repositable;
 import java.util.Date;
 import java.util.Calendar;

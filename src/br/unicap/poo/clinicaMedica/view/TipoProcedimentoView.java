@@ -6,11 +6,8 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.TipoProcedimento;
-import br.unicap.poo.clinicaMedica.service.TipoProcedimentoRepetidoException;
 import br.unicap.poo.clinicaMedica.service.TipoProcedimentoService;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -19,6 +16,8 @@ import java.util.logging.Logger;
 public class TipoProcedimentoView {
     private VerTipoProcedimentosView verTipoProcedimentosView;
     private EditarDescricaoTipoProcedimentoView cadastrarTipoProcedimento;
+    private TipoProcedimentoService service;
+
     
     public TipoProcedimentoView(){
         
@@ -27,7 +26,6 @@ public class TipoProcedimentoView {
     public void menu(){
         Scanner l = new Scanner(System.in);
         int opcao;
-        TipoProcedimentoService service;
         do{
             System.out.println("..................................");
             System.out.println();
@@ -44,11 +42,8 @@ public class TipoProcedimentoView {
                     service = TipoProcedimentoService.getInstance();
                     cadastrarTipoProcedimento = new EditarDescricaoTipoProcedimentoView();
                     TipoProcedimento novo = new TipoProcedimento(service.lastCode()+1);
-                    try {
-                        service.cadastrarTipoProcedimento(novo);
-                    } catch (TipoProcedimentoRepetidoException ex) {
-                        System.out.println(ex);
-                    }
+                    service.cadastrarTipoProcedimento(novo);
+
                     cadastrarTipoProcedimento.editarDescricao(novo);
                     break;
                 case 3:

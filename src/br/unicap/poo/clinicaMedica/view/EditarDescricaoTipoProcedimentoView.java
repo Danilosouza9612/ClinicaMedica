@@ -6,7 +6,6 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.TipoProcedimento;
-import br.unicap.poo.clinicaMedica.service.TipoProcedimentoNaoEncontradoException;
 import br.unicap.poo.clinicaMedica.service.TipoProcedimentoService;
 import java.util.Scanner;
 
@@ -16,22 +15,19 @@ import java.util.Scanner;
  * @author aluno
  */
 public class EditarDescricaoTipoProcedimentoView {
+    private TipoProcedimentoService service;
     public EditarDescricaoTipoProcedimentoView(){
         
     }
     public void editarDescricao(TipoProcedimento tipoProcedimento){
         System.out.println("..................................");
         System.out.println();
-        TipoProcedimentoService service = TipoProcedimentoService.getInstance();
+        service = TipoProcedimentoService.getInstance();
         String descricao;
         Scanner l = new Scanner(System.in);
         System.out.println("Digite a descrição");
         descricao=l.nextLine();
         tipoProcedimento.setDescricao(descricao);
-        try {
-            service.alterarTipoProcedimento(tipoProcedimento);
-        } catch (TipoProcedimentoNaoEncontradoException ex) {
-            System.out.println(ex);
-        }
+        service.alterarTipoProcedimento(tipoProcedimento);
     }
 }

@@ -6,7 +6,6 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.Especialidade;
-import br.unicap.poo.clinicaMedica.service.EspecialidadeNaoEncontradaException;
 import br.unicap.poo.clinicaMedica.service.EspecialidadeService;
 import java.util.Scanner;
 
@@ -15,6 +14,7 @@ import java.util.Scanner;
  * @author aluno
  */
 public class EditarDescricaoEspecialidadeView {
+    private EspecialidadeService service;
 
     public EditarDescricaoEspecialidadeView() {
     }
@@ -22,16 +22,13 @@ public class EditarDescricaoEspecialidadeView {
     public void editarDescricao(Especialidade especialidade){
         System.out.println("..................................");
         System.out.println();
-        EspecialidadeService service = EspecialidadeService.getInstance();
         String descricao;
         Scanner l = new Scanner(System.in);
+        service = EspecialidadeService.getInstance();
         System.out.println("Digite a descrição");
         descricao=l.nextLine();
         especialidade.setDescricao(descricao);
-        try {
-            service.alterarEspecialidade(especialidade);
-        } catch (EspecialidadeNaoEncontradaException ex) {
-            System.out.println(ex);
-        }
+        service.alterarEspecialidade(especialidade);
+
     }
 }

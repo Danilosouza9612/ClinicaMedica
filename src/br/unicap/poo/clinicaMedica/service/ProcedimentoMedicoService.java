@@ -9,32 +9,24 @@ import java.util.Date;
 import java.util.List;
 
 public class ProcedimentoMedicoService {
-    ProcedimentoMedicoRepBridge procedimentos;
+    private ProcedimentoMedicoRepBridge procedimentos;
     
     
     public ProcedimentoMedicoService(){
         procedimentos=new ProcedimentoMedicoDAO();  
     }
     
-    public void agendarProcedimento(ProcedimentoMedico item) throws ProcedimentoRepetidoException{
-        if(procedimentos.selecionar(item.getCodigo())!=null){
-            throw new ProcedimentoRepetidoException();
-        }else{
-            procedimentos.inserir(item);
-        }
+    public void agendarProcedimento(ProcedimentoMedico procedimento){
+        procedimentos.inserir(procedimento);
     }
     
-    public void alterarProcedimento(ProcedimentoMedico item) throws ProcedimentoNaoEncontradoException{
-        if(!procedimentos.alterar(item)){
-            throw new ProcedimentoNaoEncontradoException();
-        }
+    public void alterarProcedimento(ProcedimentoMedico procedimento){
+        procedimentos.alterar(procedimento);
     }
     
     
-    public void cancelarProcedimennto(ProcedimentoMedico procedimento) throws ProcedimentoNaoEncontradoException{
-        if(!procedimentos.remover(procedimento)){
-            throw new ProcedimentoNaoEncontradoException();
-        }
+    public void cancelarProcedimennto(ProcedimentoMedico procedimento){
+        procedimentos.remover(procedimento);
     }
     
     
@@ -74,13 +66,13 @@ public class ProcedimentoMedicoService {
         
         return retorno;
     }
-    public ProcedimentoMedico selecionar(int codigo) throws ProcedimentoNaoEncontradoException{
+    public ProcedimentoMedico selecionar(int codigo){
         ProcedimentoMedico selecao = procedimentos.selecionar(codigo);
-        if(selecao==null){
-            throw new ProcedimentoNaoEncontradoException();
-        }
         
         return selecao;
+    }
+    public int lastCode(){
+        return procedimentos.lastCode();
     }
 }
 

@@ -58,5 +58,12 @@ public class ProcedimentoMedicoDAO implements ProcedimentoMedicoRepBridge{
             }
         }
         return null;
-    }  
+    } 
+    @Override
+    public int lastCode(){
+        if(dataBase.isEmpty()){
+            return -1;
+        }
+        return dataBase.get(dataBase.size()-1).getCodigo();
+    }
 }

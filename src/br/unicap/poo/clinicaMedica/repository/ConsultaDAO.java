@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class ConsultaDAO implements ConsultaRepBridge {
     
-    ArrayList<Consulta> dataBase;
+    private ArrayList<Consulta> dataBase;
     
     public ConsultaDAO(){
         dataBase = new ArrayList();
@@ -59,6 +59,13 @@ public class ConsultaDAO implements ConsultaRepBridge {
             }
         }
         return null;
+    }
+    @Override
+    public int lastCode(){
+        if(dataBase.isEmpty()){
+            return -1;
+        }
+        return dataBase.get(dataBase.size()-1).getCodigo();
     }
     
 }

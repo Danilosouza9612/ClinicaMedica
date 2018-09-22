@@ -6,11 +6,9 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.TipoExame;
-import br.unicap.poo.clinicaMedica.service.TipoExameNaoEncontradoException;
 import br.unicap.poo.clinicaMedica.service.TipoExameService;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -33,23 +31,12 @@ public class RemoverTipoExameView {
             System.out.println("Digite o código do tipo de procedimento(Digite -1 para Sair)");
             codigo=l.nextInt();
             l.nextLine();
-            try {
-                if(codigo!=-1){
-                    selecao=service.selecionar(codigo);
-                }
-            } catch (TipoExameNaoEncontradoException ex) {
-                valido=false;
-                System.out.println(ex);
+            if(codigo==-1){
+                return;
+            }else{
+                selecao=service.selecionar(codigo);
             }
-            
-            if(valido){
-                try {
-                    service.remover(selecao);
-                } catch (TipoExameNaoEncontradoException ex) {
-                    System.out.println(ex);
-                }
-            }
-        }while(!valido && codigo!=-1);
-        
+        }while(!valido && codigo!=-1);  
+        service.remover(selecao);
     }   
 }

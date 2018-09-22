@@ -23,24 +23,16 @@ public class ConsultaService {
         
         return instance;
     }
-    public void AgendarConsulta(Consulta item) throws ConsultaRepetidaException{
-        if(consultas.selecionar(item.getCodigo())!=null){
-            throw new ConsultaRepetidaException();
-        }else{
-            consultas.inserir(item);
-        }
+    public void AgendarConsulta(Consulta item){
+        consultas.inserir(item);
     } 
     
-    public void alterarConsulta(Consulta item) throws ConsultaNaoEncontradaException{
-        if(!consultas.alterar(item)){
-            throw new ConsultaNaoEncontradaException();
-        }
+    public void alterarConsulta(Consulta item){
+        consultas.alterar(item);
     }
     
-    public void cancelarConsulta(Consulta item) throws ConsultaNaoEncontradaException{
-        if(!consultas.remover(item)){
-            throw new ConsultaNaoEncontradaException();
-        }
+    public void cancelarConsulta(Consulta item){
+        consultas.remover(item);
     }
     public List<Consulta> verConsultas(Medico medico, Date data){
         List<Consulta> retorno = new ArrayList<Consulta>();
@@ -78,12 +70,12 @@ public class ConsultaService {
         
         return retorno;
     }
-    public Consulta selecionar(int codigo) throws ConsultaNaoEncontradaException{
+    public Consulta selecionar(int codigo){
         Consulta selecao = consultas.selecionar(codigo);
-        if(selecao==null){
-            throw new ConsultaNaoEncontradaException();
-        }
         
         return selecao;
+    }
+    public int lastCode(){
+        return consultas.lastCode();
     }
 }

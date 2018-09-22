@@ -17,5 +17,6 @@ public interface ProcedimentoMedicoRepBridge {
     public boolean alterar(ProcedimentoMedico item);
     public boolean remover(ProcedimentoMedico item);
     public List<ProcedimentoMedico> listar();
-    public ProcedimentoMedico selecionar(int codigo);     
+    public ProcedimentoMedico selecionar(int codigo);
+    public int lastCode();
 }

@@ -5,6 +5,10 @@
  */
 package br.unicap.poo.clinicaMedica.model;
 
+import br.unicap.poo.clinicaMedica.model.exceptions.NumeroInvalidoException;
+import br.unicap.poo.clinicaMedica.model.exceptions.EnderecoException;
+import br.unicap.poo.clinicaMedica.model.exceptions.CepInvalidoException;
+
 /**
  *
  * @author aluno

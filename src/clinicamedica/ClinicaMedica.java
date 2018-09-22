@@ -5,12 +5,6 @@
  */
 package clinicamedica;
 
-import br.unicap.poo.clinicaMedica.model.TipoExame;
-import br.unicap.poo.clinicaMedica.service.TipoExameRepetidoException;
-import br.unicap.poo.clinicaMedica.service.TipoExameService;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import br.unicap.poo.clinicaMedica.view.MenuPrincipal;
 /**
  *

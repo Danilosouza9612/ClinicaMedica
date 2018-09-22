@@ -6,40 +6,33 @@ import br.unicap.poo.clinicaMedica.repository.PacienteRepBridge;
 
 public class PacienteService {
 
-    PacienteRepBridge pacientes;
+    private PacienteRepBridge pacientes;
+    private static PacienteService instance;
 
-    public PacienteService() {
+    private PacienteService() {
         pacientes = new PacienteDAO();
     }
-    
-    public void cadastrarPaciente(Paciente item) throws PacienteRepetidoException{
-        if(pacientes.selecionar(item.getCpf())!=null){
-            throw new PacienteRepetidoException();
-        }else{
-            pacientes.inserir(item);
+    public synchronized static PacienteService getInstance(){
+        if(instance==null){
+            instance = new PacienteService();
         }
+        return instance;
     }
     
-    public void alterarPaciente(Paciente item) throws PacienteNaoEncontradaException{
-        if(!pacientes.alterar(item)){
-            throw new PacienteNaoEncontradaException();
-        }
+    public void cadastrarPaciente(Paciente item){
+        pacientes.inserir(item);
     }
     
-    public void removerPaciente(Paciente item) throws PacienteNaoEncontradaException{
-         if(!pacientes.remover(item)){
-             throw new PacienteNaoEncontradaException();
-         }
+    public void alterarPaciente(Paciente item){
+        pacientes.alterar(item);
     }
     
-    public Paciente selecionar(String cpf) throws PacienteNaoEncontradaException{
-        Paciente selecao = pacientes.selecionar(cpf);
-        if(selecao==null){
-            throw new PacienteNaoEncontradaException();
-        }
-        
-        return selecao;
-        
+    public void removerPaciente(Paciente item){
+        pacientes.remover(item);
+    }
+    
+    public Paciente selecionar(String cpf){
+        return pacientes.selecionar(cpf);        
     }
 
 }

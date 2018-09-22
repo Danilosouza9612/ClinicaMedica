@@ -29,30 +29,20 @@ public class TipoExameService {
         return instance;
     }
     
-    public void adicionarTipo(TipoExame item) throws TipoExameRepetidoException{
-        if(tipoExames.selecionar(item.getCodigo())!=null){
-            throw new TipoExameRepetidoException();
-        }else{
-            tipoExames.inserir(item);
-        }
+    public void adicionarTipo(TipoExame item){
+        tipoExames.inserir(item);
     }
-    public void alterarTipo(TipoExame item) throws TipoExameNaoEncontradoException{
-        if(!tipoExames.alterar(item)){
-            throw new TipoExameNaoEncontradoException();
-        }
+    public void alterarTipo(TipoExame item){
+        tipoExames.alterar(item);
+        
     }
-    public TipoExame selecionar(int codigo) throws TipoExameNaoEncontradoException{
+    public TipoExame selecionar(int codigo){
         TipoExame selecao = tipoExames.selecionar(codigo);
-        if(selecao==null){
-            throw new TipoExameNaoEncontradoException();
-        }
         
         return selecao;
     }
-    public void remover(TipoExame item) throws TipoExameNaoEncontradoException{
-        if(!tipoExames.remover(item)){
-            throw new TipoExameNaoEncontradoException();
-        }
+    public void remover(TipoExame item){
+        tipoExames.remover(item);
     }
     public List<TipoExame> listar(){
         List<TipoExame> tiposExames = tipoExames.listar();

@@ -5,6 +5,10 @@
  */
 package br.unicap.poo.clinicaMedica.model;
 
+import br.unicap.poo.clinicaMedica.model.exceptions.HorarioChegadaInvalidoException;
+import br.unicap.poo.clinicaMedica.model.exceptions.HorarioInvalidoException;
+import br.unicap.poo.clinicaMedica.model.exceptions.HorarioSaidaInvalidoException;
+
 /**
  *
  * @author Danilo

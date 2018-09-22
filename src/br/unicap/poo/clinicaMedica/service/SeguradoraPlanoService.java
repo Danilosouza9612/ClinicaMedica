@@ -30,22 +30,14 @@ public class SeguradoraPlanoService {
         
         return instance;
     }
-    public void inserirSeguradora(SeguradoraPlano item) throws SeguradoraPlanoRepetidaException{
-        if(seguradorasPlano.selecionar(item.getCodigo())!=null){
-            throw new SeguradoraPlanoRepetidaException();
-        }else{
-            seguradorasPlano.inserir(item);
-        }
+    public void inserirSeguradora(SeguradoraPlano item){
+        seguradorasPlano.inserir(item);
     }
-    public void alterarSeguradora(SeguradoraPlano item) throws SeguradoraPlanoNaoEncontradaException{
-        if(!seguradorasPlano.alterar(item)){
-            throw new SeguradoraPlanoNaoEncontradaException();
-        }
+    public void alterarSeguradora(SeguradoraPlano item){
+        seguradorasPlano.alterar(item);
     }
-    public void removerSeguradora(SeguradoraPlano item) throws SeguradoraPlanoNaoEncontradaException{
-        if(!seguradorasPlano.remover(item)){
-            throw new SeguradoraPlanoNaoEncontradaException();
-        }
+    public void removerSeguradora(SeguradoraPlano item){
+        seguradorasPlano.remover(item);
     }
     public List<SeguradoraPlano> listarSeguradoras(){
         List<SeguradoraPlano> listaSeguradorasPlano = seguradorasPlano.listar();
@@ -54,11 +46,9 @@ public class SeguradoraPlanoService {
         
         return listaSeguradorasPlano;
     }
-    public SeguradoraPlano selecionar(int codigo) throws SeguradoraPlanoNaoEncontradaException{
+    public SeguradoraPlano selecionar(int codigo){
         SeguradoraPlano selecao = seguradorasPlano.selecionar(codigo);
-        if(selecao==null){
-            throw new SeguradoraPlanoNaoEncontradaException();
-        }
+
         
         return selecao;
     }

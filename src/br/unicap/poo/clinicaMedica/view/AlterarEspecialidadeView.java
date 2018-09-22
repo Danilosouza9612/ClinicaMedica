@@ -6,7 +6,6 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.Especialidade;
-import br.unicap.poo.clinicaMedica.service.EspecialidadeNaoEncontradaException;
 import br.unicap.poo.clinicaMedica.service.EspecialidadeService;
 import java.util.Scanner;
 
@@ -15,38 +14,31 @@ import java.util.Scanner;
  * @author aluno
  */
 public class AlterarEspecialidadeView {
-    EditarDescricaoEspecialidadeView editarDescricaoEspecialidadeView;
+    private EditarDescricaoEspecialidadeView editarDescricaoEspecialidadeView;
+    private EspecialidadeService service;
     public AlterarEspecialidadeView(){
         
     }
     
     public void alterar(){
-        EspecialidadeService service = EspecialidadeService.getInstance();
+        service = EspecialidadeService.getInstance();
         int codigo;
-        boolean valido;
         Scanner l = new Scanner(System.in);
         Especialidade selecao=null;
         do{
             System.out.println("..................................");
             System.out.println();
-            valido=true;
             System.out.println("Digite o código da especialidade (Digite -1 para Sair)");
             codigo=l.nextInt();
             l.nextLine();
-            try {
-                if(codigo!=-1){
-                    selecao=service.selecionar(codigo);
-                }
-            } catch (EspecialidadeNaoEncontradaException ex) {
-                valido=false;
-                System.out.println(ex);
+            if(codigo==-1){
+                return;
+            }else{
+                selecao=service.selecionar(codigo);
             }
-            
-            if(valido){
-                editarDescricaoEspecialidadeView = new EditarDescricaoEspecialidadeView();
-                editarDescricaoEspecialidadeView.editarDescricao(selecao);
-            }
-        }while(!valido && codigo!=-1);
+        }while(selecao==null);
+        editarDescricaoEspecialidadeView = new EditarDescricaoEspecialidadeView();
+        editarDescricaoEspecialidadeView.editarDescricao(selecao);
         
     }
 }

@@ -27,22 +27,14 @@ public class TipoProcedimentoService {
         }
         return instance;
     }
-    public void cadastrarTipoProcedimento(TipoProcedimento item) throws TipoProcedimentoRepetidoException{
-        if(tipoProcedimentos.selecionar(item.getCodigo())!=null){
-            throw new TipoProcedimentoRepetidoException();
-        }else{
-            tipoProcedimentos.inserir(item);
-        }
+    public void cadastrarTipoProcedimento(TipoProcedimento item){
+        tipoProcedimentos.inserir(item);
     }
-    public void alterarTipoProcedimento(TipoProcedimento item) throws TipoProcedimentoNaoEncontradoException{
-        if(!tipoProcedimentos.alterar(item)){
-            throw new TipoProcedimentoNaoEncontradoException();
-        }
+    public void alterarTipoProcedimento(TipoProcedimento item){
+        tipoProcedimentos.alterar(item);
     }
-    public void removerTipoProcedimento(TipoProcedimento item) throws TipoProcedimentoNaoEncontradoException{
-        if(!tipoProcedimentos.remover(item)){
-            throw new TipoProcedimentoNaoEncontradoException();
-        }
+    public void removerTipoProcedimento(TipoProcedimento item){
+        tipoProcedimentos.remover(item);
     }
     public List<TipoProcedimento> listar(){
         List<TipoProcedimento> listaTiposProcedimentos = tipoProcedimentos.listar();
@@ -51,11 +43,8 @@ public class TipoProcedimentoService {
         
         return listaTiposProcedimentos;
     }
-    public TipoProcedimento selecionar(int codigo) throws TipoProcedimentoNaoEncontradoException{
+    public TipoProcedimento selecionar(int codigo){
         TipoProcedimento selecao = tipoProcedimentos.selecionar(codigo);
-        if(selecao==null){
-            throw new TipoProcedimentoNaoEncontradoException();
-        }
         
         return selecao;        
     }

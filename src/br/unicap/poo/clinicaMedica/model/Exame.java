@@ -5,6 +5,7 @@
  */
 package br.unicap.poo.clinicaMedica.model;
 
+import br.unicap.poo.clinicaMedica.model.exceptions.AgendamentoException;
 import java.util.Date;
 
 /**

@@ -5,6 +5,10 @@
  */
 package br.unicap.poo.clinicaMedica.model;
 
+import br.unicap.poo.clinicaMedica.model.exceptions.SemHorarioException;
+import br.unicap.poo.clinicaMedica.model.exceptions.HorarioMedicoNaoEncontradoException;
+import br.unicap.poo.clinicaMedica.model.exceptions.HorarioRepetidoException;
+import br.unicap.poo.clinicaMedica.model.exceptions.HorarioMedicoException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;

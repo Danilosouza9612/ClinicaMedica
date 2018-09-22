@@ -5,6 +5,8 @@
  */
 package br.unicap.poo.clinicaMedica.model;
 
+import br.unicap.poo.clinicaMedica.model.exceptions.SeguradoraPlanoSaudeMedicoRepetidaException;
+import br.unicap.poo.clinicaMedica.model.exceptions.SeguradoraPlanoSaudeMedicoNaoEncontradaException;
 import br.unicap.poo.clinicaMedica.noRepeatArrayList.NoRepeatArrayList;
 import java.util.List;
 

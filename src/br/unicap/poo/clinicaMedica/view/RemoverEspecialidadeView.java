@@ -6,7 +6,6 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.Especialidade;
-import br.unicap.poo.clinicaMedica.service.EspecialidadeNaoEncontradaException;
 import br.unicap.poo.clinicaMedica.service.EspecialidadeService;
 import java.util.Scanner;
 
@@ -15,39 +14,29 @@ import java.util.Scanner;
  * @author aluno
  */
 public class RemoverEspecialidadeView {
-     public RemoverEspecialidadeView(){
+    private EspecialidadeService service;
+    public RemoverEspecialidadeView(){
     }
     
     public void remover(){
-        EspecialidadeService service = EspecialidadeService.getInstance();
+        service = EspecialidadeService.getInstance();
         int codigo;
-        boolean valido;
         Scanner l = new Scanner(System.in);
         Especialidade selecao=null;
         do{
             System.out.println("..................................");
             System.out.println();
-            valido=true;
             System.out.println("Digite o código do tipo de especialidade(Digite -1 para Sair)");
             codigo=l.nextInt();
             l.nextLine();
-            try {
-                if(codigo!=-1){
-                    selecao = service.selecionar(codigo);
-                }
-            } catch (EspecialidadeNaoEncontradaException ex) {
-                valido=false;
-                System.out.println(ex);
+            if(codigo!=-1){
+                selecao = service.selecionar(codigo);
+            }else{
+                return;
             }
             
-            if(valido){
-                try {
-                    service.removerEspecialidade(selecao);
-                } catch (EspecialidadeNaoEncontradaException ex) {
-                    System.out.println(ex);
-                }
-            }
-        }while(!valido && codigo!=-1);
+        }while(selecao==null);
         
+        service.removerEspecialidade(selecao);
     }        
 }

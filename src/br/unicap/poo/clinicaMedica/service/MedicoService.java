@@ -22,26 +22,17 @@ public class MedicoService {
     public MedicoService(){
         medicos = new MedicoDAO();
     }
-    public void cadastrarMedico(Medico item) throws MedicoRepetidoException{
-        if(!medicos.inserir(item)){
-            throw new MedicoRepetidoException();
-        }
+    public void cadastrarMedico(Medico item){
+        medicos.inserir(item);
     }
-    public void alterarMedico(Medico item) throws MedicoNaoEncontradoException{
-        if(!medicos.alterar(item)){
-            throw new MedicoNaoEncontradoException();
-        }
+    public void alterarMedico(Medico item){
+        medicos.alterar(item);
     }
-    public void removerMedico(Medico item) throws MedicoNaoEncontradoException{
-        if(!medicos.remover(item)){
-            throw new MedicoNaoEncontradoException();
-        }
+    public void removerMedico(Medico item){
+        medicos.remover(item);
     }
-    public Medico selecionar(int codigo) throws MedicoNaoEncontradoException{
+    public Medico selecionar(int codigo){
         Medico selecao = medicos.selecionar(codigo);
-        if(selecao==null){
-            throw new MedicoNaoEncontradoException();
-        }
         
         return selecao;
     }
@@ -51,5 +42,8 @@ public class MedicoService {
         Collections.sort(listaMedicos, Comparator.comparing(Medico::getNome));
         
         return listaMedicos;
+    }
+    public int lastCode(){
+        return medicos.lastCode();
     }
 }

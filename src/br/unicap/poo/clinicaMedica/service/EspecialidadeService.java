@@ -5,7 +5,6 @@
  */
 package br.unicap.poo.clinicaMedica.service;
 import br.unicap.poo.clinicaMedica.model.Especialidade;
-import br.unicap.poo.clinicaMedica.model.Especialidade;
 import br.unicap.poo.clinicaMedica.repository.EspecialidadeDAO;
 import br.unicap.poo.clinicaMedica.repository.EspecialidadeRepBridge;
 
@@ -31,24 +30,16 @@ public class EspecialidadeService {
         
         return instance;
     }
-    public void inserirEspecialidade(Especialidade item) throws EspecialidadeRepetidaException{
-        if(especialidades.selecionar(item.getCodigo())!=null){
-            throw new EspecialidadeRepetidaException();
-        }else{
-            especialidades.inserir(item);
-        }
+    public void inserirEspecialidade(Especialidade item){
+        especialidades.inserir(item);
     } 
     
-    public void alterarEspecialidade(Especialidade item) throws EspecialidadeNaoEncontradaException{
-        if(!especialidades.alterar(item)){
-            throw new EspecialidadeNaoEncontradaException();
-        }
+    public void alterarEspecialidade(Especialidade item){
+        especialidades.alterar(item);
     }
     
-    public void removerEspecialidade(Especialidade item) throws EspecialidadeNaoEncontradaException{
-        if(!especialidades.remover(item)){
-            throw new EspecialidadeNaoEncontradaException();
-        }
+    public void removerEspecialidade(Especialidade item){
+        especialidades.remover(item);
     }
    public List<Especialidade> listar(){
        List<Especialidade> listaEspecialidades = especialidades.listar();
@@ -57,19 +48,12 @@ public class EspecialidadeService {
        
        return listaEspecialidades;
    }
-    public Especialidade selecionar(int codigo) throws EspecialidadeNaoEncontradaException{
+    public Especialidade selecionar(int codigo){
         Especialidade selecao = especialidades.selecionar(codigo);
-        if(selecao==null){
-            throw new EspecialidadeNaoEncontradaException();
-        }
         
         return selecao;
     }
     public int lastCode(){
         return especialidades.lastCode();
-    }
-
-    public void alterarTipoProcedimento(Especialidade especialidade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

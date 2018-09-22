@@ -15,10 +15,8 @@ public class PlanoDeSaude {
     private String numeroCarteira;
     private Date dataValidade;
 
-    public PlanoDeSaude(SeguradoraPlano seguradoraPlano, String numeroCarteira, Date dataValidade) {
-        this.seguradoraPlano = seguradoraPlano;
-        this.numeroCarteira = numeroCarteira;
-        this.dataValidade = dataValidade;
+    public PlanoDeSaude() {
+
     }
 
     public SeguradoraPlano getSeguradoraPlano() {

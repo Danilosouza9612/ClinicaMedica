@@ -5,6 +5,9 @@
  */
 package br.unicap.poo.clinicaMedica.model;
 
+import br.unicap.poo.clinicaMedica.model.exceptions.AgendamentoException;
+import br.unicap.poo.clinicaMedica.model.exceptions.ConsultaException;
+import br.unicap.poo.clinicaMedica.model.exceptions.HorarioIndisponivelException;
 import java.util.ArrayList;
 import java.util.Date;
 

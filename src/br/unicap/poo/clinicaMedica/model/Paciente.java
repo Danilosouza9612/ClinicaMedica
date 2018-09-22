@@ -5,6 +5,9 @@
  */
 package br.unicap.poo.clinicaMedica.model;
 
+import br.unicap.poo.clinicaMedica.model.exceptions.CpfInvalidoException;
+import br.unicap.poo.clinicaMedica.model.exceptions.PessoaException;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -27,22 +30,30 @@ public class Paciente extends Pessoa{
             this.cpf = cpf;
         }
         endereco = new Endereco();
+        planoDeSaude = new PlanoDeSaude();
     }
 
     public PlanoDeSaude getPlanoDeSaude() {
         return planoDeSaude;
     }
-
-    public void setPlanoDeSaude(PlanoDeSaude planoDeSaude) {
-        this.planoDeSaude = planoDeSaude;
+    public void setPlanoDeSaude(PlanoDeSaude planoDeSaude){
+        this.planoDeSaude=planoDeSaude;
     }
-
     public Endereco getEndereco() {
         return endereco;
     }
     
-    public Date getDataNasc() {
-        return dataNasc;
+    public String getDataNasc() {
+        Calendar calendar = Calendar.getInstance(); 
+        StringBuilder sb = new StringBuilder();
+        calendar.setTime(this.dataNasc);
+        
+        sb.append(calendar.get(Calendar.DAY_OF_MONTH))
+                .append("/")
+                .append(calendar.get(Calendar.MONTH))
+                .append("/")
+                .append(calendar.get(Calendar.YEAR));
+        return sb.toString();
     }
 
     public void setDataNasc(Date dataNasc) {
@@ -56,7 +67,7 @@ public class Paciente extends Pessoa{
         return numeroVisitas;
     }
 
-    public void setNumeroVisitas(int numeroVisitas) {
+    public void increaseNumeroVisitas() {
         this.numeroVisitas = numeroVisitas;
     }
     public boolean cadastroCompleto(){

@@ -23,25 +23,16 @@ public class ExameService {
         
         return instance;
     }
-    public void novoExame(Exame item) throws ExameRepetidoException {
-        if(exames.selecionar(item.getCodigo())!=null){
-            throw new ExameRepetidoException();
-        }else{
-            exames.inserir(item);
-        }
+    public void novoExame(Exame item) {
+        exames.inserir(item);
     }
 
-    public void alterarExame(Exame item) throws ExameNaoEncontradoException {
-        if(!exames.alterar(item)){
-            throw new ExameNaoEncontradoException();
-        }
-
+    public void alterarExame(Exame item) {
+        exames.alterar(item);
     }
 
-    public void cancelarExame(Exame item) throws ExameNaoEncontradoException {
-        if(!exames.remover(item)){
-            throw new ExameNaoEncontradoException();
-        }
+    public void cancelarExame(Exame item) {
+        exames.remover(item);
     }
     
     public List<Exame> verExames(Medico item){
@@ -80,13 +71,13 @@ public class ExameService {
         
         return retorno;
     }
-    public Exame selecionar(int codigo) throws ExameNaoEncontradoException{
+    public Exame selecionar(int codigo){
         Exame selecao = exames.selecionar(codigo);
-        if(selecao==null){
-            throw new ExameNaoEncontradoException();
-        }
         
         return selecao;
+    }
+    public int lastCode(){
+        return exames.lastCode();
     }
 
 }

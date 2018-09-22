@@ -5,7 +5,7 @@
  */
 package br.unicap.poo.clinicaMedica.view;
 
-import br.unicap.poo.clinicaMedica.model.NumeroInvalidoException;
+import br.unicap.poo.clinicaMedica.model.exceptions.NumeroInvalidoException;
 import br.unicap.poo.clinicaMedica.model.Paciente;
 import java.util.Scanner;
 
