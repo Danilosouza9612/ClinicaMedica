@@ -1,0 +1,78 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package br.unicap.poo.clinicaMedica.repository;
+
+import br.unicap.poo.clinicaMedica.model.TipoProcedimento;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author Danilo
+ */
+public class TipoProcedimentoDAO implements TipoProcedimentoRepBridge{
+    ArrayList<TipoProcedimento> dataBase;
+    
+    public TipoProcedimentoDAO(){
+        dataBase = new ArrayList();
+    }
+    @Override
+    public boolean inserir(TipoProcedimento item) {
+        return dataBase.add(item);
+    }
+
+    @Override
+    public boolean alterar(TipoProcedimento item) {
+        int cont=0;
+        
+        for(TipoProcedimento data : dataBase){
+            if(data.getCodigo()==item.getCodigo()){
+                dataBase.set(cont, item);
+                return true;
+            }
+            cont++;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean remover(TipoProcedimento item) {
+        int cont=0;
+        for(TipoProcedimento data : dataBase){
+            if(item.getCodigo()==data.getCodigo()){
+                System.out.println(item.getCodigo() + " "+ item.getDescricao());
+                dataBase.remove(cont);
+                return true;
+            }
+            cont++;
+        }
+        return false;
+    }
+
+    @Override
+    public List<TipoProcedimento> listar() {
+        return dataBase;
+    }
+
+    @Override
+    public TipoProcedimento selecionar(int codigo) {
+        int cont = 0;
+        
+        for(TipoProcedimento data : dataBase){
+            if(data.getCodigo()==codigo){
+                return dataBase.get(cont);
+            }
+        }
+        return null;
+    }
+    @Override
+    public int lastCode(){
+        if(dataBase.isEmpty()){
+            return -1;
+        }
+        return dataBase.get(dataBase.size()-1).getCodigo();
+    }
+}
