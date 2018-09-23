@@ -9,7 +9,7 @@ import br.unicap.poo.clinicaMedica.model.Consulta;
 
 /**
  *
- * @author caio Maranhão
+ * @author Malu Maranhão
  */
 class ConsultaInfoView {
     public ConsultaInfoView(){

@@ -10,7 +10,7 @@ import br.unicap.poo.clinicaMedica.service.ConsultaService;
 
 /**
  *
- * @author caio Maranhão
+ * @author Malu Maranhão
  */
 public class ConsultaAlterarView {
     private ConsultaService service;
@@ -18,7 +18,8 @@ public class ConsultaAlterarView {
     }
     
     public void alterarStatus(Consulta consulta){
-        
+     //desculpa,não sabia 
+     
     }
     
 }

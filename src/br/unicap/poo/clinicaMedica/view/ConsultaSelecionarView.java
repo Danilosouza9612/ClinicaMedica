@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author caio Maranhão
+ * @author Malu Maranhão
  */
 public class ConsultaSelecionarView {
 

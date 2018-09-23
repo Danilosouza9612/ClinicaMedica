@@ -6,11 +6,13 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.service.ConsultaService;
+import br.unicap.poo.clinicaMedica.service.ConsultaService;
 
 
 
 public class ConsultaMarcarExameView {
     private ConsultaService service;
+    
     public ConsultaMarcarExameView() {
     }
     

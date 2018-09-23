@@ -5,9 +5,10 @@
  */
 package br.unicap.poo.clinicaMedica.view;
 
+
 import br.unicap.poo.clinicaMedica.model.Consulta;
 import java.util.Scanner;
-
+import br.unicap.poo.clinicaMedica.service.ConsultaService;
 
 class ConsultaSelecaoView {
     private ConsultaReagendarView consultaReagendarView;

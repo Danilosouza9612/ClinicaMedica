@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author caio Maranhão
+ * @author Malu Maranhão
  */
 public class ConsultaView {
 
@@ -47,7 +47,8 @@ public class ConsultaView {
                     break;
                 case 3:
                     VerConsultasView = new VerConsultasView();
-                    VerConsultasView.verConsultaDataeMedico(lista);
+                    List<Consulta> listas=null;
+                    VerConsultasView.verConsultaDataeMedico(listas);
                     break;
                     
                 case 4:
