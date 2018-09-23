@@ -11,8 +11,8 @@ import java.util.Scanner;
 
 /**
  *
- * @author Danilo
- */
+ * @author Danilo bw 
+ */// Verefiquei BW 
 public class ExameSelecionarView {
     private ExameService service;
     public ExameSelecionarView(){

@@ -18,7 +18,7 @@ public class ExameCancelarView {
     public ExameCancelarView() {
     }
     
-    public boolean cancelarConsulta(Exame exame){
+    public boolean cancelarExame(Exame exame){
         Scanner l = new Scanner(System.in);
         char op;
         do{

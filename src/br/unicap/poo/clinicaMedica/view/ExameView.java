@@ -6,23 +6,53 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import java.util.Scanner;
+import br.unicap.poo.clinicaMedica.model.Exame;
+import br.unicap.poo.clinicaMedica.model.Consulta;
+import br.unicap.poo.clinicaMedica.model.Medico;
+import br.unicap.poo.clinicaMedica.model.Paciente;
+import br.unicap.poo.clinicaMedica.model.exceptions.AgendamentoException;
+import br.unicap.poo.clinicaMedica.model.exceptions.HorarioIndisponivelException;
+import br.unicap.poo.clinicaMedica.service.ConsultaService;
+import br.unicap.poo.clinicaMedica.service.ExameService;
+import java.util.Date;
+
 
 /**
  *
- * @author Lucas Soares
+ * @author Brenan Wanderley
  */
 public class ExameView {
     
     private TipoExameView tipoExameView;
+    private ExameVerView verExamesView;
+    private ExameSelecionarView ExameSelecionarView;
+    private MedicoSelecionarView medicoSelecao;
+    private AgendamentoDataView dataSelecao;
+    private AgendamentoHoraView horaSelecao;
+    private ExameService service;
+    private PacienteSelecionarView pacienteSelecao;
+    private MedicoListaView listaMedico;
     
     public ExameView(){
         tipoExameView = new TipoExameView();
+        verExamesView = new ExameVerView();
+        ExameSelecionarView = new ExameSelecionarView();
+        medicoSelecao = new MedicoSelecionarView();
+        dataSelecao = new AgendamentoDataView();
+        pacienteSelecao = new PacienteSelecionarView();
+        horaSelecao = new AgendamentoHoraView();
+        listaMedico = new MedicoListaView();
     }
     
     
     public void menuExame(){
-        Scanner l = new Scanner (System.in);
+        Scanner input = new Scanner (System.in);
         int opcao;
+        Medico medico;
+        Paciente paciente;
+        Date data;
+        boolean valido;
+        Exame novo;
         
         do{
             System.out.println("..................................");
@@ -34,22 +64,51 @@ public class ExameView {
             System.out.println("4 - Gerenciar Tipos de Exames");
             System.out.println("5 - Voltar");
             System.out.println("Digite uma opção:");
-            opcao=l.nextInt();
-            l.nextLine();
+            opcao=input.nextInt();
+            input.nextLine();
             
             switch(opcao){
                 case 1:
+                    data = dataSelecao.dataAgendamento();
+                    if(data!=null){
+                        verExamesView.verConsultas(service.verExames(data));
+                    }
                     break;
                 case 2:
+                    medico = medicoSelecao.selecionar();
+                    if(medico!=null){
+                        verExamesView.verConsultas(service.verExames(medico));
+                    }
                     break;
                 case 3:  
+                    data = dataSelecao.dataAgendamento();
+                    medico = medicoSelecao.selecionar();
+                    if(data!=null && medico != null){
+                        verExamesView.verConsultas(service.verExames(medico, data));
+                    }
                     break;
                 case 4:
-                    tipoExameView.menu();
+                    //tipoExameView.menu();
+                    do{
+                        valido=true;
+                        service = ExameService.getInstance();
+                        data = dataSelecao.dataAgendamento();
+                        medico = medicoSelecao.selecionar();
+                        paciente = pacienteSelecao.selecionar();
+                        if(data!=null & paciente!=null && medico!=null && horaSelecao.horaAgendamento(data)){
+                            try {
+                                novo = new Exame(service.lastCode()+1, data, medico, paciente);
+                                service.novoExame(novo);
+                            } catch (ExameException | HorarioIndisponivelException ex) {
+                                System.out.println(ex.getMessage());
+                                valido=false;
+                            }
+                        }
+                    }while(!valido);
                     break;
                 default:
                     System.out.println("Opção inválida");
             }
-        } while(opcao != 4);
+        } while(opcao != 5);
     }
 }
