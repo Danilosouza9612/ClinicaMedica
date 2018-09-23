@@ -18,15 +18,19 @@ public class PacienteEnderecoNumeroView {
     public PacienteEnderecoNumeroView(){
         
     }
-    public void editarNumero(Paciente paciente){
+    public boolean editarNumero(Paciente paciente){
         int numero;
         Scanner l = new Scanner(System.in);
         boolean valido;
         do{
             valido=true;
             System.out.println("..................................");
-            System.out.println("Digite o número:");
+            System.out.println("Digite o número (Digite -1 para Sair):");
             numero = l.nextInt();
+            l.nextLine();
+            if(numero==-1){
+                return false;
+            }
             try {
                 paciente.getEndereco().setNumero(numero);
             } catch (NumeroInvalidoException ex) {
@@ -34,5 +38,6 @@ public class PacienteEnderecoNumeroView {
                 valido=false;
             }
         }while(!valido);
+        return true;
     }
 }

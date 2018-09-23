@@ -5,6 +5,7 @@
  */
 package br.unicap.poo.clinicaMedica.view;
 
+import br.unicap.poo.clinicaMedica.model.TipoExame;
 import br.unicap.poo.clinicaMedica.service.TipoExameService;
 import java.util.Scanner;
 
@@ -14,16 +15,19 @@ import java.util.Scanner;
  */
 public class VerTipoExameView {
     private ListaTipoExameView listaTipoExame;
-    private AlterarTipoExameView alterarTipoExameView;
-    private RemoverTipoExameView removerTipoExameView;
+    private EditarDescricaoTipoExameView editar;
+    private TipoExameSelecionarView selecionar;
+    private TipoExameService service;
     
     public VerTipoExameView(){
-        
+        listaTipoExame = new ListaTipoExameView();
+        editar = new EditarDescricaoTipoExameView();
+        selecionar = new TipoExameSelecionarView();
     }
-    public void verTipoExame(){
-        TipoExameService service = TipoExameService.getInstance();
+    public void verTipoExameView(){
         listaTipoExame = new ListaTipoExameView();
         
+        TipoExame selecao;
         Scanner l = new Scanner(System.in);
         int opcao;
         do{
@@ -37,12 +41,18 @@ public class VerTipoExameView {
             l.nextLine();
             switch(opcao){
                 case 1:
-                    alterarTipoExameView = new AlterarTipoExameView();
-                    alterarTipoExameView.alterar();
+                    selecao=selecionar.selecionar();
+                    if(selecao!=null){
+                        editar.editarDescricao(selecao);
+                    }
+                    listaTipoExame.listaTipoExame(service.listar());
                     break;
                 case 2:
-                    removerTipoExameView = new RemoverTipoExameView();
-                    removerTipoExameView.remover();
+                    selecao=selecionar.selecionar();
+                    if(selecao!=null){
+                        service.remover(selecao);
+                    }    
+                    listaTipoExame.listaTipoExame(service.listar());
                     break;
                 case 3:
                     break;

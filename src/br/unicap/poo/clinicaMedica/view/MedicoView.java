@@ -12,34 +12,41 @@ import java.util.Scanner;
  * @author Danilo
  */
 public class MedicoView {
+    private MedicoCadastroView medicoCadastroView;
+    private EspecialidadeView especialidadeView;
+    private MedicoVerView medicoVerView;
     
     public MedicoView(){
-        
+        medicoCadastroView = new MedicoCadastroView();
+        especialidadeView = new EspecialidadeView();
+        medicoVerView = new MedicoVerView();
     }
     public void menu(){
         int opcao;
         Scanner l = new Scanner(System.in);
-        System.out.println("..................................");
-        System.out.println("1 - Cadastrar Médico");
-        System.out.println("2 - Ver Médico");
-        System.out.println("3 - Voltar");
         do{
             System.out.println("..................................");
             System.out.println("1 - Cadastrar Médico");
             System.out.println("2 - Ver Médico");
-            System.out.println("3 - Voltar");
+            System.out.println("3 - Gerenciar Especialidades de Médico");
+            System.out.println("4 - Voltar");
             opcao=l.nextInt();
             l.nextLine();
             switch(opcao){
                 case 1:
+                    medicoCadastroView.cadastrar();
                     break;
                 case 2:
+                    medicoVerView.verMedicos();
                     break;
                 case 3:
+                    especialidadeView.menu();
+                    break;
+                case 4:
                     break;
                 default:
                     System.out.println("Opção inválida");
             }
-        }while(opcao!=3);
+        }while(opcao!=4);
     }
 }

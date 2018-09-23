@@ -20,7 +20,7 @@ public class PacienteSelecionarView {
         
     }
     
-    public void selecionar(){
+    public Paciente selecionar(){
         String cpf;
         Paciente selecao;
         Scanner l = new Scanner(System.in);
@@ -31,15 +31,14 @@ public class PacienteSelecionarView {
             cpf = l.nextLine();
             selecao=service.selecionar(cpf);
             if(cpf.equalsIgnoreCase("FIM")){
-                return;
+                return null;
             }
             if(selecao==null){
                 System.out.println("Paciente não encontrado");
             }
         }while(selecao==null);
         
-        selecaoPaciente = new PacienteSelecaoView();
-        selecaoPaciente.selecaoPaciente(selecao);
+        return selecao;
         
     }
 }

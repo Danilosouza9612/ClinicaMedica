@@ -5,29 +5,29 @@
  */
 package br.unicap.poo.clinicaMedica.view;
 
-import br.unicap.poo.clinicaMedica.model.Consulta;
-import br.unicap.poo.clinicaMedica.service.ConsultaService;
+import br.unicap.poo.clinicaMedica.model.ProcedimentoMedico;
+import br.unicap.poo.clinicaMedica.service.ProcedimentoMedicoService;
 import java.util.Scanner;
 
 /**
  *
  * @author Danilo
  */
-public class ConsultaSelecionarView {
-    private ConsultaService service;
-    public ConsultaSelecionarView(){
+public class ProcedimentoMedicoSelecionarView {
+    private ProcedimentoMedicoService service;
+    public ProcedimentoMedicoSelecionarView(){
         
     }
     
-    public Consulta selecionar(){
-        service = ConsultaService.getInstance();
+    public ProcedimentoMedico selecionar(){
+        service = ProcedimentoMedicoService.getInstance();
         int codigo;
         Scanner l = new Scanner(System.in);
-        Consulta selecao=null;
+        ProcedimentoMedico selecao=null;
         do{
             System.out.println("..................................");
             System.out.println();
-            System.out.println("Digite o código da Consulta(Digite -1 para Sair)");
+            System.out.println("Digite o código da ProcedimentoMedico(Digite -1 para Sair)");
             codigo=l.nextInt();
             l.nextLine();
             if(codigo!=-1){

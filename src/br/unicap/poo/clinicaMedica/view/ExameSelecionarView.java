@@ -5,38 +5,38 @@
  */
 package br.unicap.poo.clinicaMedica.view;
 
-import br.unicap.poo.clinicaMedica.model.Especialidade;
-import br.unicap.poo.clinicaMedica.service.EspecialidadeService;
+import br.unicap.poo.clinicaMedica.model.Exame;
+import br.unicap.poo.clinicaMedica.service.ExameService;
 import java.util.Scanner;
 
 /**
  *
- * @author aluno
+ * @author Danilo
  */
-public class RemoverEspecialidadeView {
-    private EspecialidadeService service;
-    public RemoverEspecialidadeView(){
+public class ExameSelecionarView {
+    private ExameService service;
+    public ExameSelecionarView(){
+        
     }
     
-    public void remover(){
-        service = EspecialidadeService.getInstance();
+    public Exame selecionar(){
+        service = ExameService.getInstance();
         int codigo;
         Scanner l = new Scanner(System.in);
-        Especialidade selecao=null;
+        Exame selecao=null;
         do{
             System.out.println("..................................");
             System.out.println();
-            System.out.println("Digite o código do tipo de especialidade(Digite -1 para Sair)");
+            System.out.println("Digite o código do Exame(Digite -1 para Sair)");
             codigo=l.nextInt();
             l.nextLine();
             if(codigo!=-1){
                 selecao = service.selecionar(codigo);
             }else{
-                return;
+                return null;
             }
-            
         }while(selecao==null);
         
-        service.removerEspecialidade(selecao);
-    }        
+        return selecao;
+    }     
 }

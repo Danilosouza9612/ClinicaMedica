@@ -5,13 +5,12 @@
  */
 package br.unicap.poo.clinicaMedica.model;
 
-import br.unicap.poo.clinicaMedica.repository.Repositable;
 
 /**
  *
  * @author aluno
  */
-public class TipoExame implements Repositable{
+public class TipoExame{
     private final int codigo;
     private String descricao;
 
@@ -19,7 +18,6 @@ public class TipoExame implements Repositable{
         this.codigo = codigo;
     }
     
-    @Override
     public int getCodigo(){
         return codigo;
     }

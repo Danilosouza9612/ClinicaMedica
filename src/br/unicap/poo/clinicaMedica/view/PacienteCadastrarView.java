@@ -24,6 +24,9 @@ public class PacienteCadastrarView {
     private PacientePlanoSaudeView pacientePlanoSaudeView;
     private PacienteDataNascimentoView pacienteDataNascimentoView;
 
+    public PacienteCadastrarView(){
+        
+    }
     
     public void cadastrarPaciente(boolean preCadastro){
         Paciente novo=null;
@@ -55,26 +58,40 @@ public class PacienteCadastrarView {
         
         if(valido){
             pacienteNomeView = new PessoaNomeView();
-            pacienteNomeView.editarNome(novo);
+            if(!pacienteNomeView.editarNome(novo)){
+                return;
+            }
                     
             pacienteTelefoneView = new PessoaTelefoneView();
-            pacienteTelefoneView.editarTelefone(novo);
+            if(!pacienteTelefoneView.editarTelefone(novo)){
+                return;
+            }
                   
             if(!preCadastro){
                 pacienteCEPView = new PacienteEnderecoCEPView();
-                pacienteCEPView.editarTelefone(novo);
+                if(!pacienteCEPView.editarCEP(novo)){
+                    return;
+                }
 
                 pacienteEnderecoNumeroView = new PacienteEnderecoNumeroView();
-                pacienteEnderecoNumeroView.editarNumero(novo);
+                if(!pacienteEnderecoNumeroView.editarNumero(novo)){
+                    return;
+                }
 
                 pacienteEnderecoComplementoView = new PacienteEnderecoComplementoView();
-                pacienteEnderecoComplementoView.editarComplemento(novo);
+                if(!pacienteEnderecoComplementoView.editarComplemento(novo)){
+                    return;
+                }
                         
                 pacientePlanoSaudeView = new PacientePlanoSaudeView();
-                pacientePlanoSaudeView.alterarSeguradoraView(novo);
+                if(!pacientePlanoSaudeView.alterarSeguradoraView(novo)){
+                    return;
+                }
                         
                 pacienteDataNascimentoView = new PacienteDataNascimentoView();
-                pacienteDataNascimentoView.alterarDataNascimento(novo);
+                if(!pacienteDataNascimentoView.alterarDataNascimento(novo)){
+                    return;
+                }
             }
             service.cadastrarPaciente(novo);    
         }

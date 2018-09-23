@@ -19,16 +19,22 @@ public class PacientePlanoSaudeDataValView {
         
     }
     
-    public void alterarDataValidade(Paciente paciente){
+    public boolean alterarDataValidade(Paciente paciente){
         Calendar calendar = Calendar.getInstance();
         String dataString;
         String[] quebra;
         Scanner l = new Scanner(System.in);
         System.out.println("..................................");
-        System.out.println("Digite a data de validade (DD/MM/YYYY):");
+        System.out.println("Digite a data de validade (DD/MM/YYYY) (FIM para Sair):");
         dataString = l.nextLine();
+        if(dataString.equalsIgnoreCase("FIM")){
+            return false;
+        }
         quebra = dataString.split("/");
-        calendar.set(Integer.parseInt(quebra[0]), Integer.parseInt(quebra[1]), Integer.parseInt(quebra[2]));
-        paciente.getPlanoDeSaude().setDataValidade(calendar.getTime());
+        calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(quebra[0]));
+        calendar.set(Calendar.MONTH, Integer.parseInt(quebra[1])-1);
+        calendar.set(Calendar.YEAR, Integer.parseInt(quebra[2]));
+        return true;
     }
 }

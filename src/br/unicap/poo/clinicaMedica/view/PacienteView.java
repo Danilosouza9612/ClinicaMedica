@@ -5,6 +5,7 @@
  */
 package br.unicap.poo.clinicaMedica.view;
 
+import br.unicap.poo.clinicaMedica.model.Paciente;
 import java.util.Scanner;
 
 /**
@@ -14,11 +15,15 @@ import java.util.Scanner;
 public class PacienteView {
     private PacienteCadastrarView pacienteCadastrarView;
     private PacienteSelecionarView pacienteSelecionarView;
+    private PacienteSelecaoView pacienteSelecaoView;
     public PacienteView(){
-        
+        pacienteCadastrarView = new PacienteCadastrarView();
+        pacienteSelecionarView = new PacienteSelecionarView();
+        pacienteSelecaoView = new PacienteSelecaoView();
     }
     public void menu(){
         Scanner l = new Scanner(System.in);
+        Paciente selecao;
         int opcao;
         do{
             System.out.println("..................................");
@@ -30,16 +35,17 @@ public class PacienteView {
             l.nextLine();
             switch(opcao){
                 case 1:
-                    pacienteCadastrarView = new PacienteCadastrarView();
                     pacienteCadastrarView.cadastrarPaciente(false);
                     break;
                 case 2:
-                    pacienteCadastrarView = new PacienteCadastrarView();
                     pacienteCadastrarView.cadastrarPaciente(true);
                     break;
                 case 3:
-                    pacienteSelecionarView = new PacienteSelecionarView();
-                    pacienteSelecionarView.selecionar();
+                    selecao = pacienteSelecionarView.selecionar();
+                    if(selecao!=null){
+                        pacienteSelecaoView.selecaoPaciente(selecao);
+                    }
+                    break;
                 case 4:
                     break;
                 default:

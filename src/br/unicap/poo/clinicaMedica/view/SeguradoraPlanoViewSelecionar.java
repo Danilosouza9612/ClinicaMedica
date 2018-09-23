@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.unicap.poo.clinicaMedica.service;
+package br.unicap.poo.clinicaMedica.view;
 
 /**
  *
  * @author Danilo
  */
-public class TipoExameNaoEncontradoException extends Exception {
-
-    public TipoExameNaoEncontradoException() {
-        super("O Tipo de Exame não foi encontrado");
-    }
+class SeguradoraPlanoViewSelecionar {
     
 }

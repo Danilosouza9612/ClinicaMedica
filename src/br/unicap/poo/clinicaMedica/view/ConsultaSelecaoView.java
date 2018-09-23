@@ -11,7 +11,7 @@ import java.util.Scanner;
 import br.unicap.poo.clinicaMedica.service.ConsultaService;
 
 class ConsultaSelecaoView {
-    private ConsultaReagendarView consultaReagendarView;
+    private AgendamentoReagendarView consultaReagendarView;
     private ConsultaCancelarView consultaCancelarView;
     private ConsultaAlterarView consultaAlterarView;
     private ConsultaMarcarExameView consultaMarcarExameView;
@@ -41,7 +41,7 @@ class ConsultaSelecaoView {
             l.nextLine();
             switch(opcao){
                 case 1:
-                    consultaReagendarView = new ConsultaReagendarView();
+                    consultaReagendarView = new AgendamentoReagendarView();
                     consultaReagendarView.reagendar(consulta);
                     info.info(consulta);
                     break;

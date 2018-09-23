@@ -1,6 +1,5 @@
 package br.unicap.poo.clinicaMedica.model;
 
-import br.unicap.poo.clinicaMedica.repository.Repositable;
 
 
 
@@ -14,14 +13,13 @@ import br.unicap.poo.clinicaMedica.repository.Repositable;
  *
  * @author aluno
  */
-public class SeguradoraPlano implements Repositable {
+public class SeguradoraPlano {
     private final int codigo;
     private String descricao;
 
-    private SeguradoraPlano(int codigo) {
+    public SeguradoraPlano(int codigo) {
         this.codigo = codigo;
     }
-    @Override
     public int getCodigo() {
         return codigo;
     }

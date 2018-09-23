@@ -9,17 +9,11 @@ package br.unicap.poo.clinicaMedica.model;
  *
  * @author aluno
  */
-import br.unicap.poo.clinicaMedica.model.exceptions.EspecialidadeMedicoNaoEncontradaException;
-import br.unicap.poo.clinicaMedica.model.exceptions.PessoaException;
-import br.unicap.poo.clinicaMedica.model.exceptions.EspecialidadeMedicoRepetidaException;
-import br.unicap.poo.clinicaMedica.model.exceptions.MedicoException;
-import br.unicap.poo.clinicaMedica.noRepeatArrayList.NoRepeatArrayList;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 public class Medico extends Pessoa{
     private final int codigo;
-    private NoRepeatArrayList<Especialidade> especialidades;
+    private EspecialidadeMedico especialidadeMedico;
     private PlanoSaudeMedico planoSaudeMedico;
     private HorarioMedico horarioMedico;
     
@@ -28,35 +22,17 @@ public class Medico extends Pessoa{
         super();
         this.planoSaudeMedico = new PlanoSaudeMedico(true);
         this.horarioMedico = new HorarioMedico(horario);
-        especialidades.add(especialidade);
+        especialidadeMedico = new EspecialidadeMedico(especialidade);
         this.codigo=codigo;
-    }
-    public List<Especialidade> getEspecialidades() {
-        List<Especialidade> clone = new ArrayList<Especialidade>();
-        
-        for(Especialidade item : especialidades){
-            clone.add(item);
-        }
-        
-        return clone;
-    }
-    public void addEspecialidade(Especialidade especialidade) throws EspecialidadeMedicoRepetidaException{
-        if(especialidades.contains(especialidade)){
-            throw new EspecialidadeMedicoRepetidaException();
-        }else{
-            especialidades.add(especialidade);
-        }
-    }
-    public void removeEspecialidade(Especialidade especialidade) throws EspecialidadeMedicoNaoEncontradaException{
-        if(!especialidades.remove(especialidade)){
-            throw new EspecialidadeMedicoNaoEncontradaException();
-        }
     }
     public HorarioMedico getHorarioMedico(){
         return horarioMedico;
     }
     public PlanoSaudeMedico getPlanoSaudeMedico(){
         return planoSaudeMedico;
+    }
+    public EspecialidadeMedico getEspecialidadeMedico(){
+        return especialidadeMedico;
     }
     public boolean atendePlanoSaude(SeguradoraPlano seguradoraPlano){
         return planoSaudeMedico.atendePlanoSaude(seguradoraPlano);

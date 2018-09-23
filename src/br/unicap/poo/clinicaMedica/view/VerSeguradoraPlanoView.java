@@ -1,21 +1,26 @@
 package br.unicap.poo.clinicaMedica.view;
 
+import br.unicap.poo.clinicaMedica.model.SeguradoraPlano;
 import br.unicap.poo.clinicaMedica.service.SeguradoraPlanoService;
 import java.util.Scanner;
 
 public class VerSeguradoraPlanoView {
     private ListaSeguradoraPlanoView listaSeguradora;
-    private AlterarSeguradoraPlanoView alterarSeguradoraView;
-    private RemoverSeguradoraPlanoView removerSeguradoraView;
+    private SeguradoraPlanoSelecionarView selecionar;
+    private EditarDescricaoSeguradoraPlanoView alterar;
+    private SeguradoraPlanoService service;
+
     
     public VerSeguradoraPlanoView(){
+        listaSeguradora = new ListaSeguradoraPlanoView();
+        alterar = new EditarDescricaoSeguradoraPlanoView();
+        selecionar = new SeguradoraPlanoSelecionarView();
         
     }
     
     public void verSeguradoraPlanoView(){
-        SeguradoraPlanoService service = SeguradoraPlanoService.getInstance();
-        listaSeguradora = new ListaSeguradoraPlanoView();
-        
+        service = SeguradoraPlanoService.getInstance();
+        SeguradoraPlano selecao;
         Scanner l = new Scanner(System.in);
         int opcao;
         do{
@@ -29,12 +34,18 @@ public class VerSeguradoraPlanoView {
             l.nextLine();
             switch(opcao){
                 case 1:
-                    alterarSeguradoraView = new AlterarSeguradoraPlanoView();
-                    alterarSeguradoraView.alterar();
+                    selecao=selecionar.selecionar();
+                    if(selecao!=null){
+                        alterar.editarDescricao(selecao);
+                    }
+                    listaSeguradora.listaSeguradoraPlano(service.listarSeguradoras());
                     break;
                 case 2:
-                    removerSeguradoraView = new RemoverSeguradoraPlanoView();
-                    removerSeguradoraView.remover();
+                    selecao=selecionar.selecionar();
+                    if(selecao!=null){
+                        service.removerSeguradora(selecao);
+                    }
+                    listaSeguradora.listaSeguradoraPlano(service.listarSeguradoras());
                     break;
                 case 3:
                     break;

@@ -7,8 +7,8 @@ package br.unicap.poo.clinicaMedica.view;
 
 /**
  *
- * @author aluno
+ * @author Danilo
  */
-public class ExibirProcedimentosView {
+class ExibirProcedimentosView {
     
 }

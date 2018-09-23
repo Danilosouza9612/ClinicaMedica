@@ -23,13 +23,20 @@ public class PacienteAlterarView {
     private PacientePlanoSaudeView pacientePlanoSaudeView;
     private PacienteDataNascimentoView pacienteDataNascimentoView;
     public PacienteAlterarView(){
-        
+        pacienteNomeView = new PessoaNomeView();
+        pacienteTelefoneView = new PessoaTelefoneView();
+        pacienteCEPView = new PacienteEnderecoCEPView();
+        pacienteEnderecoNumeroView = new PacienteEnderecoNumeroView();
+        pacienteEnderecoComplementoView = new PacienteEnderecoComplementoView();
+        pacientePlanoSaudeView = new PacientePlanoSaudeView();
+        pacienteDataNascimentoView = new PacienteDataNascimentoView();        
     }
     public void alterar(Paciente paciente){
         Scanner l = new Scanner(System.in);
         int opcao;
         service = PacienteService.getInstance();
         do{
+            System.out.println("..................................");
             System.out.println("1 - Alterar Nome");
             System.out.println("2 - Alterar Telefone");
             System.out.println("3 - Alterar CEP");
@@ -42,39 +49,39 @@ public class PacienteAlterarView {
             l.nextLine();
             switch(opcao){
                 case 1:
-                    pacienteNomeView = new PessoaNomeView();
                     pacienteNomeView.editarNome(paciente);
                     service.alterarPaciente(paciente);
                     break;
                 case 2:
-                    pacienteTelefoneView = new PessoaTelefoneView();
-                    pacienteTelefoneView.editarTelefone(paciente);
-                    service.alterarPaciente(paciente);
+                    if(pacienteTelefoneView.editarTelefone(paciente)){
+                        service.alterarPaciente(paciente);
+                    }
                     break;
-                case 3:
-                    pacienteCEPView = new PacienteEnderecoCEPView();
-                    pacienteCEPView.editarTelefone(paciente);
-                    service.alterarPaciente(paciente);
+                case 3:          
+                    if(pacienteCEPView.editarCEP(paciente)){;
+                        service.alterarPaciente(paciente);
+                    }
                     break;
                 case 4:
-                    pacienteEnderecoNumeroView = new PacienteEnderecoNumeroView();
-                    pacienteEnderecoNumeroView.editarNumero(paciente);
-                    service.alterarPaciente(paciente);
+                    if(pacienteEnderecoNumeroView.editarNumero(paciente)){
+                        service.alterarPaciente(paciente);
+                    }
                     break;
                 case 5:
-                    pacienteEnderecoComplementoView = new PacienteEnderecoComplementoView();
-                    pacienteEnderecoComplementoView.editarComplemento(paciente);
-                    service.alterarPaciente(paciente);
+                    if(pacienteEnderecoComplementoView.editarComplemento(paciente)){;
+                        service.alterarPaciente(paciente);
+                    }
                     break;
                 case 6:
-                    pacientePlanoSaudeView = new PacientePlanoSaudeView();
-                    pacientePlanoSaudeView.alterarSeguradoraView(paciente);
-                    service.alterarPaciente(paciente);
+                    if(pacientePlanoSaudeView.alterarSeguradoraView(paciente)){
+                        service.alterarPaciente(paciente);
+                    }
                     break;
                 case 7:
-                    pacienteDataNascimentoView = new PacienteDataNascimentoView();
-                    pacienteDataNascimentoView.alterarDataNascimento(paciente);
-                    service.alterarPaciente(paciente);
+                   
+                    if(pacienteDataNascimentoView.alterarDataNascimento(paciente)){
+                        service.alterarPaciente(paciente);
+                    }
                     break;
                 case 8:
                     break;

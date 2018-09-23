@@ -5,6 +5,7 @@
  */
 package br.unicap.poo.clinicaMedica.view;
 
+import br.unicap.poo.clinicaMedica.model.Especialidade;
 import br.unicap.poo.clinicaMedica.service.EspecialidadeService;
 import java.util.Scanner;
 
@@ -14,16 +15,21 @@ import java.util.Scanner;
  */
 public class VerEspecialidadeView {
     private ListaEspecialidadeView listaEspecialidade;
-    private AlterarEspecialidadeView alterarEspecialidadeView;
-    private RemoverEspecialidadeView removerEspecialidadeView;
+    private EditarDescricaoEspecialidadeView alterarEspecialidadeView;
+    private EspecialidadeSelecionarView selecionar;
+    private EspecialidadeService service;
     
     public VerEspecialidadeView(){
-        
+        listaEspecialidade = new ListaEspecialidadeView();
+        alterarEspecialidadeView = new EditarDescricaoEspecialidadeView();
+        selecionar = new EspecialidadeSelecionarView();
+
+       
     }
     public void VerEspecialidade(){
         EspecialidadeService service = EspecialidadeService.getInstance();
         listaEspecialidade = new ListaEspecialidadeView();
-        
+        Especialidade selecao;
         Scanner l = new Scanner(System.in);
         int opcao;
         do{
@@ -37,12 +43,18 @@ public class VerEspecialidadeView {
             l.nextLine();
             switch(opcao){
                 case 1:
-                    alterarEspecialidadeView = new AlterarEspecialidadeView();
-                    alterarEspecialidadeView.alterar();
+                    selecao = selecionar.selecionar();
+                    if(selecao!=null){
+                        alterarEspecialidadeView.editarDescricao(selecao);
+                    }
+                    listaEspecialidade.listaEspecialidade(service.listar());
                     break;
                 case 2:
-                    removerEspecialidadeView = new RemoverEspecialidadeView();
-                    removerEspecialidadeView.remover();
+                    selecao = selecionar.selecionar();
+                    if(selecao!=null){
+                        service.removerEspecialidade(selecao);
+                    }
+                    listaEspecialidade.listaEspecialidade(service.listar());
                     break;
                 case 3:
                     break;

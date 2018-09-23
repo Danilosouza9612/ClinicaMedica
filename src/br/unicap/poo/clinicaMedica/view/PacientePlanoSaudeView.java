@@ -24,7 +24,7 @@ public class PacientePlanoSaudeView {
     public PacientePlanoSaudeView(){
         
     }
-    public void alterarSeguradoraView(Paciente paciente){
+    public boolean alterarSeguradoraView(Paciente paciente){
         int codigo;
         Scanner l = new Scanner(System.in);
         service = SeguradoraPlanoService.getInstance();
@@ -35,25 +35,28 @@ public class PacientePlanoSaudeView {
             listaSeguradoraPlanoView.listaSeguradoraPlano(service.listarSeguradoras());
             System.out.println("-2 - Nenhum");
             
-            System.out.println("Digite o código da seguradora");
+            System.out.println("Digite o código da seguradora(Digite -1 para Sair)");
             codigo=l.nextInt();
             l.nextLine();
             if(codigo!=-2){
                 selecao = service.selecionar(codigo);
+            }else if(codigo!=-1){
+                return false;
+            }else{
+                return true;
             }
             
-        }while(selecao==null && codigo!=-2);
+        }while(selecao==null);
         
-        if(codigo!=-2){
-            paciente.setPlanoDeSaude(new PlanoDeSaude());
-            paciente.getPlanoDeSaude().setSeguradoraPlano(selecao);
+        paciente.setPlanoDeSaude(new PlanoDeSaude());
+        paciente.getPlanoDeSaude().setSeguradoraPlano(selecao);
             
-            pacientePlanoSaudeNumCarteiraView = new PacientePlanoSaudeNumCarteiraView();
-            pacientePlanoSaudeNumCarteiraView.alterarNumeroCarteiraPlano(paciente);
+        pacientePlanoSaudeNumCarteiraView = new PacientePlanoSaudeNumCarteiraView();
+        pacientePlanoSaudeNumCarteiraView.alterarNumeroCarteiraPlano(paciente);
             
-            pacientePlanoSaudeDataValView = new PacientePlanoSaudeDataValView();
-            pacientePlanoSaudeDataValView.alterarDataValidade(paciente);
-        }
+        pacientePlanoSaudeDataValView = new PacientePlanoSaudeDataValView();
+        pacientePlanoSaudeDataValView.alterarDataValidade(paciente);
+        return true;
         
     }
 }

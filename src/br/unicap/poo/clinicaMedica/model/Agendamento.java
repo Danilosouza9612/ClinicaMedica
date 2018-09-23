@@ -6,14 +6,13 @@
 package br.unicap.poo.clinicaMedica.model;
 import br.unicap.poo.clinicaMedica.model.exceptions.AgendamentoException;
 import br.unicap.poo.clinicaMedica.model.exceptions.DataInvalidaException;
-import br.unicap.poo.clinicaMedica.repository.Repositable;
 import java.util.Date;
 import java.util.Calendar;
 /**
  *
  * @author aluno
  */
-public abstract class Agendamento implements Repositable{
+public abstract class Agendamento{
     private final int codigo;
     private Date data;
     private Status status;
@@ -22,7 +21,6 @@ public abstract class Agendamento implements Repositable{
         this.codigo = codigo;
         setData(data);
     }
-    @Override
     public int getCodigo() {
         return codigo;
     }

@@ -5,10 +5,9 @@
  */
 package br.unicap.poo.clinicaMedica.model;
 
-import br.unicap.poo.clinicaMedica.model.exceptions.SemHorarioException;
+import br.unicap.poo.clinicaMedica.model.exceptions.MedicoSemHorarioException;
 import br.unicap.poo.clinicaMedica.model.exceptions.HorarioMedicoNaoEncontradoException;
 import br.unicap.poo.clinicaMedica.model.exceptions.HorarioRepetidoException;
-import br.unicap.poo.clinicaMedica.model.exceptions.HorarioMedicoException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,29 +21,37 @@ public class HorarioMedico {
     private ArrayList<Horario> horarios;
     
     public HorarioMedico(Horario horario){
-        ArrayList<Horario> horarios = new ArrayList<>();
-        horarios.add(horario);
+        horarios = new ArrayList<>();
+        this.horarios.add(horario);
     }
     public List<Horario> getHorarios(){
-        ArrayList<Horario> clone = new ArrayList();
-        
-        for(Horario item : horarios){
-            clone.add(item);
-        }
-        
-        return clone;
+        return horarios;
     }
     public void addHorario(Horario horario) throws HorarioRepetidoException{
-        if(!horarios.contains(horario)){
+        if(selecionar(horario.getCodigo())==null){
             horarios.add(horario);
         }else{
             throw new HorarioRepetidoException();
         }
     }
-    public void removeHorario(Horario horario) throws HorarioMedicoNaoEncontradoException{
-        if(!horarios.remove(horario)){
-            throw new HorarioMedicoNaoEncontradoException();
+    public void removeHorario(Horario horario) throws HorarioMedicoNaoEncontradoException, MedicoSemHorarioException{
+        int cont=0;
+        
+        if(horarios.size()==1){
+            throw new MedicoSemHorarioException();
         }
+        
+        for(Horario item : horarios){
+            if(item.getCodigo()==horario.getCodigo()){
+                horarios.remove(cont);
+                return;
+            }else if(item.getCodigo()>horario.getCodigo()){
+                throw new HorarioMedicoNaoEncontradoException();
+            }
+            cont++;
+        }
+        throw new HorarioMedicoNaoEncontradoException();
+
         
     }
     boolean horarioDisponivel(Date data){
@@ -60,5 +67,21 @@ public class HorarioMedico {
         }
         
         return false;
+    }
+    public Horario selecionar(int codigo){
+        int cont=0;
+        
+        for(Horario item : horarios){
+            if(item.getCodigo()==codigo){
+                return item;
+            }else if(item.getCodigo()>codigo){
+                return null;
+            }
+            cont++;
+        }
+        return null;
+    }
+    public int lastCode(){
+        return horarios.get(horarios.size()-1).getCodigo();
     }
 }

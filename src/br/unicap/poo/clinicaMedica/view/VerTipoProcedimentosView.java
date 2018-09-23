@@ -5,6 +5,7 @@
  */
 package br.unicap.poo.clinicaMedica.view;
 
+import br.unicap.poo.clinicaMedica.model.TipoProcedimento;
 import br.unicap.poo.clinicaMedica.service.TipoProcedimentoService;
 import java.util.Scanner;
 
@@ -14,17 +15,21 @@ import java.util.Scanner;
  */
 public class VerTipoProcedimentosView {
     private ListaTipoProcedimentosView listaTipoProcedimentos;
-    private AlterarTipoProcedimentoView alterarTipoProcedimentoView;
-    private RemovertipoProcedimentoView removerTipoProcedimentoView;
+    private EditarDescricaoTipoProcedimentoView editar;
+    private TipoProcedimentoSelecionarView selecionar;
+    private TipoProcedimentoService service;
+
     
     public VerTipoProcedimentosView(){
-        
+        listaTipoProcedimentos = new ListaTipoProcedimentosView();
+        selecionar = new TipoProcedimentoSelecionarView();
+        editar = new EditarDescricaoTipoProcedimentoView();
     }
     public void verTipoProcedimentos(){
-        TipoProcedimentoService service = TipoProcedimentoService.getInstance();
-        listaTipoProcedimentos = new ListaTipoProcedimentosView();
+        service = TipoProcedimentoService.getInstance();
         
         Scanner l = new Scanner(System.in);
+        TipoProcedimento selecao;
         int opcao;
         do{
             System.out.println("..................................");
@@ -37,12 +42,18 @@ public class VerTipoProcedimentosView {
             l.nextLine();
             switch(opcao){
                 case 1:
-                    alterarTipoProcedimentoView = new AlterarTipoProcedimentoView();
-                    alterarTipoProcedimentoView.alterar();
+                    selecao=selecionar.selecionar();
+                    if(selecao!=null){
+                        editar.editarDescricao(selecao);
+                    }   
+                    listaTipoProcedimentos.listaTipoProcedimento(service.listar());
                     break;
                 case 2:
-                    removerTipoProcedimentoView = new RemovertipoProcedimentoView();
-                    removerTipoProcedimentoView.remover();
+                    selecao=selecionar.selecionar();
+                    if(selecao!=null){
+                        service.removerTipoProcedimento(selecao);
+                    }
+                    listaTipoProcedimentos.listaTipoProcedimento(service.listar());
                     break;
                 case 3:
                     break;

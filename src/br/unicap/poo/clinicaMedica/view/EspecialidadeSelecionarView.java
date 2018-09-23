@@ -11,16 +11,15 @@ import java.util.Scanner;
 
 /**
  *
- * @author aluno
+ * @author Danilo
  */
-public class AlterarEspecialidadeView {
-    private EditarDescricaoEspecialidadeView editarDescricaoEspecialidadeView;
+public class EspecialidadeSelecionarView {
     private EspecialidadeService service;
-    public AlterarEspecialidadeView(){
+    public EspecialidadeSelecionarView(){
         
     }
     
-    public void alterar(){
+    public Especialidade selecionar(){
         service = EspecialidadeService.getInstance();
         int codigo;
         Scanner l = new Scanner(System.in);
@@ -28,18 +27,16 @@ public class AlterarEspecialidadeView {
         do{
             System.out.println("..................................");
             System.out.println();
-            System.out.println("Digite o código da especialidade (Digite -1 para Sair)");
+            System.out.println("Digite o código da Especialidade(Digite -1 para Sair)");
             codigo=l.nextInt();
             l.nextLine();
-            if(codigo==-1){
-                return;
+            if(codigo!=-1){
+                selecao = service.selecionar(codigo);
             }else{
-                selecao=service.selecionar(codigo);
+                return null;
             }
         }while(selecao==null);
-        editarDescricaoEspecialidadeView = new EditarDescricaoEspecialidadeView();
-        editarDescricaoEspecialidadeView.editarDescricao(selecao);
         
+        return selecao;
     }
 }
-

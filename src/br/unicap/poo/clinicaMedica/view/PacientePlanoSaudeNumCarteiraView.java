@@ -17,12 +17,16 @@ public class PacientePlanoSaudeNumCarteiraView {
         
     }
     
-    public void alterarNumeroCarteiraPlano(Paciente paciente){
+    public boolean alterarNumeroCarteiraPlano(Paciente paciente){
         String numCarteira;
         Scanner l = new Scanner(System.in);
         System.out.println("..................................");
-        System.out.println("Digite o nome:");
+        System.out.println("Digite o número da carteira (Digite FIM para sair):");
         numCarteira = l.nextLine();
+        if(numCarteira.equalsIgnoreCase("FIM")){
+            return false;
+        }
         paciente.getPlanoDeSaude().setNumeroCarteira(numCarteira);
+        return true;
     }
 }

@@ -19,21 +19,26 @@ public class PessoaTelefoneView {
         
     }
     
-    public void editarTelefone(Pessoa pessoa){
+    public boolean editarTelefone(Pessoa pessoa){
         String telefone;
         boolean valido;
         Scanner l = new Scanner(System.in);
         do{
             valido=true;
             System.out.println("..................................");
-            System.out.println("Digite o telefone:");
+            System.out.println("Digite o telefone (Digite FIM para Sair):");
             telefone = l.nextLine();
+            if(telefone.equalsIgnoreCase("FIM")){
+                return false;
+            }
             try {
                 pessoa.setTelefone(telefone);
             } catch (TelefoneInvalidoException ex) {
                 System.out.println(ex.getMessage());
                 valido=false;
             }
-        }while(!valido);    
+        }while(!valido);
+        
+        return true;
     }
 }

@@ -18,7 +18,8 @@ public class PacienteSelecaoView {
     private PacienteExcluirView pacienteExcluirView;
     private PacienteInfoView info;
     public PacienteSelecaoView(){
-        
+        pacienteAlterarView = new PacienteAlterarView();
+        pacienteExcluirView = new PacienteExcluirView();        
     }
     
     public void selecaoPaciente(Paciente paciente){
@@ -37,12 +38,10 @@ public class PacienteSelecaoView {
             l.nextLine();
             switch(opcao){
                 case 1:
-                    pacienteAlterarView = new PacienteAlterarView();
                     pacienteAlterarView.alterar(paciente);
                     info.info(paciente);
                     break;
                 case 2:
-                    pacienteExcluirView = new PacienteExcluirView();
                     if(pacienteExcluirView.excluirPaciente(paciente)){
                         return;
                     }

@@ -5,19 +5,30 @@
  */
 package br.unicap.poo.clinicaMedica.view;
 
+import br.unicap.poo.clinicaMedica.model.Consulta;
 import br.unicap.poo.clinicaMedica.service.ConsultaService;
-import br.unicap.poo.clinicaMedica.service.ConsultaService;
+import br.unicap.poo.clinicaMedica.service.ExameService;
+import java.util.Date;
+import java.util.Scanner;
 
 
 
 public class ConsultaMarcarExameView {
     private ConsultaService service;
+    private ExameService exService;
+    private AgendamentoReagendarView data;
     
     public ConsultaMarcarExameView() {
+        data = new AgendamentoReagendarView();
     }
     
-    public void marcarExame(){
+    public void marcarExame(Consulta consulta){
+        Date dataExame;
+        Scanner l = new Scanner(System.in);
+        do{
         
+        dataExame = data.reagendar();
+        }while(!valido)
     }
     
     

@@ -1,17 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.SeguradoraPlano;
 import br.unicap.poo.clinicaMedica.service.SeguradoraPlanoService;
 import java.util.Scanner;
 
-public class AlterarSeguradoraPlanoView {
-    EditarDescricaoSeguradoraPlanoView editarDescricaoSeguradoraView;
+/**
+ *
+ * @author Danilo
+ */
+public class SeguradoraPlanoSelecionarView {
     private SeguradoraPlanoService service;
-    public AlterarSeguradoraPlanoView(){
+    
+    public SeguradoraPlanoSelecionarView(){
         
     }
     
-    public void alterar(){
+    public SeguradoraPlano selecionar(){
         service = SeguradoraPlanoService.getInstance();
         int codigo;
         Scanner l = new Scanner(System.in);
@@ -19,18 +28,17 @@ public class AlterarSeguradoraPlanoView {
         do{
             System.out.println("..................................");
             System.out.println();
-            System.out.println("Digite o código da seguradora(Digite -1 para Sair)");
+            System.out.println("Digite o código da Seguradora(Digite -1 para Sair)");
             codigo=l.nextInt();
             l.nextLine();
             if(codigo!=-1){
-                selecao=service.selecionar(codigo);
+                selecao = service.selecionar(codigo);
             }else{
-                return;
+                return null;
             }
         }while(selecao==null);
         
-        editarDescricaoSeguradoraView = new EditarDescricaoSeguradoraPlanoView();
-        editarDescricaoSeguradoraView.editarDescricao(selecao);
-        
-    }
+        return selecao;
+    }     
+   
 }

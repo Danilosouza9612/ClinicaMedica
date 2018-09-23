@@ -18,9 +18,15 @@ import java.util.List;
  */
 public class MedicoService {
     private MedicoRepBridge medicos;
-    
-    public MedicoService(){
+    private static MedicoService instance;
+    private MedicoService(){
         medicos = new MedicoDAO();
+    }
+    public synchronized static MedicoService getInstance(){
+        if(instance==null){
+            instance = new MedicoService();
+        }
+        return instance;
     }
     public void cadastrarMedico(Medico item){
         medicos.inserir(item);

@@ -17,13 +17,17 @@ public class PessoaNomeView {
         
     }
     
-    public void editarNome(Pessoa pessoa){
+    public boolean editarNome(Pessoa pessoa){
         String nome;
         Scanner l = new Scanner(System.in);
         System.out.println("..................................");
-        System.out.println("Digite o nome:");
+        System.out.println("Digite o nome (Digite FIM para Sair):");
         nome = l.nextLine();
+        if(nome.equalsIgnoreCase("FIM")){
+            return false;
+        }
         pessoa.setNome(nome);
+        return true;
         
     }
 }

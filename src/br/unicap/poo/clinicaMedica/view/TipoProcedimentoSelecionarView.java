@@ -9,19 +9,17 @@ import br.unicap.poo.clinicaMedica.model.TipoProcedimento;
 import br.unicap.poo.clinicaMedica.service.TipoProcedimentoService;
 import java.util.Scanner;
 
-
 /**
  *
- * @author aluno
+ * @author Danilo
  */
-public class AlterarTipoProcedimentoView {
-    private EditarDescricaoTipoProcedimentoView editarDescricaoTipoProcedimentoView;
+public class TipoProcedimentoSelecionarView {
     private TipoProcedimentoService service;
-    public AlterarTipoProcedimentoView(){
+    public TipoProcedimentoSelecionarView(){
         
     }
     
-    public void alterar(){
+    public TipoProcedimento selecionar(){
         service = TipoProcedimentoService.getInstance();
         int codigo;
         Scanner l = new Scanner(System.in);
@@ -29,17 +27,16 @@ public class AlterarTipoProcedimentoView {
         do{
             System.out.println("..................................");
             System.out.println();
-            System.out.println("Digite o código do tipo de procedimento(Digite -1 para Sair)");
+            System.out.println("Digite o código da Tipo de Procedimento(Digite -1 para Sair)");
             codigo=l.nextInt();
             l.nextLine();
-            if(codigo==-1){
-                return;
+            if(codigo!=-1){
+                selecao = service.selecionar(codigo);
             }else{
-                selecao=service.selecionar(codigo);
+                return null;
             }
         }while(selecao==null);
-        editarDescricaoTipoProcedimentoView = new EditarDescricaoTipoProcedimentoView();
-        editarDescricaoTipoProcedimentoView.editarDescricao(selecao);
         
-    }
+        return selecao;
+    }  
 }

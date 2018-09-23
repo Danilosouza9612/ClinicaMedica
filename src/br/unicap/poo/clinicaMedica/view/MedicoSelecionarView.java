@@ -5,29 +5,29 @@
  */
 package br.unicap.poo.clinicaMedica.view;
 
-import br.unicap.poo.clinicaMedica.model.Consulta;
-import br.unicap.poo.clinicaMedica.service.ConsultaService;
+import br.unicap.poo.clinicaMedica.model.Medico;
+import br.unicap.poo.clinicaMedica.service.MedicoService;
 import java.util.Scanner;
 
 /**
  *
  * @author Danilo
  */
-public class ConsultaSelecionarView {
-    private ConsultaService service;
-    public ConsultaSelecionarView(){
+public class MedicoSelecionarView {
+    private MedicoService service;
+    public MedicoSelecionarView(){
         
     }
     
-    public Consulta selecionar(){
-        service = ConsultaService.getInstance();
+    public Medico selecionar(){
+        service = MedicoService.getInstance();
         int codigo;
         Scanner l = new Scanner(System.in);
-        Consulta selecao=null;
+        Medico selecao=null;
         do{
             System.out.println("..................................");
             System.out.println();
-            System.out.println("Digite o código da Consulta(Digite -1 para Sair)");
+            System.out.println("Digite o código do Medico(Digite -1 para Sair)");
             codigo=l.nextInt();
             l.nextLine();
             if(codigo!=-1){
@@ -38,5 +38,5 @@ public class ConsultaSelecionarView {
         }while(selecao==null);
         
         return selecao;
-    }     
+    } 
 }

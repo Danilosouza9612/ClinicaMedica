@@ -18,15 +18,18 @@ public class PacienteEnderecoCEPView {
         
     }
     
-    public void editarTelefone(Paciente paciente){
+    public boolean editarCEP(Paciente paciente){
         boolean valido;
         String cep;
         Scanner l = new Scanner(System.in);
         do{
             valido=true;
             System.out.println("..................................");
-            System.out.println("Digite o CEP:");
+            System.out.println("Digite o CEP (Digite FIM para sair):");
             cep=l.nextLine();
+            if(cep.equalsIgnoreCase("FIM")){
+                return false;
+            }
             try {
                 paciente.getEndereco().setCep(cep);
             } catch (CepInvalidoException ex) {
@@ -34,5 +37,6 @@ public class PacienteEnderecoCEPView {
                 valido=false;
             }
         }while(!valido);
+        return true;
     }
 }

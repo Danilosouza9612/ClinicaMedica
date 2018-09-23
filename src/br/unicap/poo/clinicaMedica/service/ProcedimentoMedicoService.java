@@ -10,10 +10,16 @@ import java.util.List;
 
 public class ProcedimentoMedicoService {
     private ProcedimentoMedicoRepBridge procedimentos;
+    private static ProcedimentoMedicoService instance;
     
-    
-    public ProcedimentoMedicoService(){
+    private ProcedimentoMedicoService(){
         procedimentos=new ProcedimentoMedicoDAO();  
+    }
+    public static synchronized ProcedimentoMedicoService getInstance(){
+        if(instance==null){
+            instance = new ProcedimentoMedicoService();
+        }
+        return instance;
     }
     
     public void agendarProcedimento(ProcedimentoMedico procedimento){

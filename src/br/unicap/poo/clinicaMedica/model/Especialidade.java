@@ -5,7 +5,6 @@
  */
 package br.unicap.poo.clinicaMedica.model;
 
-import br.unicap.poo.clinicaMedica.repository.Repositable;
 
 
 /**

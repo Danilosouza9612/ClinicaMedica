@@ -5,38 +5,36 @@
  */
 package br.unicap.poo.clinicaMedica.view;
 
-import br.unicap.poo.clinicaMedica.model.Consulta;
-import br.unicap.poo.clinicaMedica.service.ConsultaService;
+import br.unicap.poo.clinicaMedica.model.Horario;
+import br.unicap.poo.clinicaMedica.model.HorarioMedico;
+import br.unicap.poo.clinicaMedica.model.Medico;
+import br.unicap.poo.clinicaMedica.service.MedicoService;
 import java.util.Scanner;
 
 /**
  *
  * @author Danilo
  */
-public class ConsultaSelecionarView {
-    private ConsultaService service;
-    public ConsultaSelecionarView(){
-        
+public class MedicoSelecionarHorarioView {
+    public MedicoSelecionarHorarioView(){
     }
-    
-    public Consulta selecionar(){
-        service = ConsultaService.getInstance();
+    public Horario selecionar(HorarioMedico horarioMedico){
         int codigo;
         Scanner l = new Scanner(System.in);
-        Consulta selecao=null;
+        Horario selecao=null;
         do{
             System.out.println("..................................");
             System.out.println();
-            System.out.println("Digite o código da Consulta(Digite -1 para Sair)");
+            System.out.println("Digite o código do horário do médico(Digite -1 para Sair)");
             codigo=l.nextInt();
             l.nextLine();
             if(codigo!=-1){
-                selecao = service.selecionar(codigo);
+                selecao = horarioMedico.selecionar(codigo);
             }else{
                 return null;
             }
         }while(selecao==null);
         
         return selecao;
-    }     
+    } 
 }

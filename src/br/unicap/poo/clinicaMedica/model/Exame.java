@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author Brenan Wanderley
  */
-public class Exame extends Agendamento implements Comparable<Exame>{
+public class Exame extends Agendamento{
     private Consulta consulta;
     private TipoExame tipo;
     
@@ -27,8 +27,5 @@ public class Exame extends Agendamento implements Comparable<Exame>{
     }
     public TipoExame getTipoExame() {
         return tipo;
-    }
-    public int compareTo(Exame exame){
-        return super.compareTo(exame);
     }
 }

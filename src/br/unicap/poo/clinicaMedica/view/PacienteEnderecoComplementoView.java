@@ -17,13 +17,16 @@ public class PacienteEnderecoComplementoView {
         
     }
     
-    public void editarComplemento(Paciente paciente){
+    public boolean editarComplemento(Paciente paciente){
         String complemento;
         Scanner l = new Scanner(System.in);
         System.out.println("..................................");
-        System.out.println("Digite o complemento:");
+        System.out.println("Digite o complemento (Digite FIM para sair):");
         complemento = l.nextLine();
+        if(complemento.equalsIgnoreCase("FIM")){
+            return false;
+        }
         paciente.getEndereco().setComplemento(complemento);
-        
+        return true;
     }
 }

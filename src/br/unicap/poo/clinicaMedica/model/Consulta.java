@@ -15,7 +15,7 @@ import java.util.Date;
  *
  * @author Brenan Wanderley
  */
-public class Consulta extends Agendamento implements Comparable<Consulta> {
+public class Consulta extends Agendamento{
     private Medico medico;
     private ArrayList<Exame> exames;
     private ArrayList<ProcedimentoMedico> procedimentos;
@@ -23,15 +23,8 @@ public class Consulta extends Agendamento implements Comparable<Consulta> {
     
     public Consulta(int codigo, Date data, Medico medico, Paciente paciente) throws AgendamentoException, HorarioIndisponivelException{
         super(codigo, data);
-        if(medico==null){
-            throw new ConsultaException("Médico não informado");
-        }
-        if(paciente==null){
-            throw new ConsultaException("Paciente não informado");
-        }
         this.medico=medico;
         this.paciente=paciente;
-
     }
 
     public Medico getMedico() {
@@ -47,9 +40,5 @@ public class Consulta extends Agendamento implements Comparable<Consulta> {
     }
     public Paciente getPaciente() {
         return paciente;
-    }
-    @Override
-    public int compareTo(Consulta consulta){
-        return super.compareTo(consulta);
     }
 }

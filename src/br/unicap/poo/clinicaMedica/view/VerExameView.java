@@ -7,7 +7,7 @@ public class VerExameView {
     
     
     public VerExameView(){
-        
+        verTipoExameView = new VerTipoExameView();        
     }
     
     public void menu(){
@@ -16,16 +16,16 @@ public class VerExameView {
         do{
             System.out.println("..................................");
             System.out.println();
-            System.out.println("1 - Ver data do exame\n2 - Ver exame médico\n3 - Ver data do exame médico\n4 - Voltar");
+            System.out.println("1 - Ver Exames\n2 - Gerenciar Tipos de Exames\n3 - Voltar");
             System.out.println("Digite uma opção:");
             opcao=l.nextInt();
             l.nextLine();
             
             switch(opcao){
                 case 1:
-                    verTipoExameView = new VerTipoExameView();
                     break;
                 case 2:
+                    verTipoExameView.verTipoExame();
                     break;
                 case 3:
                     break;
