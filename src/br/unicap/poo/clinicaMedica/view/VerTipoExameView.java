@@ -20,7 +20,7 @@ public class VerTipoExameView {
     public VerTipoExameView(){
         
     }
-    public void verTipoProcedimentos(){
+    public void verTipoExame(){
         TipoExameService service = TipoExameService.getInstance();
         listaTipoExame = new ListaTipoExameView();
         
