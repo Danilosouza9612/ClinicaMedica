@@ -88,23 +88,7 @@ public class ExameView {
                     }
                     break;
                 case 4:
-                    //tipoExameView.menu();
-                    do{
-                        valido=true;
-                        service = ExameService.getInstance();
-                        data = dataSelecao.dataAgendamento();
-                        medico = medicoSelecao.selecionar();
-                        paciente = pacienteSelecao.selecionar();
-                        if(data!=null & paciente!=null && medico!=null && horaSelecao.horaAgendamento(data)){
-                            try {
-                                novo = new Exame(service.lastCode()+1, data, medico, paciente);
-                                service.novoExame(novo);
-                            } catch (ExameException | HorarioIndisponivelException ex) {
-                                System.out.println(ex.getMessage());
-                                valido=false;
-                            }
-                        }
-                    }while(!valido);
+                    tipoExameView.menu();
                     break;
                 default:
                     System.out.println("Opção inválida");

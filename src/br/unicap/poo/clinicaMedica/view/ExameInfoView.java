@@ -19,9 +19,10 @@ class ExameInfoView {
     public void info(Exame exame){
         DateFormat df;
         System.out.println("..................................");
-        System.out.println("Médico:"+exame.getMedico());
+        System.out.println("Médico:"+exame.getMedico().getNome());
         System.out.println("Paciente:"+exame.getPaciente().getNome());
         df = DateFormat.getDateInstance(DateFormat.SHORT);
         System.out.println("Data: " + df.format(exame.getData()));
+        System.out.println("Tipo: " + exame.getTipoExame().getDescricao());
     }
 }

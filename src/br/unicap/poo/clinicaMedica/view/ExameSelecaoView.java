@@ -30,14 +30,7 @@ import java.util.logging.Logger;
 public class ExameSelecaoView {
     private AgendamentoDataView dataAgendamento;
     private ExameCancelarView exameCancelarView;
-    private AgendamentoAlterarStatusView consultaAlterarView;
-    private ConsultaMarcarExameView consultaMarcarExameView;
-    private ConsultaService service;
-    private ExameService exService;
-    private TipoExameService tipoExameService;
-    private TipoProcedimentoService tipoProcecimentoService;
-    private ProcedimentoMedicoService proService;
-    private ConsultaMarcarProcedimentoMedicoView consultaMarcarProcedimentoMedicoView;
+    private AgendamentoAlterarStatusView exameAlterarView;
     private ExameInfoView info;
     private ListaTipoExameView listaTipoExame;
     private TipoExameSelecionarView selecionarTipoExame;
@@ -47,10 +40,8 @@ public class ExameSelecaoView {
     public ExameSelecaoView(){
         dataAgendamento = new AgendamentoDataView();
        // consultaCancelarView = new ConsultaCancelarView();
-        consultaAlterarView = new AgendamentoAlterarStatusView();
+        exameAlterarView = new AgendamentoAlterarStatusView();
         exameCancelarView = new ExameCancelarView();
-        consultaMarcarProcedimentoMedicoView = new ConsultaMarcarProcedimentoMedicoView();
-        consultaMarcarExameView = new ConsultaMarcarExameView();
         listaTipoExame = new ListaTipoExameView();
         selecionarTipoExame = new TipoExameSelecionarView();
         listaTipoProcedimento = new ListaTipoProcedimentosView();
@@ -100,7 +91,7 @@ public class ExameSelecaoView {
                     break;
                     
                 case 3:
-                    if(consultaAlterarView.alterarStatus(exame)){
+                    if(exameAlterarView.alterarStatus(exame)){
                         info.info(exame);
                     }
                     break;

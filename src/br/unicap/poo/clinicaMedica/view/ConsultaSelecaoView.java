@@ -28,13 +28,11 @@ class ConsultaSelecaoView {
     private AgendamentoDataView dataAgendamento;
     private ConsultaCancelarView consultaCancelarView;
     private AgendamentoAlterarStatusView consultaAlterarView;
-    private ConsultaMarcarExameView consultaMarcarExameView;
     private ConsultaService service;
     private ExameService exService;
     private TipoExameService tipoExameService;
     private TipoProcedimentoService tipoProcecimentoService;
     private ProcedimentoMedicoService proService;
-    private ConsultaMarcarProcedimentoMedicoView consultaMarcarProcedimentoMedicoView;
     private ConsultaInfoView info;
     private ListaTipoExameView listaTipoExame;
     private TipoExameSelecionarView selecionarTipoExame;
@@ -46,12 +44,11 @@ class ConsultaSelecaoView {
         consultaCancelarView = new ConsultaCancelarView();
         consultaAlterarView = new AgendamentoAlterarStatusView();
         consultaCancelarView = new ConsultaCancelarView();
-        consultaMarcarProcedimentoMedicoView = new ConsultaMarcarProcedimentoMedicoView();
-        consultaMarcarExameView = new ConsultaMarcarExameView();
         listaTipoExame = new ListaTipoExameView();
         selecionarTipoExame = new TipoExameSelecionarView();
         listaTipoProcedimento = new ListaTipoProcedimentosView();
         selecionarTipoProcedimento = new TipoProcedimentoSelecionarView();
+        service = ConsultaService.getInstance();
     }
     
     public void selecaoConsulta(Consulta consulta){
@@ -74,10 +71,10 @@ class ConsultaSelecaoView {
             System.out.println("2 - Cancelar consulta");
             System.out.println("3 - Alterar status");
             if(consulta.getStatus()==Status.REALIZADA){
-                System.out.println("4 - Marcar exame");
-                System.out.println("5 - Marcar procedimento médico");
-                System.out.println("6 - Exames marcados dessa consulta");
-                System.out.println("7 - Procedimentos marcados dessa consulta");
+                System.out.println("4 - Exames marcados dessa consulta");
+                System.out.println("5 - Procedimentos marcados dessa consulta");
+                System.out.println("6 - Marcar Exame");
+                System.out.println("7 - Marcar Procedimento Médico");
                 System.out.println("8 - Voltar ");
             }
             opcao=l.nextInt();
@@ -109,13 +106,12 @@ class ConsultaSelecaoView {
                     
                 case 4:
                      if(consulta.getStatus()==Status.REALIZADA){
-                        consultaMarcarExameView.marcarExame(consulta);
+                         
                      }
                     break;
                     
                 case 5:
                     if(consulta.getStatus()==Status.REALIZADA){
-                        consultaMarcarProcedimentoMedicoView.marcar();
                     }
                     break;
                 case 6:
@@ -131,7 +127,9 @@ class ConsultaSelecaoView {
                             try {
                                 if(tipoExame!=null && data!=null){
                                     novoExame = new Exame(exService.lastCode()+1, data, consulta, tipoExame);
+                                    consulta.addExame(novoExame);
                                     exService.novoExame(novoExame);
+                                    service.alterarConsulta(consulta);
                                 }
                             } catch (AgendamentoException ex) {
                                 System.out.println(ex.getMessage());
@@ -153,7 +151,9 @@ class ConsultaSelecaoView {
                             try {
                                 if(tipoProcedimento!=null && data!=null){
                                     novoProcedimento = new ProcedimentoMedico(exService.lastCode()+1, data, consulta, tipoProcedimento);
+                                    consulta.addProcedimento(novoProcedimento);
                                     proService.agendarProcedimento(novoProcedimento);
+                                    service.alterarConsulta(consulta);
                                 }
                             } catch (AgendamentoException ex) {
                                 System.out.println(ex.getMessage());

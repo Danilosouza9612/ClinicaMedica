@@ -25,6 +25,8 @@ public class Consulta extends Agendamento{
         super(codigo, data);
         this.medico=medico;
         this.paciente=paciente;
+        exames = new ArrayList();
+        procedimentos = new ArrayList();
     }
 
     @Override
@@ -39,7 +41,14 @@ public class Consulta extends Agendamento{
     public ArrayList<ProcedimentoMedico> getProcedimentos() {
         return procedimentos;
     }
+    @Override
     public Paciente getPaciente() {
         return paciente;
+    }
+    public void addExame(Exame exame){
+        exames.add(exame);
+    }
+    public void addProcedimento(ProcedimentoMedico procedimento){
+        procedimentos.add(procedimento);
     }
 }
