@@ -15,6 +15,14 @@ public class MenuPrincipal {
     private ProcedimentoView procedimentoView;
     private PacienteView pacienteView;
     private MedicoView medicoView;
+    private ConsultaView consultaView;
+    
+    public MenuPrincipal(){
+        procedimentoView = new ProcedimentoView();
+        pacienteView = new PacienteView();
+        medicoView = new MedicoView();
+        consultaView = new ConsultaView();
+    }
     public void menu(){
         Scanner l = new Scanner(System.in);
         int opcao;
@@ -30,17 +38,15 @@ public class MenuPrincipal {
                 case 1:
                     break;
                 case 2:
+                    consultaView.menu();
                     break;
                 case 3:
-                    procedimentoView = new ProcedimentoView();
                     procedimentoView.menuProcedimento();
                     break;
                 case 4:
-                    pacienteView = new PacienteView();
                     pacienteView.menu();
                     break;
                 case 5:
-                    medicoView = new MedicoView();
                     medicoView.menu();
                     break;
                 case 6:

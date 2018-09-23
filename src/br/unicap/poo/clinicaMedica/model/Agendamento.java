@@ -54,4 +54,6 @@ public abstract class Agendamento{
         
         return -1;
     }
+    public abstract Medico getMedico();
+    public abstract Paciente getPaciente();
 }

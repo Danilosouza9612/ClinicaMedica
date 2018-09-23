@@ -25,7 +25,6 @@ public class VerExameView {
                 case 1:
                     break;
                 case 2:
-                    verTipoExameView.verTipoExame();
                     break;
                 case 3:
                     break;

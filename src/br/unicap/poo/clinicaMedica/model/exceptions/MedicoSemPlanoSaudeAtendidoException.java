@@ -9,8 +9,10 @@ package br.unicap.poo.clinicaMedica.model.exceptions;
  *
  * @author Danilo
  */
-public class SemHorarioException extends HorarioMedicoException {
-    public SemHorarioException(){
-        super("Informe pelo menos um horário do médico");
+public class MedicoSemPlanoSaudeAtendidoException extends Exception {
+
+    public MedicoSemPlanoSaudeAtendidoException() {
+        super("O médico deve pelo menos atender um plano de saúde ou atender pacientes privados");
     }
+    
 }

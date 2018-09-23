@@ -40,7 +40,7 @@ public class PacientePlanoSaudeView {
             l.nextLine();
             if(codigo!=-2){
                 selecao = service.selecionar(codigo);
-            }else if(codigo!=-1){
+            }else if(codigo==-1){
                 return false;
             }else{
                 return true;

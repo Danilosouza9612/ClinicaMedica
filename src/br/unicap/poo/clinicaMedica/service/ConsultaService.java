@@ -1,5 +1,6 @@
 
 package br.unicap.poo.clinicaMedica.service;
+import br.unicap.poo.clinicaMedica.model.Agendamento;
 import br.unicap.poo.clinicaMedica.model.Consulta;
 import br.unicap.poo.clinicaMedica.model.Medico;
 import br.unicap.poo.clinicaMedica.repository.ConsultaDAO;
@@ -35,40 +36,25 @@ public class ConsultaService {
         consultas.remover(item);
     }
     public List<Consulta> verConsultas(Medico medico, Date data){
-        List<Consulta> retorno = new ArrayList<Consulta>();
-        List<Consulta> listaConsultas = consultas.listar();
+        AgendamentoList list = new AgendamentoList();
+        List<Agendamento> listagem = (List<Agendamento>)(List<?>)consultas.listar();
+        List<Agendamento> resultado = list.verAgendamentos(listagem, data, medico);
         
-        for(Consulta itemConsulta : listaConsultas){
-            if(itemConsulta.getMedico().equals(medico) && itemConsulta.getData().equals(data)){
-                retorno.add(itemConsulta);
-            }
-        }
-        
-        return retorno;
+        return (List<Consulta>)(List<?>) resultado;
     }
     public List<Consulta> verConsultas(Medico medico){
-        List<Consulta> retorno = new ArrayList<Consulta>();
-        List<Consulta> listaConsultas = consultas.listar();
+        AgendamentoList list = new AgendamentoList();
+        List<Agendamento> listagem = (List<Agendamento>)(List<?>)consultas.listar();
+        List<Agendamento> resultado = list.verAgendamentos(listagem, medico);
         
-        for(Consulta itemConsulta : listaConsultas){
-            if(itemConsulta.getMedico().equals(medico)){
-                retorno.add(itemConsulta);
-            }
-        }
-        
-        return retorno;
+        return (List<Consulta>)(List<?>) resultado;
     }
     public List<Consulta> verConsultas(Date data){
-        List<Consulta> retorno = new ArrayList<Consulta>();
-        List<Consulta> listaConsultas = consultas.listar();
+        AgendamentoList list = new AgendamentoList();
+        List<Agendamento> listagem = (List<Agendamento>)(List<?>)consultas.listar();
+        List<Agendamento> resultado = list.verAgendamentos(listagem, data);
         
-        for(Consulta itemConsulta : listaConsultas){
-            if(itemConsulta.getData().equals(data)){
-                retorno.add(itemConsulta);
-            }
-        }
-        
-        return retorno;
+        return (List<Consulta>)(List<?>) resultado;
     }
     public Consulta selecionar(int codigo){
         Consulta selecao = consultas.selecionar(codigo);

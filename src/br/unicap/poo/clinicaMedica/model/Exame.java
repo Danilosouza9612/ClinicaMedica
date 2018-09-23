@@ -28,4 +28,12 @@ public class Exame extends Agendamento{
     public TipoExame getTipoExame() {
         return tipo;
     }
+    public Medico getMedico(){
+        return consulta.getMedico();
+    }
+
+    @Override
+    public Paciente getPaciente() {
+        return consulta.getPaciente();
+    }
 }

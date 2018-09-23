@@ -11,13 +11,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
-public class AgendamentoReagendarView {
+public class AgendamentoDataView {
 
-    public AgendamentoReagendarView() {
+    public AgendamentoDataView() {
     }
     
     
-    public Date reagendar(){
+    public Date dataAgendamento(){
         Calendar calendar;
         String dataString;
         String[] quebra;

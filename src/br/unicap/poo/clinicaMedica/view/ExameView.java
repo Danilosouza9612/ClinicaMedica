@@ -13,8 +13,11 @@ import java.util.Scanner;
  */
 public class ExameView {
     
-    private VerExameView verExameView;
-    private AlterarExameView alterarExameView;
+    private TipoExameView tipoExameView;
+    
+    public ExameView(){
+        tipoExameView = new TipoExameView();
+    }
     
     
     public void menuExame(){
@@ -24,23 +27,25 @@ public class ExameView {
         do{
             System.out.println("..................................");
             System.out.println();
-            System.out.println("1 - Exibir Exames\n2 - Reagendar exame\n3 - Alterar status\n4 - Voltar");
+            System.out.println("..................................");
+            System.out.println("1 - Ver Exames por data");
+            System.out.println("2 - Ver Exames por médico");
+            System.out.println("3 - Ver Exames por data e médico");
+            System.out.println("4 - Gerenciar Tipos de Exames");
+            System.out.println("5 - Voltar");
             System.out.println("Digite uma opção:");
             opcao=l.nextInt();
             l.nextLine();
             
             switch(opcao){
                 case 1:
-                    verExameView = new VerExameView();
-                    verExameView.menu();
                     break;
                 case 2:
                     break;
-                case 3:
-                    alterarExameView = new AlterarExameView();
-                    alterarExameView.menu();    
+                case 3:  
                     break;
                 case 4:
+                    tipoExameView.menu();
                     break;
                 default:
                     System.out.println("Opção inválida");

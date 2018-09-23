@@ -9,8 +9,10 @@ package br.unicap.poo.clinicaMedica.model.exceptions;
  *
  * @author Danilo
  */
-public class HorarioMedicoException extends MedicoException {
-    public HorarioMedicoException(String e){
-        super(e);
+public class MedicoSemHorarioException extends Exception {
+
+    public MedicoSemHorarioException() {
+        super("O médico deve ter um horário");
     }
+    
 }

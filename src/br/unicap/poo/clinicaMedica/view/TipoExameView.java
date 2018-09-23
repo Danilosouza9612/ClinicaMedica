@@ -26,7 +26,7 @@ public class TipoExameView {
         do{
             System.out.println("..................................");
             System.out.println();
-            System.out.println("1 - Exibir Tipos de Procedimentos\n2 - Cadastrar Tipos de Procedimentos\n3 - Voltar");
+            System.out.println("1 - Exibir Tipos de Exames\n2 - Cadastrar Tipos de Exames\n3 - Voltar");
             System.out.println("Digite uma opção:");
             opcao=l.nextInt();
             l.nextLine();

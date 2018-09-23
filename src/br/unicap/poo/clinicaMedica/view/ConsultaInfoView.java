@@ -6,6 +6,7 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.Consulta;
+import java.text.DateFormat;
 
 /**
  *
@@ -16,11 +17,12 @@ class ConsultaInfoView {
         
     }
     public void info(Consulta consulta){
+        DateFormat df;
         System.out.println("..................................");
         System.out.println("Médico:"+consulta.getMedico());
-        System.out.println("Exame:"+consulta.getExames());
-        System.out.println("Paciente:"+consulta.getPaciente());
-        System.out.println("Procedimento: " + consulta.getProcedimentos());
+        System.out.println("Paciente:"+consulta.getPaciente().getNome());
+        df = DateFormat.getDateInstance(DateFormat.SHORT);
+        System.out.println("Data: " + df.format(consulta.getData()));
     }
     
 }

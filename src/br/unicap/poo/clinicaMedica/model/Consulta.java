@@ -27,6 +27,7 @@ public class Consulta extends Agendamento{
         this.paciente=paciente;
     }
 
+    @Override
     public Medico getMedico() {
         return medico;
     }

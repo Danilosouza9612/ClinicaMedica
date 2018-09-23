@@ -10,42 +10,22 @@ import br.unicap.poo.clinicaMedica.model.Consulta;
 import java.util.List;
 import br.unicap.poo.clinicaMedica.service.ConsultaService;
 import br.unicap.poo.clinicaMedica.model.Agendamento;
+import java.text.DateFormat;
 
 /**
  *
  * @author caio Maranhão
  */
-class VerConsultasView {
+class ConsultaListaView {
     
-    public VerConsultasView(){
+    public ConsultaListaView(){
     }
     
-    
-    public Agendamento verConsultaData(){
-        System.out.println();
-        
-        
-        return null;
-    }
-    
-    
-    public void verConsultaMedico(List<Consulta> lista){
-        System.out.println();
-        for(Consulta item : lista){
-            System.out.println("COD "+item.getCodigo()+" Data: ");
-        }
-    }
-    
-    public void verConsultaDataeMedico(List<Consulta> lista){
-        
-        
-    }
-  
-    
-    
-    
-    
-    
-    
+    public void listaConsultar(List<Consulta> lista){
+        DateFormat df  = DateFormat.getDateInstance(DateFormat.SHORT);;
 
+        for(Consulta item : lista){
+            System.out.println("COD "+item.getCodigo()+" Data: "+df.format(item.getData())+" Paciente:"+item.getPaciente().getNome()+" Médico:"+item.getMedico().getNome());
+        }
+    } 
 }

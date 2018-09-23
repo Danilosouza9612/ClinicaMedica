@@ -13,7 +13,4 @@ package br.unicap.poo.clinicaMedica.model;
 public enum Status {
     AGENDADA,
     REALIZADA,
-    EM_ANDAMENTO,
-    NAO_REALIZADA,
-    CANCELADA
 }

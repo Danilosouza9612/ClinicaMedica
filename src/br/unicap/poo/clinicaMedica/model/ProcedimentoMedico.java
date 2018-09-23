@@ -13,19 +13,13 @@ import java.util.Date;
  *
  * @author Brenan Wanderley
  */
-public class ProcedimentoMedico extends Agendamento implements Comparable<ProcedimentoMedico>{
+public class ProcedimentoMedico extends Agendamento{
     public Consulta consulta;
     public TipoProcedimento tipo;
 
-    public ProcedimentoMedico(int codigo, Date data, Consulta consulta, TipoProcedimento tipo) throws AgendamentoException, ProcedimentoMedicoException {
+    public ProcedimentoMedico(int codigo, Date data, Consulta consulta, TipoProcedimento tipo) throws AgendamentoException {
         super(codigo, data);
-        if(this.consulta==null){
-            throw new ProcedimentoMedicoException("Informe a Consulta");
-        }
         this.consulta = consulta;
-        if(this.tipo==null){
-            throw new ProcedimentoMedicoException("Informe o tipo de procedimento");
-        }
     }
 
     public Consulta getConsulta() {
@@ -36,7 +30,12 @@ public class ProcedimentoMedico extends Agendamento implements Comparable<Proced
         return tipo;
     }
     @Override
-    public int compareTo(ProcedimentoMedico procedimentoMedico){
-        return super.compareTo(procedimentoMedico);
+    public Medico getMedico(){
+        return consulta.getMedico();
+    }
+
+    @Override
+    public Paciente getPaciente() {
+        return consulta.getPaciente();
     }
 }

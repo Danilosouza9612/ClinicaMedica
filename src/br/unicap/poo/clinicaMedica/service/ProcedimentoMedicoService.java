@@ -1,5 +1,6 @@
 
 package br.unicap.poo.clinicaMedica.service;
+import br.unicap.poo.clinicaMedica.model.Agendamento;
 import br.unicap.poo.clinicaMedica.model.Medico;
 import br.unicap.poo.clinicaMedica.model.ProcedimentoMedico;
 import br.unicap.poo.clinicaMedica.repository.ProcedimentoMedicoDAO;
@@ -37,40 +38,26 @@ public class ProcedimentoMedicoService {
     
     
     public List<ProcedimentoMedico> verProcedimentos(Medico medico, Date data){
-        List<ProcedimentoMedico> retorno = new ArrayList<>();
-        List<ProcedimentoMedico> listaProcedimentos = procedimentos.listar();
+        AgendamentoList list = new AgendamentoList();
+        List<Agendamento> listagem = (List<Agendamento>)(List<?>)procedimentos.listar();
+        List<Agendamento> resultado = list.verAgendamentos(listagem, data, medico);
         
-        for(ProcedimentoMedico item : listaProcedimentos){
-            if(item.getConsulta().getMedico().equals(medico) && item.getConsulta().getData().equals(data)){
-                retorno.add(item);
-            }
-        }
+        return (List<ProcedimentoMedico>)(List<?>) resultado;
         
-        return retorno;
     }
     public List<ProcedimentoMedico> verProcedimentos(Medico medico){
-        List<ProcedimentoMedico> retorno = new ArrayList<>();
-        List<ProcedimentoMedico> listaProcedimentos = procedimentos.listar();
+        AgendamentoList list = new AgendamentoList();
+        List<Agendamento> listagem = (List<Agendamento>)(List<?>)procedimentos.listar();
+        List<Agendamento> resultado = list.verAgendamentos(listagem, medico);
         
-        for(ProcedimentoMedico item : listaProcedimentos){
-            if(item.getConsulta().getMedico().equals(medico)){
-                retorno.add(item);
-            }
-        }
-        
-        return retorno;
+        return (List<ProcedimentoMedico>)(List<?>) resultado;
     }
     public List<ProcedimentoMedico> verProcedimentos(Date data){
-        List<ProcedimentoMedico> retorno = new ArrayList<>();
-        List<ProcedimentoMedico> listaProcedimentos = procedimentos.listar();
+        AgendamentoList list = new AgendamentoList();
+        List<Agendamento> listagem = (List<Agendamento>)(List<?>)procedimentos.listar();
+        List<Agendamento> resultado = list.verAgendamentos(listagem, data);
         
-        for(ProcedimentoMedico item : listaProcedimentos){
-            if(item.getConsulta().getData().equals(data)){
-                retorno.add(item);
-            }
-        }
-        
-        return retorno;
+        return (List<ProcedimentoMedico>)(List<?>) resultado;
     }
     public ProcedimentoMedico selecionar(int codigo){
         ProcedimentoMedico selecao = procedimentos.selecionar(codigo);
