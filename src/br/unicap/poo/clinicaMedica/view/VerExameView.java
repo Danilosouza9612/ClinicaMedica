@@ -18,7 +18,11 @@ public class VerExameView {
             System.out.println();
             System.out.println("1 - Ver Exames\n2 - Gerenciar Tipos de Exames\n3 - Voltar");
             System.out.println("Digite uma opção:");
-            opcao=l.nextInt();
+            try{
+                opcao=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            } 
             l.nextLine();
             
             switch(opcao){

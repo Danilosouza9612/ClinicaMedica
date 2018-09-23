@@ -29,8 +29,12 @@ public class MedicoSelecaoView {
         do{
             System.out.println("..................................");
             System.out.println("1 - Alterar\n2 - Remover");
-            opcao=l.nextInt();
-            System.out.println();
+            try{
+                opcao=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            }           
+            l.nextLine();
             
             switch(opcao){
                 case 1:

@@ -45,7 +45,11 @@ public class PacienteAlterarView {
             System.out.println("6 - Alterar Plano de Saúde");
             System.out.println("7 - Alterar Data de Nascimento");
             System.out.println("8 - Voltar");
-            opcao=l.nextInt();
+            try{
+                opcao=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            }           
             l.nextLine();
             switch(opcao){
                 case 1:

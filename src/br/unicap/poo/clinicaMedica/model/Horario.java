@@ -5,7 +5,6 @@
  */
 package br.unicap.poo.clinicaMedica.model;
 
-import br.unicap.poo.clinicaMedica.model.exceptions.HorarioMedicoDiaSemanaInvalido;
 import br.unicap.poo.clinicaMedica.model.exceptions.HorarioChegadaInvalidoException;
 import br.unicap.poo.clinicaMedica.model.exceptions.HorarioSaidaInvalidoException;
 
@@ -32,33 +31,9 @@ public class Horario {
         return diaSemana;
     }
 
-    public void setDiaSemana(int diaSemana) throws HorarioMedicoDiaSemanaInvalido{
-        switch(diaSemana){
-            case 1:
-                this.diaSemana=DiaSemana.DOMINGO;
-                break;
-            case 2:
-                this.diaSemana=DiaSemana.SEGUNDA;
-                break;
-            case 3:
-                this.diaSemana=DiaSemana.TERCA;
-                break;
-            case 4:
-                this.diaSemana=DiaSemana.QUARTA;
-                break;
-            case 5:
-                this.diaSemana=DiaSemana.QUINTA;
-                break;
-            case 6:
-                this.diaSemana=DiaSemana.SEXTA;
-                break;
-            case 7:
-                this.diaSemana=DiaSemana.SABADO;
-                break;
-            default:
-                throw new HorarioMedicoDiaSemanaInvalido();
-              
-        }
+    public void setDiaSemana(DiaSemana diaSemana){
+        this.diaSemana=diaSemana;
+ 
     }
 
     public int getChegada() {

@@ -33,7 +33,11 @@ public class ExameVerView {
         
         do{
             System.out.println("1 - Selecionar\n2 - Voltar");
-            opcao=l.nextInt();
+            try{
+                opcao=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            }           
             l.nextLine();
             
             switch(opcao){

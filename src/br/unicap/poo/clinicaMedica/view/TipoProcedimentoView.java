@@ -31,7 +31,11 @@ public class TipoProcedimentoView {
             System.out.println();
             System.out.println("1 - Exibir Tipos de Procedimentos\n2 - Cadastrar Tipos de Procedimentos\n3 - Voltar");
             System.out.println("Digite uma opção:");
-            opcao=l.nextInt();
+            try{
+                opcao=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            }           
             l.nextLine();
             switch(opcao){
                 case 1:

@@ -36,7 +36,11 @@ public class MedicoVerView {
         lista.listar(service.listarMedico());
         do{
             System.out.println("1 - Selecionar Médico\n2 - Voltar");
-            opcao=l.nextInt();
+            try{
+                opcao=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            }           
             l.nextLine();
             switch(opcao){
                 case 1:

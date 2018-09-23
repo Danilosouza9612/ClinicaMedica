@@ -5,8 +5,8 @@
  */
 package br.unicap.poo.clinicaMedica.view;
 
+import br.unicap.poo.clinicaMedica.model.DiaSemana;
 import br.unicap.poo.clinicaMedica.model.Horario;
-import br.unicap.poo.clinicaMedica.model.exceptions.HorarioMedicoDiaSemanaInvalido;
 import java.util.Scanner;
 
 /**
@@ -26,19 +26,38 @@ public class MedicoDiaSemanaView {
         do{
             valido=true;
             System.out.println("Escolha o dia da semana do Médico(Digite -1 para Sair)");
-            System.out.println("1 - Segunda\n2 - Terça\n3 - Quarta\n4 - Quinta\n5 - Sexta");
-            diaSemana=l.nextInt();
-            
-            if(diaSemana==-1){
-                return false;
+            System.out.println("1 - Domingo\n2 - Segunda\n3 - Terça\n4 - Quarta\n5 - Quinta\n6 - Sexta\n7 - Sábado");
+            System.out.println("Escolha uma Opção:");
+            try{
+                diaSemana=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                diaSemana=0;
             }
-            
-            try {
-                horario.setDiaSemana(diaSemana);
-                return true;
-            } catch (HorarioMedicoDiaSemanaInvalido ex) {
-                System.out.println(ex.getMessage());
-                valido=false;
+            l.nextLine();
+            switch(diaSemana){
+                case 1:
+                    horario.setDiaSemana(DiaSemana.DOMINGO);
+                    break;
+                case 2:
+                    horario.setDiaSemana(DiaSemana.SEGUNDA);
+                    break;
+                case 3:
+                    horario.setDiaSemana(DiaSemana.TERCA);
+                    break;
+                case 4:
+                    horario.setDiaSemana(DiaSemana.QUARTA);
+                    break;
+                case 5:
+                    horario.setDiaSemana(DiaSemana.QUINTA);
+                    break;
+                case 6:
+                    horario.setDiaSemana(DiaSemana.SEXTA);
+                    break;    
+                case 7:
+                    horario.setDiaSemana(DiaSemana.SABADO);
+                    break;
+                default:
+                    System.out.println("Opção Inválida");
             }
         }while(!valido);
         return false;

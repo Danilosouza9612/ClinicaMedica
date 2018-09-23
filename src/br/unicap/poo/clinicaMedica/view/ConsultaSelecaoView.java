@@ -77,17 +77,26 @@ class ConsultaSelecaoView {
                 System.out.println("7 - Marcar Procedimento Médico");
                 System.out.println("8 - Voltar ");
             }
-            opcao=l.nextInt();
+            try{
+                opcao=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            } 
             l.nextLine();
             switch(opcao){
                 case 1:
                     data = dataAgendamento.dataAgendamento();
                     if(data!=null){
-                        try {
-                            consulta.setData(data);
-                        } catch (DataInvalidaException ex) {
-                        }
-                        info.info(consulta);                    
+                        do{
+                            valido=true;
+                            try {
+                                consulta.setData(data);
+                            } catch (DataInvalidaException ex) {
+                                System.out.println(ex.getMessage());
+                                valido=false;
+                            }
+                        }while(!valido);
+                        info.info(consulta);  
                     }
                     break;
                     

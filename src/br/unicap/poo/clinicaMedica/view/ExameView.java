@@ -64,7 +64,11 @@ public class ExameView {
             System.out.println("4 - Gerenciar Tipos de Exames");
             System.out.println("5 - Voltar");
             System.out.println("Digite uma opção:");
-            opcao=input.nextInt();
+            try{
+                opcao=input.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            }            
             input.nextLine();
             
             switch(opcao){

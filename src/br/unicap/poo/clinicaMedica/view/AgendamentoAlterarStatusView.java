@@ -26,7 +26,12 @@ public class AgendamentoAlterarStatusView {
             System.out.println("Selecione o Status (Digite -1 para Voltar):");
             System.out.println("1 - Agendada\n2 - Realizada");
             System.out.println("Digite uma opção");
-            opcao=l.nextInt();
+            try{
+                opcao=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            }
+            l.nextLine();
             switch(opcao){
                 case 1:
                     agendamento.setStatus(Status.AGENDADA);

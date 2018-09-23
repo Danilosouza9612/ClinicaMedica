@@ -31,7 +31,11 @@ public class PacienteView {
             System.out.println("2 - Pré-cadastrar Paciente");
             System.out.println("3 - Selecionar Paciente");
             System.out.println("4 - Voltar");
-            opcao=l.nextInt();
+            try{
+                opcao=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            }
             l.nextLine();
             switch(opcao){
                 case 1:

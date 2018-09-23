@@ -38,7 +38,11 @@ public class VerTipoProcedimentosView {
             System.out.println();
             System.out.println("1 - Alterar Tipo de Procedimento\n2 - Remover Tipo de Procedimento\n3 - Voltar");
             System.out.println("Digite uma opção:");
-            opcao=l.nextInt();
+            try{
+                opcao=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            }           
             l.nextLine();
             switch(opcao){
                 case 1:

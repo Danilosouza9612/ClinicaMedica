@@ -36,15 +36,19 @@ public class PacientePlanoSaudeView {
             System.out.println("-2 - Nenhum");
             
             System.out.println("Digite o código da seguradora(Digite -1 para Sair)");
-            codigo=l.nextInt();
+            try{
+                codigo=l.nextInt();
+                if(codigo!=-2){
+                    selecao = service.selecionar(codigo);
+                }else if(codigo==-1){
+                    return false;
+                }else{
+                    return true;
+                }
+            }catch(java.util.InputMismatchException ex){
+                System.out.println("Código Inválido");
+            }           
             l.nextLine();
-            if(codigo!=-2){
-                selecao = service.selecionar(codigo);
-            }else if(codigo==-1){
-                return false;
-            }else{
-                return true;
-            }
             
         }while(selecao==null);
         

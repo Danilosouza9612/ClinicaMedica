@@ -5,23 +5,11 @@
  */
 package br.unicap.poo.clinicaMedica.view;
 
-import br.unicap.poo.clinicaMedica.model.Consulta;
 import br.unicap.poo.clinicaMedica.model.Exame;
-import br.unicap.poo.clinicaMedica.model.ProcedimentoMedico;
-import br.unicap.poo.clinicaMedica.model.Status;
-import br.unicap.poo.clinicaMedica.model.TipoExame;
-import br.unicap.poo.clinicaMedica.model.TipoProcedimento;
-import br.unicap.poo.clinicaMedica.model.exceptions.AgendamentoException;
 import br.unicap.poo.clinicaMedica.model.exceptions.DataInvalidaException;
 import java.util.Scanner;
-import br.unicap.poo.clinicaMedica.service.ConsultaService;
-import br.unicap.poo.clinicaMedica.service.ProcedimentoMedicoService;
-import br.unicap.poo.clinicaMedica.service.ExameService;
-import br.unicap.poo.clinicaMedica.service.TipoExameService;
-import br.unicap.poo.clinicaMedica.service.TipoProcedimentoService;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -54,11 +42,6 @@ public class ExameSelecaoView {
         Date data;
         boolean valido;
         
-        Exame novoExame;
-        ProcedimentoMedico novoProcedimento;
-        TipoExame tipoExame;
-        TipoProcedimento tipoProcedimento;
-        
         info = new ExameInfoView();
         info.info(exame);
         
@@ -67,18 +50,27 @@ public class ExameSelecaoView {
             System.out.println("1 - Reagendar Exame");
             System.out.println("2 - Cancelar Exame");
             System.out.println("3 - Alterar status");
-            System.out.println("8 sair");
+            System.out.println("4 - sair");
 
-            opcao=l.nextInt();
+            try{
+                opcao=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            }           
             l.nextLine();
             switch(opcao){
                 case 1:
                     data = dataAgendamento.dataAgendamento();
                     if(data!=null){
-                        try {
-                            exame.setData(data);
-                        } catch (DataInvalidaException ex) {
-                        }
+                        do{
+                            valido=true;                       
+                            try {
+                                exame.setData(data);
+                            } catch (DataInvalidaException ex) {
+                                System.out.println(ex.getMessage());
+                                valido=false;
+                            }
+                        }while(!valido);
                         info.info(exame);                    
                     }
                     break;
@@ -96,12 +88,12 @@ public class ExameSelecaoView {
                     }
                     break;
                     
-                case 8:
+                case 4:
                     break;
                 default:
                     System.out.println("Opção inválida");
             }
-        }while(opcao!=8);
+        }while(opcao!=4);
         
     }
 }

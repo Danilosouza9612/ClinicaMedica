@@ -41,7 +41,11 @@ public class MedicoAlterarView {
             System.out.println("5 - Alterar Horário");
             System.out.println("6 - Voltar");
             System.out.println("Digite uma opção");
-            opcao=l.nextInt();
+            try{
+                opcao=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            }           
             l.nextLine();
             switch(opcao){
                 case 1:

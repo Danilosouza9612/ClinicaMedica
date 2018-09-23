@@ -40,9 +40,13 @@ public class MedicoAlterarSeguradoraPlanoView {
         do{
             System.out.println("..................................");
             lista.listaSeguradoraPlano(seguradoras);
-            System.out.println("1 - Adicionar/n2 - Remover/n3 - Voltar");
+            System.out.println("1 - Adicionar\n2 - Remover\n3 - Voltar");
             System.out.println("Escolha uma opção");
-            opcao=l.nextInt();
+            try{
+                opcao=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            }           
             l.nextLine();
             switch(opcao){
                 case 1:                 

@@ -28,13 +28,18 @@ public class ConsultaSelecionarView {
             System.out.println("..................................");
             System.out.println();
             System.out.println("Digite o código da Consulta(Digite -1 para Sair)");
-            codigo=l.nextInt();
+            try{
+                codigo=l.nextInt();
+                if(codigo!=-1){
+                    selecao = service.selecionar(codigo);
+                }else{
+                    return null;
+                }
+            }catch(java.util.InputMismatchException ex){
+                System.out.println("Opção Inválida");
+            } 
             l.nextLine();
-            if(codigo!=-1){
-                selecao = service.selecionar(codigo);
-            }else{
-                return null;
-            }
+
         }while(selecao==null);
         
         return selecao;

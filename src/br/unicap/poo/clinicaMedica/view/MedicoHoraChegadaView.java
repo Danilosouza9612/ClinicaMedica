@@ -28,18 +28,24 @@ public class MedicoHoraChegadaView {
         do{
             valido=true;
             System.out.println("Digite a hora de chegada (Digite -1 para Sair)");
-            chegada=l.nextInt();
-            
-            if(chegada==-1){
-                return false;
-            }
-            
-            try {
-                horario.setChegada(chegada);
-                return true;
-            } catch (HorarioChegadaInvalidoException ex) {
-                System.out.println(ex.getMessage());
-            }
+            try{
+               chegada=l.nextInt();
+               if(chegada==-1){
+                   return false;
+               }
+
+               try {
+                   horario.setChegada(chegada);
+                   return true;
+               } catch (HorarioChegadaInvalidoException ex) {
+                   System.out.println(ex.getMessage());
+               }
+            }catch(java.util.InputMismatchException ex){
+                System.out.println("Horário Inválido");
+                valido=false;
+            }           
+            l.nextLine();            
+
         }while(!valido);
         return false;
     }

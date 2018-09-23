@@ -26,17 +26,21 @@ public class PacienteEnderecoNumeroView {
             valido=true;
             System.out.println("..................................");
             System.out.println("Digite o número (Digite -1 para Sair):");
-            numero = l.nextInt();
+            try{
+                numero=l.nextInt();
+                if(numero==-1){
+                    return false;
+                }
+                try {
+                    paciente.getEndereco().setNumero(numero);
+                } catch (NumeroInvalidoException ex) {
+                    System.out.println(ex.getMessage());
+                    valido=false;
+                }
+            }catch(java.util.InputMismatchException ex){
+                System.out.println("Número Inválido");
+            }           
             l.nextLine();
-            if(numero==-1){
-                return false;
-            }
-            try {
-                paciente.getEndereco().setNumero(numero);
-            } catch (NumeroInvalidoException ex) {
-                System.out.println(ex.getMessage());
-                valido=false;
-            }
         }while(!valido);
         return true;
     }

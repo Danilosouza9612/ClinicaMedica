@@ -54,7 +54,11 @@ public class ConsultaView {
             System.out.println("3 - Ver consultas por data e médico");
             System.out.println("4 - Nova consulta");
             System.out.println("5 - Voltar");
-            opcao = l.nextInt();
+            try{
+                opcao=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            }           
             l.nextLine();
             switch (opcao) {
                 case 1:

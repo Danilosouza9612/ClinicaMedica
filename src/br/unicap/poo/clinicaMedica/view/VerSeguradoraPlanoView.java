@@ -30,7 +30,11 @@ public class VerSeguradoraPlanoView {
             System.out.println();
             System.out.println("1 - Alterar Tipo de seguradora\n2 - Remover seguradora\n3 - Voltar");
             System.out.println("Digite uma opção:");
-            opcao=l.nextInt();
+            try{
+                opcao=l.nextInt();
+            }catch(java.util.InputMismatchException ex){
+                opcao=0;
+            }           
             l.nextLine();
             switch(opcao){
                 case 1:
