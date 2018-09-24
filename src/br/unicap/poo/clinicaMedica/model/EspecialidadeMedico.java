@@ -34,7 +34,6 @@ public class EspecialidadeMedico {
     private boolean contemEspecialidade(Especialidade item){
         for(Especialidade data : especialidades){
             if(item.getCodigo()==data.getCodigo()){
-                System.out.println("Entrou");
                 return true;
             }else if(data.getCodigo()<item.getCodigo()){
                 return false;

@@ -6,6 +6,7 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.Paciente;
+import br.unicap.poo.clinicaMedica.service.PacienteService;
 import java.util.Scanner;
 
 /**
@@ -16,6 +17,7 @@ public class PacienteView {
     private PacienteCadastrarView pacienteCadastrarView;
     private PacienteSelecionarView pacienteSelecionarView;
     private PacienteSelecaoView pacienteSelecaoView;
+    private PacienteService service;
     public PacienteView(){
         pacienteCadastrarView = new PacienteCadastrarView();
         pacienteSelecionarView = new PacienteSelecionarView();
@@ -23,14 +25,13 @@ public class PacienteView {
     }
     public void menu(){
         Scanner l = new Scanner(System.in);
-        Paciente selecao;
+        Paciente selecao, novo;
         int opcao;
         do{
             System.out.println("..................................");
             System.out.println("1 - Cadastrar Paciente");
-            System.out.println("2 - Pré-cadastrar Paciente");
-            System.out.println("3 - Selecionar Paciente");
-            System.out.println("4 - Voltar");
+            System.out.println("2 - Selecionar Paciente");
+            System.out.println("3 - Voltar");
             try{
                 opcao=l.nextInt();
             }catch(java.util.InputMismatchException ex){
@@ -39,23 +40,24 @@ public class PacienteView {
             l.nextLine();
             switch(opcao){
                 case 1:
-                    pacienteCadastrarView.cadastrarPaciente(false);
+                    novo=pacienteCadastrarView.cadastrarPaciente(false);
+                    if(novo!=null){
+                        service = PacienteService.getInstance();
+                        service.cadastrarPaciente(novo);
+                    }
                     break;
                 case 2:
-                    pacienteCadastrarView.cadastrarPaciente(true);
-                    break;
-                case 3:
                     selecao = pacienteSelecionarView.selecionar();
                     if(selecao!=null){
                         pacienteSelecaoView.selecaoPaciente(selecao);
                     }
                     break;
-                case 4:
+                case 3:
                     break;
                 default:
                     System.out.println("Opção inválida");
             }
-        }while(opcao!=4);
+        }while(opcao!=3);
         
     }
 }

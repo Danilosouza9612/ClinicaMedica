@@ -68,16 +68,13 @@ public class HorarioMedico {
         
         return false;
     }
-    public Horario selecionar(int codigo){
-        int cont=0;
-        
+    public Horario selecionar(int codigo){        
         for(Horario item : horarios){
             if(item.getCodigo()==codigo){
                 return item;
             }else if(item.getCodigo()>codigo){
                 return null;
             }
-            cont++;
         }
         return null;
     }

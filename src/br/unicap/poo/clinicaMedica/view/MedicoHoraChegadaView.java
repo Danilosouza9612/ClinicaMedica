@@ -8,8 +8,6 @@ package br.unicap.poo.clinicaMedica.view;
 import br.unicap.poo.clinicaMedica.model.Horario;
 import br.unicap.poo.clinicaMedica.model.exceptions.HorarioChegadaInvalidoException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

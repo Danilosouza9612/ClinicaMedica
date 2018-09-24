@@ -27,9 +27,12 @@ public class MedicoDiaSemanaView {
             valido=true;
             System.out.println("Escolha o dia da semana do Médico(Digite -1 para Sair)");
             System.out.println("1 - Domingo\n2 - Segunda\n3 - Terça\n4 - Quarta\n5 - Quinta\n6 - Sexta\n7 - Sábado");
-            System.out.println("Escolha uma Opção:");
+            System.out.println("Escolha uma Opção (Digite -1) para sair:");
             try{
                 diaSemana=l.nextInt();
+                if(diaSemana==-1){
+                    return false;
+                }
             }catch(java.util.InputMismatchException ex){
                 diaSemana=0;
             }
@@ -60,7 +63,7 @@ public class MedicoDiaSemanaView {
                     System.out.println("Opção Inválida");
             }
         }while(!valido);
-        return false;
+        return true;
     }
         
 }

@@ -5,7 +5,6 @@
  */
 package br.unicap.poo.clinicaMedica.view;
 import br.unicap.poo.clinicaMedica.model.TipoExame;
-import br.unicap.poo.clinicaMedica.service.TipoExameService;
 import java.util.List;
 /**
  *

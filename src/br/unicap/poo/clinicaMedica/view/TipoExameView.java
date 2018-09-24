@@ -32,7 +32,8 @@ public class TipoExameView {
                 opcao=l.nextInt();
             }catch(java.util.InputMismatchException ex){
                 opcao=0;
-            }            l.nextLine();
+            }
+            l.nextLine();
             switch(opcao){
                 case 1:
                     ver = new VerTipoExameView();

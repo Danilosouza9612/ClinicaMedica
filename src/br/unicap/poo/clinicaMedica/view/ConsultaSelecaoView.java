@@ -21,8 +21,7 @@ import br.unicap.poo.clinicaMedica.service.ExameService;
 import br.unicap.poo.clinicaMedica.service.TipoExameService;
 import br.unicap.poo.clinicaMedica.service.TipoProcedimentoService;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 class ConsultaSelecaoView {
     private AgendamentoDataView dataAgendamento;
@@ -35,6 +34,7 @@ class ConsultaSelecaoView {
     private ProcedimentoMedicoService proService;
     private ConsultaInfoView info;
     private ListaTipoExameView listaTipoExame;
+    private ExameVerView exames;
     private TipoExameSelecionarView selecionarTipoExame;
     private ListaTipoProcedimentosView listaTipoProcedimento;
     private TipoProcedimentoSelecionarView selecionarTipoProcedimento;
@@ -48,6 +48,7 @@ class ConsultaSelecaoView {
         selecionarTipoExame = new TipoExameSelecionarView();
         listaTipoProcedimento = new ListaTipoProcedimentosView();
         selecionarTipoProcedimento = new TipoProcedimentoSelecionarView();
+        ExameVerView exames = new ExameVerView();
         service = ConsultaService.getInstance();
     }
     
@@ -85,19 +86,19 @@ class ConsultaSelecaoView {
             l.nextLine();
             switch(opcao){
                 case 1:
-                    data = dataAgendamento.dataAgendamento();
-                    if(data!=null){
-                        do{
-                            valido=true;
+                    do{
+                        valido=true;
+                        data = dataAgendamento.dataAgendamento();
+                        if(data!=null){
                             try {
                                 consulta.setData(data);
                             } catch (DataInvalidaException ex) {
                                 System.out.println(ex.getMessage());
                                 valido=false;
                             }
-                        }while(!valido);
-                        info.info(consulta);  
-                    }
+                        }
+                    }while(!valido);
+                    info.info(consulta);  
                     break;
                     
                 case 2:
@@ -115,7 +116,7 @@ class ConsultaSelecaoView {
                     
                 case 4:
                      if(consulta.getStatus()==Status.REALIZADA){
-                         
+                         exames.verExames(consulta.getExames());
                      }
                     break;
                     
@@ -128,21 +129,23 @@ class ConsultaSelecaoView {
                         exService = ExameService.getInstance();
                         tipoExameService = TipoExameService.getInstance();
                         listaTipoExame.listaTipoExame(tipoExameService.listar());
-                        tipoExame = selecionarTipoExame.selecionar();
+                        if((tipoExame = selecionarTipoExame.selecionar())==null){
+                            break;
+                        }
                         do{
-                            valido=false;
-                            data = dataAgendamento.dataAgendamento();
+                            valido=true;
+                            if((data = dataAgendamento.dataAgendamento())==null){
+                                break;
+                            }
 
                             try {
-                                if(tipoExame!=null && data!=null){
-                                    novoExame = new Exame(exService.lastCode()+1, data, consulta, tipoExame);
-                                    consulta.addExame(novoExame);
-                                    exService.novoExame(novoExame);
-                                    service.alterarConsulta(consulta);
-                                }
+                                novoExame = new Exame(exService.lastCode()+1, data, consulta, tipoExame);
+                                consulta.addExame(novoExame);
+                                exService.novoExame(novoExame);
+                                service.alterarConsulta(consulta);
                             } catch (AgendamentoException ex) {
                                 System.out.println(ex.getMessage());
-                                valido=true;
+                                valido=false;
                             }
                         }while(!valido);
                     }
@@ -152,21 +155,23 @@ class ConsultaSelecaoView {
                         proService = ProcedimentoMedicoService.getInstance();
                         tipoProcecimentoService = TipoProcedimentoService.getInstance();
                         listaTipoProcedimento.listaTipoProcedimento( tipoProcecimentoService.listar());
-                        tipoProcedimento = selecionarTipoProcedimento.selecionar();
+                        if((tipoProcedimento = selecionarTipoProcedimento.selecionar())==null){
+                            break;
+                        }
                         do{
-                            valido=false;
-                            data = dataAgendamento.dataAgendamento();
-
+                            valido=true;
+                            if((data = dataAgendamento.dataAgendamento())==null){
+                                break;
+                            }
+                            
                             try {
-                                if(tipoProcedimento!=null && data!=null){
-                                    novoProcedimento = new ProcedimentoMedico(exService.lastCode()+1, data, consulta, tipoProcedimento);
-                                    consulta.addProcedimento(novoProcedimento);
-                                    proService.agendarProcedimento(novoProcedimento);
-                                    service.alterarConsulta(consulta);
-                                }
+                                novoProcedimento = new ProcedimentoMedico(exService.lastCode()+1, data, consulta, tipoProcedimento);
+                                consulta.addProcedimento(novoProcedimento);
+                                proService.agendarProcedimento(novoProcedimento);
+                                service.alterarConsulta(consulta);
                             } catch (AgendamentoException ex) {
                                 System.out.println(ex.getMessage());
-                                valido=true;
+                                valido=false;
                             }
                         }while(!valido);
                     }

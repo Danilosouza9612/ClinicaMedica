@@ -17,6 +17,7 @@ public class MenuPrincipal {
     private MedicoView medicoView;
     private ConsultaView consultaView;
     private ExameView exameView;
+    private SeguradoraPlanoView seguradoraView;
     
     public MenuPrincipal(){
         procedimentoView = new ProcedimentoView();
@@ -24,6 +25,7 @@ public class MenuPrincipal {
         medicoView = new MedicoView();
         consultaView = new ConsultaView();
         exameView = new ExameView();
+        seguradoraView = new SeguradoraPlanoView();
     }
     public void menu(){
         Scanner l = new Scanner(System.in);
@@ -32,7 +34,7 @@ public class MenuPrincipal {
         do{
             System.out.println("..................................");
             System.out.println();            
-            System.out.println("1 - Exames\n2 - Consultas\n3 - Procedimentos\n4 - Pacientes\n5 - Médicos\n6 - Sair");
+            System.out.println("1 - Exames\n2 - Consultas\n3 - Procedimentos\n4 - Pacientes\n5 - Médicos\n6 - Seguradoras de Plano de Saúde atendidas\n7 - Sair");
             System.out.println("Digite uma opção:");
             try{
                 opcao=l.nextInt();
@@ -57,11 +59,14 @@ public class MenuPrincipal {
                     medicoView.menu();
                     break;
                 case 6:
+                    seguradoraView.menu();
+                    break;
+                case 7:
                     break;
                 default:
                     System.out.println("Opção inválida");
             }
-        }while(opcao!=6);
+        }while(opcao!=7);
         
     }
 }

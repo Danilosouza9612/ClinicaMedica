@@ -7,7 +7,6 @@ package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.Paciente;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 /**

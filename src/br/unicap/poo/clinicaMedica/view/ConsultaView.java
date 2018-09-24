@@ -85,17 +85,24 @@ public class ConsultaView {
                     do{
                         valido=true;
                         service = ConsultaService.getInstance();
-                        data = dataSelecao.dataAgendamento();
-                        medico = medicoSelecao.selecionar();
-                        paciente = pacienteSelecao.selecionar();
-                        if(data!=null & paciente!=null && medico!=null && horaSelecao.horaAgendamento(data)){
-                            try {
-                                novo = new Consulta(service.lastCode()+1, data, medico, paciente);
-                                service.AgendarConsulta(novo);
-                            } catch (AgendamentoException | HorarioIndisponivelException ex) {
-                                System.out.println(ex.getMessage());
-                                valido=false;
-                            }
+                        if((data = dataSelecao.dataAgendamento())==null){
+                            break;
+                        }
+                        if((medico = medicoSelecao.selecionar())==null){
+                            break;
+                        }
+                        if((paciente = pacienteSelecao.selecionar())==null){
+                            break;
+                        }
+                        if(!horaSelecao.horaAgendamento(data)){
+                            break;
+                        }
+                        try {
+                            novo = new Consulta(service.lastCode()+1, data, medico, paciente);
+                            service.AgendarConsulta(novo);
+                        } catch (AgendamentoException | HorarioIndisponivelException ex) {
+                            System.out.println(ex.getMessage());
+                            valido=false;
                         }
                     }while(!valido);
                     break;

@@ -1,7 +1,6 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.SeguradoraPlano;
-import br.unicap.poo.clinicaMedica.service.SeguradoraPlanoService;
 import java.util.List;
 
 public class ListaSeguradoraPlanoView {

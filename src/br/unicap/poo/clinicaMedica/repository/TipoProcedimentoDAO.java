@@ -66,6 +66,7 @@ public class TipoProcedimentoDAO implements TipoProcedimentoRepBridge{
             if(data.getCodigo()==codigo){
                 return dataBase.get(cont);
             }
+            cont++;
         }
         return null;
     }

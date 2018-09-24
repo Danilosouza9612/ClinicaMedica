@@ -6,6 +6,7 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.TipoExame;
+import br.unicap.poo.clinicaMedica.service.ExameService;
 import br.unicap.poo.clinicaMedica.service.TipoExameService;
 import java.util.Scanner;
 
@@ -23,6 +24,7 @@ public class VerTipoExameView {
         listaTipoExame = new ListaTipoExameView();
         editar = new EditarDescricaoTipoExameView();
         selecionar = new TipoExameSelecionarView();
+        service = TipoExameService.getInstance();
     }
     public void verTipoExameView(){
         listaTipoExame = new ListaTipoExameView();

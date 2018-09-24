@@ -66,6 +66,7 @@ public class TipoExameDAO implements TipoExameRepBridge{
             if(data.getCodigo()==codigo){
                 return dataBase.get(cont);
             }
+            cont++;
         }
         return null;
     }

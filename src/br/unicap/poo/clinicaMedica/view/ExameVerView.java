@@ -6,9 +6,6 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.Exame;
-import br.unicap.poo.clinicaMedica.service.ExameService;
-import br.unicap.poo.clinicaMedica.model.Consulta;
-import br.unicap.poo.clinicaMedica.service.ConsultaService;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,7 +22,7 @@ public class ExameVerView {
         selecionar = new ExameSelecionarView();
         selecaoExame = new ExameSelecaoView();
     }
-    public void verConsultas(List<Exame> lista){
+    public void verExames(List<Exame> lista){
         Scanner l = new Scanner(System.in);
         int opcao;
         Exame selecao;

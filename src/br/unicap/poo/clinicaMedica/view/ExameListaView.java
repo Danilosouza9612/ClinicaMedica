@@ -6,8 +6,6 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.Exame;
-import br.unicap.poo.clinicaMedica.service.ExameService;
-import br.unicap.poo.clinicaMedica.model.Agendamento;
 import java.util.List;
 import java.text.DateFormat;
 

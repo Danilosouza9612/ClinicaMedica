@@ -25,10 +25,16 @@ public class PacienteCadastrarView {
     private PacienteDataNascimentoView pacienteDataNascimentoView;
 
     public PacienteCadastrarView(){
-        
+        pacienteNomeView = new PessoaNomeView();
+        pacienteTelefoneView = new PessoaTelefoneView();
+        pacientePlanoSaudeView = new PacientePlanoSaudeView();
+        pacienteCEPView = new PacienteEnderecoCEPView();
+        pacienteEnderecoNumeroView = new PacienteEnderecoNumeroView();
+        pacienteEnderecoComplementoView = new PacienteEnderecoComplementoView();
+        pacienteDataNascimentoView = new PacienteDataNascimentoView();
     }
     
-    public void cadastrarPaciente(boolean preCadastro){
+    public Paciente cadastrarPaciente(boolean preCadastro){
         Paciente novo=null;
         Scanner l = new Scanner(System.in);
         String cpf;
@@ -41,7 +47,7 @@ public class PacienteCadastrarView {
             cpf = l.nextLine();
             service = PacienteService.getInstance();
             if(cpf.equalsIgnoreCase("FIM")){
-                return;
+                return null;
             }
             if(service.selecionar(cpf)!=null){
                 System.out.println("Paciente já existe em nosso cadastro");
@@ -57,47 +63,32 @@ public class PacienteCadastrarView {
         }while(!valido);
         
         if(valido){
-            pacienteNomeView = new PessoaNomeView();
             if(!pacienteNomeView.editarNome(novo)){
-                return;
-            }
-                    
-            pacienteTelefoneView = new PessoaTelefoneView();
+                return null;
+            }                  
             if(!pacienteTelefoneView.editarTelefone(novo)){
-                return;
+                return null;
             }
-                  
+            if(!pacientePlanoSaudeView.alterarSeguradoraView(novo)){
+                return null;
+            }                 
             if(!preCadastro){
-                pacienteCEPView = new PacienteEnderecoCEPView();
                 if(!pacienteCEPView.editarCEP(novo)){
-                    return;
+                    return null;
                 }
 
-                pacienteEnderecoNumeroView = new PacienteEnderecoNumeroView();
                 if(!pacienteEnderecoNumeroView.editarNumero(novo)){
-                    return;
+                    return null;
                 }
 
-                pacienteEnderecoComplementoView = new PacienteEnderecoComplementoView();
                 if(!pacienteEnderecoComplementoView.editarComplemento(novo)){
-                    return;
-                }
-                        
-                pacientePlanoSaudeView = new PacientePlanoSaudeView();
-                if(!pacientePlanoSaudeView.alterarSeguradoraView(novo)){
-                    return;
-                }
-                        
-                pacienteDataNascimentoView = new PacienteDataNascimentoView();
+                    return null;
+                }                
                 if(!pacienteDataNascimentoView.alterarDataNascimento(novo)){
-                    return;
+                    return null;
                 }
             }
-            service.cadastrarPaciente(novo);    
         }
-        
-        
-        
-        
+        return novo;
     }     
 }

@@ -6,7 +6,6 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.Especialidade;
-import br.unicap.poo.clinicaMedica.service.EspecialidadeService;
 import java.util.List;
 
 /**

@@ -65,6 +65,7 @@ public class ExameDAO implements ExameRepBridge{
             if(data.getCodigo()==codigo){
                 return dataBase.get(cont);
             }
+            cont++;
         }
         return null;
     }

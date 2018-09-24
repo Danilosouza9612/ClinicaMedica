@@ -28,10 +28,10 @@ public class PlanoSaudeMedico {
         return atendePrivado;
     }
     public void setAtendePrivado(boolean atendePrivado) throws MedicoSemPlanoSaudeAtendidoException{
-        if(seguradorasPlano.size()==0){
-            this.atendePrivado=atendePrivado;
-        }else{
+        if(seguradorasPlano.isEmpty()){
             throw new MedicoSemPlanoSaudeAtendidoException();
+        }else{
+            this.atendePrivado=atendePrivado;
         }
     }
     public List<SeguradoraPlano> getSeguradorasPlano(){
@@ -41,7 +41,7 @@ public class PlanoSaudeMedico {
         if(seguradoraPlano==null){
             return atendePrivado;
         }else{
-            return seguradorasPlano.contains(seguradoraPlano);
+            return contemSeguradora(seguradoraPlano);
         }
     }
     private boolean contemSeguradora(SeguradoraPlano item){

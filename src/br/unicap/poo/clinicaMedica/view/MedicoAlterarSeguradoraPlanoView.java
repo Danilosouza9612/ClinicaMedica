@@ -40,7 +40,8 @@ public class MedicoAlterarSeguradoraPlanoView {
         do{
             System.out.println("..................................");
             lista.listaSeguradoraPlano(seguradoras);
-            System.out.println("1 - Adicionar\n2 - Remover\n3 - Voltar");
+            String atendePrivado = (medico.getPlanoSaudeMedico().isAtendePrivado())? "Sim" : "Não";
+            System.out.println("1 - Adicionar\n2 - Remover\n3 - Atende Privado:+"+atendePrivado+"\n4 - Voltar\n");
             System.out.println("Escolha uma opção");
             try{
                 opcao=l.nextInt();
@@ -75,10 +76,21 @@ public class MedicoAlterarSeguradoraPlanoView {
                     }
                     break;
                 case 3:
+                    try{
+                        if(medico.getPlanoSaudeMedico().isAtendePrivado()){
+                            medico.getPlanoSaudeMedico().setAtendePrivado(false);
+                        }else{
+                            medico.getPlanoSaudeMedico().setAtendePrivado(true);
+                        }
+                    }catch(MedicoSemPlanoSaudeAtendidoException ex){
+                        System.out.println(ex.getMessage());
+                    }
+                    break;
+                case 4:
                     break;
                 default:
                     System.out.println("Opção inválida");
             }
-        }while(opcao!=3);
+        }while(opcao!=4);
     }      
 }

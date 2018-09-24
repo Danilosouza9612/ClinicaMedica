@@ -7,8 +7,6 @@ package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.Horario;
 import br.unicap.poo.clinicaMedica.model.HorarioMedico;
-import br.unicap.poo.clinicaMedica.model.Medico;
-import br.unicap.poo.clinicaMedica.service.MedicoService;
 import java.util.Scanner;
 
 /**

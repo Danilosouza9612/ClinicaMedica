@@ -9,7 +9,6 @@ package br.unicap.poo.clinicaMedica.model;
  *
  * @author aluno
  */
-import java.util.ArrayList;
 import java.util.Date;
 public class Medico extends Pessoa{
     private final int codigo;

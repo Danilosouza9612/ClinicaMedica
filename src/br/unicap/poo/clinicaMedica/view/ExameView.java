@@ -7,12 +7,8 @@ package br.unicap.poo.clinicaMedica.view;
 
 import java.util.Scanner;
 import br.unicap.poo.clinicaMedica.model.Exame;
-import br.unicap.poo.clinicaMedica.model.Consulta;
 import br.unicap.poo.clinicaMedica.model.Medico;
 import br.unicap.poo.clinicaMedica.model.Paciente;
-import br.unicap.poo.clinicaMedica.model.exceptions.AgendamentoException;
-import br.unicap.poo.clinicaMedica.model.exceptions.HorarioIndisponivelException;
-import br.unicap.poo.clinicaMedica.service.ConsultaService;
 import br.unicap.poo.clinicaMedica.service.ExameService;
 import java.util.Date;
 
@@ -42,6 +38,7 @@ public class ExameView {
         pacienteSelecao = new PacienteSelecionarView();
         horaSelecao = new AgendamentoHoraView();
         listaMedico = new MedicoListaView();
+        service = ExameService.getInstance();
     }
     
     
@@ -75,20 +72,20 @@ public class ExameView {
                 case 1:
                     data = dataSelecao.dataAgendamento();
                     if(data!=null){
-                        verExamesView.verConsultas(service.verExames(data));
+                        verExamesView.verExames(service.verExames(data));
                     }
                     break;
                 case 2:
                     medico = medicoSelecao.selecionar();
                     if(medico!=null){
-                        verExamesView.verConsultas(service.verExames(medico));
+                        verExamesView.verExames(service.verExames(medico));
                     }
                     break;
                 case 3:  
                     data = dataSelecao.dataAgendamento();
                     medico = medicoSelecao.selecionar();
                     if(data!=null && medico != null){
-                        verExamesView.verConsultas(service.verExames(medico, data));
+                        verExamesView.verExames(service.verExames(medico, data));
                     }
                     break;
                 case 4:

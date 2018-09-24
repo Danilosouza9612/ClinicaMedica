@@ -5,7 +5,9 @@
  */
 package br.unicap.poo.clinicaMedica.view;
 
+import br.unicap.poo.clinicaMedica.model.Consulta;
 import br.unicap.poo.clinicaMedica.model.Exame;
+import br.unicap.poo.clinicaMedica.service.ConsultaService;
 import br.unicap.poo.clinicaMedica.service.ExameService;
 import java.util.Scanner;
 
@@ -15,11 +17,13 @@ import java.util.Scanner;
  */
 public class ExameCancelarView {
     private ExameService service;
+    private ConsultaService conService;
     public ExameCancelarView() {
     }
     
     public boolean cancelarExame(Exame exame){
         Scanner l = new Scanner(System.in);
+        Consulta consulta;
         char op;
         do{
             System.out.println("..................................");
@@ -28,6 +32,11 @@ public class ExameCancelarView {
             if(op=='s'){
                 service = ExameService.getInstance();
                 service.cancelarExame(exame);
+                conService = ConsultaService.getInstance();
+                consulta = exame.getConsulta();
+                consulta.removeExame(exame);
+                conService.alterarConsulta(consulta);
+                
                 return true;
             }
         }while(op!='s' && op!='n');

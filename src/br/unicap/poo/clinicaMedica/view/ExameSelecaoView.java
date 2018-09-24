@@ -27,13 +27,13 @@ public class ExameSelecaoView {
     
     public ExameSelecaoView(){
         dataAgendamento = new AgendamentoDataView();
-       // consultaCancelarView = new ConsultaCancelarView();
         exameAlterarView = new AgendamentoAlterarStatusView();
         exameCancelarView = new ExameCancelarView();
         listaTipoExame = new ListaTipoExameView();
         selecionarTipoExame = new TipoExameSelecionarView();
         listaTipoProcedimento = new ListaTipoProcedimentosView();
         selecionarTipoProcedimento = new TipoProcedimentoSelecionarView();
+        info = new ExameInfoView();
     }
     
     public void selecaoExame(Exame exame){
@@ -42,7 +42,6 @@ public class ExameSelecaoView {
         Date data;
         boolean valido;
         
-        info = new ExameInfoView();
         info.info(exame);
         
         
@@ -60,19 +59,19 @@ public class ExameSelecaoView {
             l.nextLine();
             switch(opcao){
                 case 1:
-                    data = dataAgendamento.dataAgendamento();
-                    if(data!=null){
-                        do{
-                            valido=true;                       
+                    do{
+                        data = dataAgendamento.dataAgendamento();
+                        valido=true;
+                        if(data!=null){
                             try {
                                 exame.setData(data);
                             } catch (DataInvalidaException ex) {
                                 System.out.println(ex.getMessage());
                                 valido=false;
                             }
-                        }while(!valido);
-                        info.info(exame);                    
-                    }
+                        }
+                    }while(!valido);
+                    info.info(exame);                    
                     break;
                     
                 case 2:

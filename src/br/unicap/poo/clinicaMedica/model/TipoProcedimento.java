@@ -27,9 +27,4 @@ public class TipoProcedimento{
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    public boolean equals(Object tipoProcedimento){
-        TipoProcedimento objeto = (TipoProcedimento)tipoProcedimento;
-        
-        return objeto.codigo==this.codigo;
-    }
 }

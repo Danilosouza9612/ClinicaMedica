@@ -8,8 +8,6 @@ package br.unicap.poo.clinicaMedica.view;
 //import br.unicap.poo.clinicaMedica.model.Consulta;
 import br.unicap.poo.clinicaMedica.model.Consulta;
 import java.util.List;
-import br.unicap.poo.clinicaMedica.service.ConsultaService;
-import br.unicap.poo.clinicaMedica.model.Agendamento;
 import java.text.DateFormat;
 
 /**

@@ -66,6 +66,7 @@ public class ConsultaDAO implements ConsultaRepBridge {
             if(data.getCodigo()==codigo){
                 return dataBase.get(cont);
             }
+            cont++;
         }
         return null;
     }

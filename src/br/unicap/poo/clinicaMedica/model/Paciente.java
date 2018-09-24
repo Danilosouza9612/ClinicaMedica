@@ -31,6 +31,7 @@ public class Paciente extends Pessoa{
             this.cpf = cpf;
         }
         endereco = new Endereco();
+        planoDeSaude = new PlanoDeSaude();
     }
 
     public PlanoDeSaude getPlanoDeSaude() {

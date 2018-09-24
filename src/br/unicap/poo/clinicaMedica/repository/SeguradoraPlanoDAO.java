@@ -66,6 +66,7 @@ public class SeguradoraPlanoDAO implements SeguradoraPlanoRepBridge{
             if(data.getCodigo()==codigo){
                 return dataBase.get(cont);
             }
+            cont++;
         }
         return null;
     }

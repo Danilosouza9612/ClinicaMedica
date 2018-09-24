@@ -6,7 +6,6 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import br.unicap.poo.clinicaMedica.model.Consulta;
-import br.unicap.poo.clinicaMedica.service.ConsultaService;
 import java.util.List;
 import java.util.Scanner;
 
