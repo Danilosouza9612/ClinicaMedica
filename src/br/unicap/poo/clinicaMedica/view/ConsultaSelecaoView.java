@@ -38,6 +38,7 @@ class ConsultaSelecaoView {
     private TipoExameSelecionarView selecionarTipoExame;
     private ListaTipoProcedimentosView listaTipoProcedimento;
     private TipoProcedimentoSelecionarView selecionarTipoProcedimento;
+    private PacienteCadastrarView cadastroPaciente;
     
     public ConsultaSelecaoView(){
         dataAgendamento = new AgendamentoDataView();
@@ -48,7 +49,7 @@ class ConsultaSelecaoView {
         selecionarTipoExame = new TipoExameSelecionarView();
         listaTipoProcedimento = new ListaTipoProcedimentosView();
         selecionarTipoProcedimento = new TipoProcedimentoSelecionarView();
-        ExameVerView exames = new ExameVerView();
+        exames = new ExameVerView();
         service = ConsultaService.getInstance();
     }
     

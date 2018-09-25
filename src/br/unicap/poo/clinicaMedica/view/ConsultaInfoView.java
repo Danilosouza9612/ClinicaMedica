@@ -19,7 +19,7 @@ class ConsultaInfoView {
     public void info(Consulta consulta){
         DateFormat df;
         System.out.println("..................................");
-        System.out.println("Médico:"+consulta.getMedico());
+        System.out.println("Médico:"+consulta.getMedico().getNome());
         System.out.println("Paciente:"+consulta.getPaciente().getNome());
         df = DateFormat.getDateInstance(DateFormat.SHORT);
         System.out.println("Data: " + df.format(consulta.getData()));

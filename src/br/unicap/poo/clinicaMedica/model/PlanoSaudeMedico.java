@@ -48,7 +48,7 @@ public class PlanoSaudeMedico {
         for(SeguradoraPlano data : seguradorasPlano){
             if(item.getCodigo()==data.getCodigo()){
                 return true;
-            }else if(data.getCodigo()<item.getCodigo()){
+            }else if(data.getCodigo()>item.getCodigo()){
                 return false;
             }
         }

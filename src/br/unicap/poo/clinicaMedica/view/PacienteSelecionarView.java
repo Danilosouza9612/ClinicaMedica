@@ -20,13 +20,12 @@ public class PacienteSelecionarView {
         
     }
     
-    public Paciente selecionar(){
+    public Paciente selecionar(boolean voltarQuandoNaoEncontrado){
         String cpf;
         Paciente selecao;
         Scanner l = new Scanner(System.in);
         service = PacienteService.getInstance();
         do{
-            System.out.println("..................................");
             System.out.println("Digite o CPF do Paciente (Digite FIM para voltar):");
             cpf = l.nextLine();
             selecao=service.selecionar(cpf);
@@ -35,10 +34,12 @@ public class PacienteSelecionarView {
             }
             if(selecao==null){
                 System.out.println("Paciente não encontrado");
+                if(voltarQuandoNaoEncontrado){
+                    return null;
+                }
             }
         }while(selecao==null);
         
-        return selecao;
-        
+        return selecao;   
     }
 }

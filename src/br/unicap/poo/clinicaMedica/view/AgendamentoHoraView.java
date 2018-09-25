@@ -17,7 +17,7 @@ public class AgendamentoHoraView {
     public AgendamentoHoraView(){
         
     }
-    public boolean horaAgendamento(Date date){
+    public Date horaAgendamento(Date date){
         Calendar calendar;
         String dataString;
         String[] quebra;
@@ -26,7 +26,7 @@ public class AgendamentoHoraView {
         System.out.println("Digite a hora (XX:XX) (FIM para Sair):");
         dataString = l.nextLine();
         if(dataString.equalsIgnoreCase("FIM")){
-            return false;
+            return null;
         }
         quebra = dataString.split(":");
         calendar = Calendar.getInstance();
@@ -35,6 +35,6 @@ public class AgendamentoHoraView {
         calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(quebra[0]));
         calendar.set(Calendar.MINUTE, Integer.parseInt(quebra[1]));
         
-        return true;
+        return calendar.getTime();
     }
 }

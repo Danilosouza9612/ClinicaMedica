@@ -6,6 +6,7 @@
 package br.unicap.poo.clinicaMedica.view;
 
 import java.util.Scanner;
+import br.unicap.poo.clinicaMedica.service.ProcedimentoMedicoService;
 
 /**
  *
@@ -13,9 +14,31 @@ import java.util.Scanner;
  */
 public class ProcedimentoView {
     private TipoProcedimentoView tipoProcedimentoView;
+    private ProcedimentoVerView procedimentoVerView;
+    private ProcedimentoMedicoSelecionarView procedimentoSelecionarView;
+    private MedicoSelecionarView medicoSelecao;
+    private AgendamentoDataView dataSelecao;
+    private AgendamentoHoraView horaSelecao;
+    private ProcedimentoMedicoService service;
+    private PacienteSelecionarView pacienteSelecao;
+    private MedicoListaView listaMedico;;
     
     public ProcedimentoView(){
         tipoProcedimentoView = new TipoProcedimentoView();
+        procedimentoVerView = new ProcedimentoVerView();
+        procedimentoSelecionarView = new ProcedimentoMedicoSelecionarView();
+        medicoSelecao = new MedicoSelecionarView();
+        dataSelecao = new AgendamentoDataView();
+        pacienteSelecao = new PacienteSelecionarView();
+        horaSelecao = new AgendamentoHoraView();
+        listaMedico = new MedicoListaView();
+        service = ProcedimentoMedicoService.getInstance();
+        
+        
+        
+        
+        
+        
     }
     
     

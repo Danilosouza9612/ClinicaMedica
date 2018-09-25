@@ -6,6 +6,7 @@
 package br.unicap.poo.clinicaMedica.model;
 
 import br.unicap.poo.clinicaMedica.model.exceptions.AgendamentoException;
+import br.unicap.poo.clinicaMedica.model.exceptions.DataInvalidaException;
 import br.unicap.poo.clinicaMedica.model.exceptions.HorarioIndisponivelException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,16 +21,9 @@ public class Consulta extends Agendamento{
     private ArrayList<ProcedimentoMedico> procedimentos;
     private Paciente paciente;
     
-    public Consulta(int codigo, Date data, Medico medico, Paciente paciente) throws AgendamentoException, HorarioIndisponivelException{
+    public Consulta(int codigo, Date data, Medico medico, Paciente paciente) throws AgendamentoException{
         super(codigo, data);
-        if(paciente.getPlanoDeSaude().getSeguradoraPlano()==null){
-            System.out.println("É null");
-        }
-        if(medico.atendePlanoSaude(paciente.getPlanoDeSaude().getSeguradoraPlano())){
-            this.medico=medico;
-        }else{
-            throw new HorarioIndisponivelException();
-        }
+        this.medico=medico;
         this.paciente=paciente;
         exames = new ArrayList();
         procedimentos = new ArrayList();

@@ -47,7 +47,7 @@ public class PacienteView {
                     }
                     break;
                 case 2:
-                    selecao = pacienteSelecionarView.selecionar();
+                    selecao = pacienteSelecionarView.selecionar(false);
                     if(selecao!=null){
                         pacienteSelecaoView.selecaoPaciente(selecao);
                     }

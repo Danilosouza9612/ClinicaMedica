@@ -11,6 +11,8 @@ import br.unicap.poo.clinicaMedica.model.Paciente;
 import br.unicap.poo.clinicaMedica.model.exceptions.AgendamentoException;
 import br.unicap.poo.clinicaMedica.model.exceptions.HorarioIndisponivelException;
 import br.unicap.poo.clinicaMedica.service.ConsultaService;
+import br.unicap.poo.clinicaMedica.service.MedicoService;
+import br.unicap.poo.clinicaMedica.service.PacienteService;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -28,6 +30,10 @@ public class ConsultaView {
     private ConsultaService service;
     private PacienteSelecionarView pacienteSelecao;
     private MedicoListaView listaMedico;
+    private ConsultaPacientePreCadastro preCadastro;
+    private PacienteCadastrarView cadastrarPaciente;
+    private PacienteService pacService;
+    private MedicoService medService;
 
     public ConsultaView() {
         verConsultasView = new ConsultaVerView();
@@ -37,18 +43,22 @@ public class ConsultaView {
         pacienteSelecao = new PacienteSelecionarView();
         horaSelecao = new AgendamentoHoraView();
         listaMedico = new MedicoListaView();
+        preCadastro = new ConsultaPacientePreCadastro();
+        pacService = PacienteService.getInstance();
+        cadastrarPaciente = new PacienteCadastrarView();
+        service = ConsultaService.getInstance();
+        listaMedico = new MedicoListaView();
+        medService = MedicoService.getInstance();
     }
 
     public void menu() {
         Scanner l = new Scanner(System.in);
         int opcao;
         Medico medico;
-        Paciente paciente;
-        Date data;
-        boolean valido;
-        Consulta novo;
+        Paciente paciente=null;
+        Date data=null;
+        boolean valido=false;
         do {
-            System.out.println("..................................");
             System.out.println("1 - Ver consultas por data");
             System.out.println("2 - Ver consultas por médico");
             System.out.println("3 - Ver consultas por data e médico");
@@ -82,29 +92,30 @@ public class ConsultaView {
                     break;
                     
                 case 4:
+                    if((paciente=cadastroPaciente(paciente))==null){
+                        break;
+                    }
                     do{
                         valido=true;
-                        service = ConsultaService.getInstance();
-                        if((data = dataSelecao.dataAgendamento())==null){
-                            break;
-                        }
+                        listaMedico.listar(medService.listarMedico());
                         if((medico = medicoSelecao.selecionar())==null){
                             break;
-                        }
-                        if((paciente = pacienteSelecao.selecionar())==null){
-                            break;
-                        }
-                        if(!horaSelecao.horaAgendamento(data)){
-                            break;
-                        }
-                        try {
-                            novo = new Consulta(service.lastCode()+1, data, medico, paciente);
-                            service.AgendarConsulta(novo);
-                        } catch (AgendamentoException | HorarioIndisponivelException ex) {
-                            System.out.println(ex.getMessage());
-                            valido=false;
+                        }else{
+                            if(!medico.atendePlanoSaude(paciente.getPlanoDeSaude().getSeguradoraPlano())){
+                                valido=false;
+                                System.out.println("O médico não atende a este plano de saúde");
+                            }
                         }
                     }while(!valido);
+                    if((data=(cadastroDataEHora(data, medico)))==null){
+                        break;
+                    }
+                    if(data==null){
+                        System.out.println("É null");
+                    }
+                    if(!finalizarCadastro(data, medico, paciente)){
+                        break;
+                    }
                     break;
                 case 5:
                     break;
@@ -112,7 +123,56 @@ public class ConsultaView {
                     System.out.println("Opção inválida");
             }
         } while (opcao != 5);
-
+        
+    }
+    private boolean finalizarCadastro(Date data, Medico medico, Paciente paciente){
+        Consulta novo;
+        try {
+            novo = new Consulta(service.lastCode()+1, data, medico, paciente);
+            service.AgendarConsulta(novo);
+            if(pacService.selecionar(paciente.getCpf())==null){
+                pacService.cadastrarPaciente(paciente);
+            }
+        } catch (AgendamentoException ex) {
+            System.out.println(ex.getMessage());
+            if((data=cadastroDataEHora(data, medico))==null){
+                return finalizarCadastro(data, medico, paciente);
+            }else{
+                return false;
+            }
+        }
+        return true;
+    }
+    private Date cadastroDataEHora(Date data, Medico medico){
+        boolean horDisponivel=false;
+        do{
+            if((data = dataSelecao.dataAgendamento())==null){
+                return null;
+            }
+            if((data = horaSelecao.horaAgendamento(data))==null){
+                return null;
+            }
+            horDisponivel=medico.horarioDisponivel(data);
+            if(!horDisponivel){
+                System.out.println("Horário indisponível pro médico");
+            }
+        }while(!horDisponivel);
+        return data;
+    }
+    private Paciente cadastroPaciente(Paciente paciente){
+        if((paciente = pacienteSelecao.selecionar(true))==null){
+            if(preCadastro.preCadastro()){
+                paciente=cadastrarPaciente.cadastrarPaciente(true);
+                if(paciente==null){
+                    return null;
+                }else{
+                    return paciente;
+                }
+            }else{
+                return null;
+            }
+        }
+        return paciente;
     }
 
 }

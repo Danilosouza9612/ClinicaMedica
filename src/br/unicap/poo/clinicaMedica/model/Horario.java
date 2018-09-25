@@ -59,7 +59,7 @@ public class Horario {
             this.saida=saida;
         }
     }
-    boolean horarioValido(int diaSemana, int hora){
+    public boolean horarioValido(int diaSemana, int hora){
         return diaSemana==this.diaSemana.getValorDiaSemana() && hora > chegada && hora < saida;
     }
     public boolean equals(Object horario){
