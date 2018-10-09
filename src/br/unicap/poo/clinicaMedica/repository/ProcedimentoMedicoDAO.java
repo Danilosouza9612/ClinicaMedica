@@ -15,9 +15,15 @@ import java.util.List;
  */
 public class ProcedimentoMedicoDAO implements ProcedimentoMedicoRepBridge{
     private ArrayList<ProcedimentoMedico> dataBase;
+    private static ProcedimentoMedicoDAO instance;
     
-    public ProcedimentoMedicoDAO(){
+    private ProcedimentoMedicoDAO(){
         dataBase = new ArrayList();
+    }
+    public synchronized static ProcedimentoMedicoDAO getInstance(){
+        if(instance==null)
+            instance = new ProcedimentoMedicoDAO();
+        return instance;
     }
     @Override
     public boolean inserir(ProcedimentoMedico item) {

@@ -7,7 +7,7 @@ package br.unicap.poo.clinicaMedica.service;
 import br.unicap.poo.clinicaMedica.model.Especialidade;
 import br.unicap.poo.clinicaMedica.repository.EspecialidadeDAO;
 import br.unicap.poo.clinicaMedica.repository.EspecialidadeRepBridge;
-
+import br.unicap.poo.clinicaMedica.repository.EspecialidadeRepFactory;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -18,17 +18,10 @@ import java.util.List;
  */
 public class EspecialidadeService {
     private EspecialidadeRepBridge especialidades;
-    private static EspecialidadeService instance;
     
-    private EspecialidadeService(){
-        especialidades = new EspecialidadeDAO();
-    }
-    public synchronized static EspecialidadeService getInstance(){
-        if(instance==null){
-            instance = new EspecialidadeService();
-        }
-        
-        return instance;
+    public EspecialidadeService(){
+        EspecialidadeRepFactory instance = new EspecialidadeRepFactory();
+        especialidades = instance.getInstance();
     }
     public void inserirEspecialidade(Especialidade item){
         especialidades.inserir(item);

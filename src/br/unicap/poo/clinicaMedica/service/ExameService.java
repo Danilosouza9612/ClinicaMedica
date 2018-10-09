@@ -4,6 +4,7 @@ import br.unicap.poo.clinicaMedica.model.Agendamento;
 import br.unicap.poo.clinicaMedica.model.Exame;
 import br.unicap.poo.clinicaMedica.model.Medico;
 import br.unicap.poo.clinicaMedica.repository.ExameRepBridge;
+import br.unicap.poo.clinicaMedica.repository.ExameRepFactory;
 import br.unicap.poo.clinicaMedica.repository.ExameDAO;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,17 +13,10 @@ import java.util.Date;
 public class ExameService {
 
     private ExameRepBridge exames;
-    private static ExameService instance;
 
     private ExameService(){
-        exames = new ExameDAO();
-    }
-    public synchronized static ExameService getInstance(){
-        if(instance==null){
-            instance = new ExameService();
-        }
-        
-        return instance;
+        ExameRepFactory instance = new ExameRepFactory();
+        exames = instance.getInstance();
     }
     public void novoExame(Exame item) {
         exames.inserir(item);

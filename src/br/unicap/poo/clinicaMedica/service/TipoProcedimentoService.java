@@ -6,6 +6,7 @@
 package br.unicap.poo.clinicaMedica.service;
 import br.unicap.poo.clinicaMedica.model.TipoProcedimento;
 import br.unicap.poo.clinicaMedica.repository.TipoProcedimentoRepBridge;
+import br.unicap.poo.clinicaMedica.repository.TipoProcedimentoRepFactory;
 import br.unicap.poo.clinicaMedica.repository.TipoProcedimentoDAO;
 import java.util.Collections;
 import java.util.Comparator;
@@ -16,17 +17,12 @@ import java.util.List;
  */
 public class TipoProcedimentoService {
     private TipoProcedimentoRepBridge tipoProcedimentos;
-    private static TipoProcedimentoService instance;
     
-    private TipoProcedimentoService(){
-        tipoProcedimentos = new TipoProcedimentoDAO();
+    public TipoProcedimentoService(){
+        TipoProcedimentoRepFactory instance = new TipoProcedimentoRepFactory();
+        tipoProcedimentos = instance.getInstance();
     }
-    public synchronized static TipoProcedimentoService getInstance(){
-        if(instance==null){
-            instance = new TipoProcedimentoService();
-        }
-        return instance;
-    }
+
     public void cadastrarTipoProcedimento(TipoProcedimento item){
         tipoProcedimentos.inserir(item);
     }

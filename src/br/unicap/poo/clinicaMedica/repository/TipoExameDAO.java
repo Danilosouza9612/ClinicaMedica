@@ -15,10 +15,16 @@ import java.util.List;
  */
 public class TipoExameDAO implements TipoExameRepBridge{
     private ArrayList<TipoExame> dataBase;
+    private static TipoExameDAO instance;
     
-    public TipoExameDAO(){
+    private TipoExameDAO(){
         dataBase = new ArrayList();
     }
+    public synchronized static TipoExameDAO getInstance(){
+        if(instance==null)
+            instance = new TipoExameDAO();
+        return instance;
+    } 
     @Override
     public boolean inserir(TipoExame item) {
         return dataBase.add(item);

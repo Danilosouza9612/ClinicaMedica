@@ -14,10 +14,16 @@ import java.util.List;
  * @author Danilo
  */
 public class MedicoDAO implements MedicoRepBridge{
-    ArrayList<Medico> dataBase;
+    private ArrayList<Medico> dataBase;
+    private static MedicoDAO instance;
     
-    public MedicoDAO(){
+    private MedicoDAO(){
         dataBase = new ArrayList();
+    }
+    public synchronized static MedicoDAO getInstance(){
+        if(instance==null)
+            instance = new MedicoDAO();
+        return instance;
     }
     @Override
     public boolean inserir(Medico item) {

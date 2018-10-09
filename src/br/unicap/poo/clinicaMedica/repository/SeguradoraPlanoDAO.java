@@ -15,10 +15,16 @@ import java.util.List;
  */
 public class SeguradoraPlanoDAO implements SeguradoraPlanoRepBridge{
     private ArrayList<SeguradoraPlano> dataBase;
+    private static SeguradoraPlanoDAO instance;
     
-    public SeguradoraPlanoDAO(){
+    private SeguradoraPlanoDAO(){
         dataBase = new ArrayList();
     }
+    public synchronized static SeguradoraPlanoDAO getInstance(){
+        if(instance==null)
+            instance = new SeguradoraPlanoDAO();
+        return instance;
+    } 
     @Override
     public boolean inserir(SeguradoraPlano item) {
         return dataBase.add(item);

@@ -14,10 +14,17 @@ import java.util.List;
  * @author Danilo
  */
 public class EspecialidadeDAO implements EspecialidadeRepBridge{
-    ArrayList<Especialidade> dataBase;
+    private ArrayList<Especialidade> dataBase;
+    private static EspecialidadeDAO instance;
     
-    public EspecialidadeDAO(){
+    private EspecialidadeDAO(){
         dataBase = new ArrayList();
+    }
+    public synchronized static EspecialidadeDAO getInstance(){
+        if(instance==null){
+            instance = new EspecialidadeDAO();
+        }
+        return instance;
     }
     @Override
     public boolean inserir(Especialidade item) {

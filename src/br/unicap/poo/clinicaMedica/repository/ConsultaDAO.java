@@ -16,9 +16,16 @@ import java.util.List;
 public class ConsultaDAO implements ConsultaRepBridge {
     
     private ArrayList<Consulta> dataBase;
+    private static ConsultaDAO instance;
     
-    public ConsultaDAO(){
+    private ConsultaDAO(){
         dataBase = new ArrayList();
+    }
+    public synchronized static ConsultaDAO getInstance(){
+        if(instance==null){
+            instance = new ConsultaDAO();
+        }
+        return instance;
     }
     @Override
     public boolean inserir(Consulta item) {

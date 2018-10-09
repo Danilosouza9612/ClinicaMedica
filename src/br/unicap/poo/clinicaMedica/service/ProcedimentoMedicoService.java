@@ -5,24 +5,18 @@ import br.unicap.poo.clinicaMedica.model.Medico;
 import br.unicap.poo.clinicaMedica.model.ProcedimentoMedico;
 import br.unicap.poo.clinicaMedica.repository.ProcedimentoMedicoDAO;
 import br.unicap.poo.clinicaMedica.repository.ProcedimentoMedicoRepBridge;
+import br.unicap.poo.clinicaMedica.repository.ProcedimentoMedicoRepFactory;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class ProcedimentoMedicoService {
     private ProcedimentoMedicoRepBridge procedimentos;
-    private static ProcedimentoMedicoService instance;
     
-    private ProcedimentoMedicoService(){
-        procedimentos=new ProcedimentoMedicoDAO();  
-    }
-    public static synchronized ProcedimentoMedicoService getInstance(){
-        if(instance==null){
-            instance = new ProcedimentoMedicoService();
-        }
-        return instance;
-    }
-    
+    public ProcedimentoMedicoService(){
+        ProcedimentoMedicoRepFactory instance = new ProcedimentoMedicoRepFactory();
+        procedimentos = instance.getInstance();
+    }   
     public void agendarProcedimento(ProcedimentoMedico procedimento){
         procedimentos.inserir(procedimento);
     }

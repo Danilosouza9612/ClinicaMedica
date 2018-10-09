@@ -14,10 +14,16 @@ import java.util.List;
  * @author Danilo
  */
 public class ExameDAO implements ExameRepBridge{
-    ArrayList<Exame> dataBase;
+    private ArrayList<Exame> dataBase;
+    private static ExameDAO instance;
     
-    public ExameDAO(){
+    private ExameDAO(){
         dataBase = new ArrayList();
+    }
+    public synchronized static ExameDAO getInstance(){
+        if(instance==null)
+            instance = new ExameDAO();
+        return instance;
     }
     @Override
     public boolean inserir(Exame item) {

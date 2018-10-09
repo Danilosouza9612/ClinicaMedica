@@ -15,14 +15,20 @@ import java.util.List;
  */
 public class PacienteDAO implements PacienteRepBridge{
     private ArrayList<Paciente> dataBase;
+    private static PacienteDAO instance;
     
-    public PacienteDAO(){
+    private PacienteDAO(){
         dataBase = new ArrayList();
     }
     @Override
     public boolean inserir(Paciente item) {
         return dataBase.add(item);
     }
+    public synchronized static PacienteDAO getInstance(){
+        if(instance==null)
+            instance = new PacienteDAO();
+        return instance;
+    } 
 
     @Override
     public boolean alterar(Paciente item) {

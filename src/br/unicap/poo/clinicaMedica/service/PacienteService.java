@@ -3,20 +3,16 @@ package br.unicap.poo.clinicaMedica.service;
 import br.unicap.poo.clinicaMedica.model.Paciente;
 import br.unicap.poo.clinicaMedica.repository.PacienteDAO;
 import br.unicap.poo.clinicaMedica.repository.PacienteRepBridge;
+import br.unicap.poo.clinicaMedica.repository.PacienteRepFactory;
+
 
 public class PacienteService {
 
     private PacienteRepBridge pacientes;
-    private static PacienteService instance;
 
-    private PacienteService() {
-        pacientes = new PacienteDAO();
-    }
-    public synchronized static PacienteService getInstance(){
-        if(instance==null){
-            instance = new PacienteService();
-        }
-        return instance;
+    public PacienteService() {
+        PacienteRepFactory instance = new PacienteRepFactory();
+        pacientes = instance.getInstance();
     }
     
     public void cadastrarPaciente(Paciente item){

@@ -5,6 +5,8 @@ import br.unicap.poo.clinicaMedica.model.Consulta;
 import br.unicap.poo.clinicaMedica.model.Medico;
 import br.unicap.poo.clinicaMedica.repository.ConsultaDAO;
 import br.unicap.poo.clinicaMedica.repository.ConsultaRepBridge;
+import br.unicap.poo.clinicaMedica.repository.ConsultaRepFactory;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,17 +14,10 @@ import java.util.List;
 
 public class ConsultaService {
     private ConsultaRepBridge consultas;
-    private static ConsultaService instance;
     
-    private ConsultaService(){
-        consultas = new ConsultaDAO();
-    }
-    public synchronized static ConsultaService getInstance(){
-        if(instance==null){
-            instance = new ConsultaService();
-        }
-        
-        return instance;
+    public ConsultaService(){
+        ConsultaRepFactory instance = new ConsultaRepFactory();
+        consultas = instance.getInstance();
     }
     public void AgendarConsulta(Consulta item){
         consultas.inserir(item);
