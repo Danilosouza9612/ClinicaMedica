@@ -7,7 +7,6 @@ package br.unicap.poo.clinicaMedica.service;
 import br.unicap.poo.clinicaMedica.model.TipoProcedimento;
 import br.unicap.poo.clinicaMedica.repository.TipoProcedimentoRepBridge;
 import br.unicap.poo.clinicaMedica.repository.TipoProcedimentoRepFactory;
-import br.unicap.poo.clinicaMedica.repository.TipoProcedimentoDAO;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -43,9 +42,6 @@ public class TipoProcedimentoService {
         TipoProcedimento selecao = tipoProcedimentos.selecionar(codigo);
         
         return selecao;        
-    }
-    public int lastCode(){
-        return tipoProcedimentos.lastCode();
     }
 
 }

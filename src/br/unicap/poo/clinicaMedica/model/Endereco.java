@@ -26,6 +26,11 @@ public class Endereco {
     public Endereco(){
         
     }
+    private Endereco(Endereco endereco){
+        this.cep=endereco.cep;
+        this.numero=endereco.numero;
+        this.complemento=endereco.complemento;
+    }
     public String getCep() {
         return cep;
     }
@@ -64,6 +69,9 @@ public class Endereco {
     
     public boolean enderecoCompleto(){
         return cep!=null;
+    }
+    public Endereco clonar(){
+        return new Endereco(this);
     }
     
 }

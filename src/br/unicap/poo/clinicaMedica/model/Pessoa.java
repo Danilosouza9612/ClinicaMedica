@@ -19,6 +19,10 @@ public abstract class Pessoa{
     public Pessoa(){
         
     }
+    protected Pessoa(Pessoa pessoa){
+        this.nome=pessoa.nome;
+        this.telefone=pessoa.telefone;
+    }
     public String getNome() {
         return nome;
     }

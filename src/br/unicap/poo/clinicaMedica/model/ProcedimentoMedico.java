@@ -16,8 +16,8 @@ public class ProcedimentoMedico extends Agendamento{
     public Consulta consulta;
     public TipoProcedimento tipo;
 
-    public ProcedimentoMedico(int codigo, Date data, Consulta consulta, TipoProcedimento tipo) throws AgendamentoException {
-        super(codigo, data);
+    public ProcedimentoMedico(Date data, Consulta consulta, TipoProcedimento tipo) throws AgendamentoException {
+        super(data);
         this.consulta = consulta;
     }
     private ProcedimentoMedico(int codigo, ProcedimentoMedico procedimento){

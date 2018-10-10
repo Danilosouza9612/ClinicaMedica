@@ -27,7 +27,7 @@ public class TipoProcedimentoDAO implements TipoProcedimentoRepBridge{
     } 
     @Override
     public boolean inserir(TipoProcedimento item) {
-        return dataBase.add(item);
+        return dataBase.add(item.clonar(lastCode()+1));
     }
 
     @Override
@@ -76,8 +76,7 @@ public class TipoProcedimentoDAO implements TipoProcedimentoRepBridge{
         }
         return null;
     }
-    @Override
-    public int lastCode(){
+    private int lastCode(){
         if(dataBase.isEmpty()){
             return -1;
         }

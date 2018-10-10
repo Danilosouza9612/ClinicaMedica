@@ -56,8 +56,5 @@ public class ExameService {
         
         return selecao;
     }
-    public int lastCode(){
-        return exames.lastCode();
-    }
 
 }

@@ -27,7 +27,7 @@ public class ExameDAO implements ExameRepBridge{
     }
     @Override
     public boolean inserir(Exame item) {
-        return dataBase.add(item);
+        return dataBase.add((Exame)item.clonar(lastCode()+1));
     }
 
     @Override
@@ -75,8 +75,7 @@ public class ExameDAO implements ExameRepBridge{
         }
         return null;
     }
-    @Override
-    public int lastCode(){
+    private int lastCode(){
         if(dataBase.isEmpty()){
             return -1;
         }

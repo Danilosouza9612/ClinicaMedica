@@ -46,7 +46,4 @@ public class SeguradoraPlanoService {
         
         return selecao;
     }
-    public int lastCode(){
-        return seguradorasPlano.lastCode();
-    }
 }

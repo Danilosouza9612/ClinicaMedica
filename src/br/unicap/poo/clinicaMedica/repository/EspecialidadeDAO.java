@@ -28,7 +28,7 @@ public class EspecialidadeDAO implements EspecialidadeRepBridge{
     }
     @Override
     public boolean inserir(Especialidade item) {
-        return dataBase.add(item);
+        return dataBase.add(item.clonar(lastCode()+1));
     }
 
     @Override
@@ -76,8 +76,7 @@ public class EspecialidadeDAO implements EspecialidadeRepBridge{
         }
         return null;
     }
-    @Override
-    public int lastCode(){
+    private int lastCode(){
         if(dataBase.isEmpty()){
             return -1;
         }

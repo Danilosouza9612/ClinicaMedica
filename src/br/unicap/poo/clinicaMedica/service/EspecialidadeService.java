@@ -46,7 +46,4 @@ public class EspecialidadeService {
         
         return selecao;
     }
-    public int lastCode(){
-        return especialidades.lastCode();
-    }
 }

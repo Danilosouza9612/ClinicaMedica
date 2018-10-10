@@ -23,6 +23,13 @@ public class PlanoSaudeMedico {
         this.atendePrivado=atendePrivado;
         seguradorasPlano = new ArrayList<>();
     }
+    private PlanoSaudeMedico(PlanoSaudeMedico planoSaudeMedico){
+        this.atendePrivado=planoSaudeMedico.atendePrivado;
+        seguradorasPlano = new ArrayList();
+        for(SeguradoraPlano item : planoSaudeMedico.seguradorasPlano){
+            this.seguradorasPlano.add(item);
+        }
+    }
     
     public boolean isAtendePrivado(){
         return atendePrivado;
@@ -77,5 +84,8 @@ public class PlanoSaudeMedico {
             cont++;
         }
         throw new SeguradoraPlanoSaudeMedicoNaoEncontradaException();
+    }
+    public PlanoSaudeMedico clonar(){
+        return new PlanoSaudeMedico(this);
     }
 }

@@ -44,7 +44,7 @@ public class TipoProcedimentoView {
                     break;
                 case 2:
                     cadastrarTipoProcedimento = new EditarDescricaoTipoProcedimentoView();
-                    TipoProcedimento novo = new TipoProcedimento(service.lastCode()+1);
+                    TipoProcedimento novo = new TipoProcedimento();
                     service.cadastrarTipoProcedimento(novo);
 
                     cadastrarTipoProcedimento.editarDescricao(novo);

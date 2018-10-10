@@ -15,8 +15,12 @@ public class TipoProcedimento{
     private final int codigo;
     private String descricao;
 
-    public TipoProcedimento(int codigo) {
-        this.codigo = codigo;
+    public TipoProcedimento() {
+        this.codigo = 0;
+    }
+    private TipoProcedimento(int codigo, TipoProcedimento tipoProcedimento){
+        this.codigo=codigo;
+        this.descricao=tipoProcedimento.descricao;
     }
     public int getCodigo() {
         return codigo;
@@ -26,5 +30,8 @@ public class TipoProcedimento{
     }
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+    public TipoProcedimento clonar(int codigo){
+        return new TipoProcedimento(codigo, this);
     }
 }

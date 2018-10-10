@@ -44,7 +44,4 @@ public class MedicoService {
         
         return listaMedicos;
     }
-    public int lastCode(){
-        return medicos.lastCode();
-    }
 }

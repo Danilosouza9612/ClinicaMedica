@@ -41,7 +41,7 @@ public class TipoExameView {
                     break;
                 case 2:
                     cadastrar = new EditarDescricaoTipoExameView();
-                    TipoExame novo = new TipoExame(service.lastCode()+1);
+                    TipoExame novo = new TipoExame();
                     service.adicionarTipo(novo);
 
                     cadastrar.editarDescricao(novo);

@@ -128,7 +128,7 @@ public class ConsultaView {
     private boolean finalizarCadastro(Date data, Medico medico, Paciente paciente){
         Consulta novo;
         try {
-            novo = new Consulta(service.lastCode()+1, data, medico, paciente);
+            novo = new Consulta(data, medico, paciente);
             service.AgendarConsulta(novo);
             if(pacService.selecionar(paciente.getCpf())==null){
                 pacService.cadastrarPaciente(paciente);

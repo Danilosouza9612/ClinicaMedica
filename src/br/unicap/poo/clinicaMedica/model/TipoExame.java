@@ -14,8 +14,12 @@ public class TipoExame{
     private final int codigo;
     private String descricao;
 
-    public TipoExame(int codigo) {
-        this.codigo = codigo;
+    public TipoExame() {
+        this.codigo = 0;
+    }
+    private TipoExame(int codigo, TipoExame tipoExame){
+        this.codigo=codigo;
+        this.descricao=tipoExame.descricao;
     }
     
     public int getCodigo(){
@@ -27,5 +31,8 @@ public class TipoExame{
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+    public TipoExame clonar(int codigo){
+        return new TipoExame(codigo, this);
     }
 }

@@ -17,8 +17,12 @@ public class SeguradoraPlano {
     private final int codigo;
     private String descricao;
 
-    public SeguradoraPlano(int codigo) {
-        this.codigo = codigo;
+    public SeguradoraPlano() {
+        this.codigo = 0;
+    }
+    private SeguradoraPlano(int codigo, SeguradoraPlano seguradoraPlano){
+        this.codigo=codigo;
+        this.descricao=seguradoraPlano.descricao;
     }
     public int getCodigo() {
         return codigo;
@@ -33,5 +37,8 @@ public class SeguradoraPlano {
     public boolean equals(Object seguradoraPlano){
         SeguradoraPlano objeto = (SeguradoraPlano)seguradoraPlano;
         return objeto.codigo==this.codigo;
+    }
+    public SeguradoraPlano clonar(int codigo){
+        return new SeguradoraPlano(codigo, this);
     }
 }

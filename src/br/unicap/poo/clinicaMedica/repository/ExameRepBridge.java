@@ -18,5 +18,4 @@ public interface ExameRepBridge {
     public boolean remover(Exame item);
     public List<Exame> listar();
     public Exame selecionar(int codigo); 
-    public int lastCode();
 }

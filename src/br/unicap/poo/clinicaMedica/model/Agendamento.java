@@ -17,9 +17,9 @@ public abstract class Agendamento{
     private Date data;
     private Status status;
 
-    public Agendamento(int codigo, Date data) throws AgendamentoException {
-        this.codigo = codigo;
+    public Agendamento(Date data) throws AgendamentoException {
         setData(data);
+        this.codigo=0;
     }
     protected Agendamento(int codigo, Agendamento agendamento){
         this.codigo=codigo;

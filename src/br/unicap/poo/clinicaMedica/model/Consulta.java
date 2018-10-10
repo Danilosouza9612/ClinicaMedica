@@ -32,8 +32,8 @@ public class Consulta extends Agendamento{
         }
         this.paciente=consulta.paciente;
     }
-    public Consulta(int codigo, Date data, Medico medico, Paciente paciente) throws AgendamentoException{
-        super(codigo, data);
+    public Consulta(Date data, Medico medico, Paciente paciente) throws AgendamentoException{
+        super(data);
         this.medico=medico;
         this.paciente=paciente;
         exames = new ArrayList();

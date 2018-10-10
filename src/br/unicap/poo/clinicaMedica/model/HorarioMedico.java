@@ -21,8 +21,14 @@ public class HorarioMedico {
     private ArrayList<Horario> horarios;
     
     public HorarioMedico(Horario horario){
-        horarios = new ArrayList<>();
+        this.horarios = new ArrayList<>();
         this.horarios.add(horario);
+    }
+    private HorarioMedico(HorarioMedico horarioMedico){
+        this.horarios = new ArrayList();
+        for(Horario item : horarioMedico.horarios){
+            this.horarios.add(item.clonar());
+        }
     }
     public List<Horario> getHorarios(){
         return horarios;
@@ -77,6 +83,9 @@ public class HorarioMedico {
             }
         }
         return null;
+    }
+    public HorarioMedico clonar(){
+        return new HorarioMedico(this);
     }
     public int lastCode(){
         return horarios.get(horarios.size()-1).getCodigo();

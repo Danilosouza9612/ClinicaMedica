@@ -27,7 +27,7 @@ public class ProcedimentoMedicoDAO implements ProcedimentoMedicoRepBridge{
     }
     @Override
     public boolean inserir(ProcedimentoMedico item) {
-        return dataBase.add(item);
+        return dataBase.add((ProcedimentoMedico)item.clonar(lastCode()+1));
     }
 
     @Override
@@ -76,8 +76,7 @@ public class ProcedimentoMedicoDAO implements ProcedimentoMedicoRepBridge{
         }
         return null;
     } 
-    @Override
-    public int lastCode(){
+    private int lastCode(){
         if(dataBase.isEmpty()){
             return -1;
         }

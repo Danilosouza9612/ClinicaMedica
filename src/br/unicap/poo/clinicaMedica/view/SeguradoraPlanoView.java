@@ -41,7 +41,7 @@ public class SeguradoraPlanoView {
                     break;
                 case 2:
                     cadastrar = new EditarDescricaoSeguradoraPlanoView();
-                    SeguradoraPlano novo = new SeguradoraPlano(service.lastCode()+1);
+                    SeguradoraPlano novo = new SeguradoraPlano();
                     service.inserirSeguradora(novo);
 
                     cadastrar.editarDescricao(novo);

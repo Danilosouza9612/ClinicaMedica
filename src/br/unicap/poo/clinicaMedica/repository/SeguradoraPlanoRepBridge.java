@@ -18,5 +18,4 @@ public interface SeguradoraPlanoRepBridge {
     public boolean remover(SeguradoraPlano item);
     public List<SeguradoraPlano> listar();
     public SeguradoraPlano selecionar(int codigo);
-    public int lastCode();
 }

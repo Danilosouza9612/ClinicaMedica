@@ -27,7 +27,7 @@ public class SeguradoraPlanoDAO implements SeguradoraPlanoRepBridge{
     } 
     @Override
     public boolean inserir(SeguradoraPlano item) {
-        return dataBase.add(item);
+        return dataBase.add(item.clonar(lastCode()+1));
     }
 
     @Override
@@ -76,8 +76,7 @@ public class SeguradoraPlanoDAO implements SeguradoraPlanoRepBridge{
         }
         return null;
     }
-    @Override
-    public int lastCode(){
+    private int lastCode(){
         if(dataBase.isEmpty()){
             return -1;
         }

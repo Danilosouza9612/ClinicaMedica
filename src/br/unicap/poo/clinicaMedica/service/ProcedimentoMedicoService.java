@@ -58,8 +58,5 @@ public class ProcedimentoMedicoService {
         
         return selecao;
     }
-    public int lastCode(){
-        return procedimentos.lastCode();
-    }
 }
 

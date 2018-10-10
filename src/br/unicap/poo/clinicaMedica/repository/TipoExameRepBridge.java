@@ -18,5 +18,4 @@ public interface TipoExameRepBridge {
     public boolean remover(TipoExame item);
     public List<TipoExame> listar();
     public TipoExame selecionar(int codigo);
-    public int lastCode();
 }

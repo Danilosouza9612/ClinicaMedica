@@ -27,7 +27,7 @@ public class TipoExameDAO implements TipoExameRepBridge{
     } 
     @Override
     public boolean inserir(TipoExame item) {
-        return dataBase.add(item);
+        return dataBase.add(item.clonar(lastCode()+1));
     }
 
     @Override
@@ -76,8 +76,7 @@ public class TipoExameDAO implements TipoExameRepBridge{
         }
         return null;
     }
-    @Override
-    public int lastCode(){
+    private int lastCode(){
         if(dataBase.isEmpty()){
             return -1;
         }

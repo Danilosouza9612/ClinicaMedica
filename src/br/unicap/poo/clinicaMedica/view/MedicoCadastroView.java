@@ -64,7 +64,7 @@ public class MedicoCadastroView {
         if(!diaSemanaView.alterarDiaSemana(horario)){
             return;
         }
-        medico = new Medico(service.lastCode()+1, horario, especialidade);
+        medico = new Medico(horario, especialidade);
         if(!nomeMedico.editarNome(medico)){
             return;
         }

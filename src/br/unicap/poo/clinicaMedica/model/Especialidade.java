@@ -15,8 +15,8 @@ public class Especialidade{
     private final int codigo;
     private String descricao;
 
-    public Especialidade(int codigo) {
-        this.codigo = codigo;
+    public Especialidade() {
+        this.codigo = 0;
     }
     private Especialidade(int codigo, Especialidade especialidade){
         this.codigo=codigo;

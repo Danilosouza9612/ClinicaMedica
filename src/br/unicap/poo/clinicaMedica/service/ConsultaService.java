@@ -54,7 +54,4 @@ public class ConsultaService {
         
         return selecao;
     }
-    public int lastCode(){
-        return consultas.lastCode();
-    }
 }

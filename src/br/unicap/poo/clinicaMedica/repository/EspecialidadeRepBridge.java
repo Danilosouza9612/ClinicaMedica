@@ -18,5 +18,4 @@ public interface EspecialidadeRepBridge {
     public boolean remover(Especialidade item);
     public List<Especialidade> listar();
     public Especialidade selecionar(int codigo);
-    public int lastCode();
 }

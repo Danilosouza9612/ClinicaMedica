@@ -21,6 +21,12 @@ public class EspecialidadeMedico {
         especialidades= new ArrayList<>();
         especialidades.add(especialidade);
     }
+    private EspecialidadeMedico(EspecialidadeMedico especialidadeMedico){
+        especialidades = new ArrayList<>();
+        for(Especialidade item : especialidadeMedico.especialidades){
+            especialidades.add(item);
+        }
+    }
     public List<Especialidade> getEspecialidades() {
         return especialidades;
     }
@@ -57,6 +63,9 @@ public class EspecialidadeMedico {
         }
         throw new EspecialidadeMedicoNaoEncontradaException();
 
+    }
+    public EspecialidadeMedico clonar(){
+        return new EspecialidadeMedico(this);
     }
     
     

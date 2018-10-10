@@ -140,7 +140,7 @@ class ConsultaSelecaoView {
                             }
 
                             try {
-                                novoExame = new Exame(exService.lastCode()+1, data, consulta, tipoExame);
+                                novoExame = new Exame(data, consulta, tipoExame);
                                 consulta.addExame(novoExame);
                                 exService.novoExame(novoExame);
                                 service.alterarConsulta(consulta);
@@ -164,7 +164,7 @@ class ConsultaSelecaoView {
                             }
                             
                             try {
-                                novoProcedimento = new ProcedimentoMedico(exService.lastCode()+1, data, consulta, tipoProcedimento);
+                                novoProcedimento = new ProcedimentoMedico(data, consulta, tipoProcedimento);
                                 consulta.addProcedimento(novoProcedimento);
                                 proService.agendarProcedimento(novoProcedimento);
                                 service.alterarConsulta(consulta);

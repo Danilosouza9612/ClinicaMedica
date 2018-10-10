@@ -24,6 +24,18 @@ public class Horario {
         this.saida=23;
         this.codigo=codigo;
     }
+    private Horario(Horario horario){
+        this.diaSemana=horario.diaSemana;
+        this.chegada=horario.chegada;
+        this.saida=horario.saida;
+        this.codigo=horario.codigo;
+    }
+    private Horario(int codigo, Horario horario){
+        this.codigo=codigo;
+        this.chegada=horario.chegada;
+        this.saida=horario.saida;
+        this.diaSemana=horario.diaSemana;
+    }
     public int getCodigo(){
         return codigo;
     }
@@ -62,10 +74,17 @@ public class Horario {
     public boolean horarioValido(int diaSemana, int hora){
         return diaSemana==this.diaSemana.getValorDiaSemana() && hora > chegada && hora < saida;
     }
+    @Override
     public boolean equals(Object horario){
         Horario objeto = (Horario)horario;
         
         return objeto.diaSemana==this.diaSemana && objeto.chegada==this.chegada && objeto.saida==this.saida;
+    }
+    public Horario clonar(){
+        return new Horario(this);
+    }
+    public Horario clonar(int codigo){
+        return new Horario(codigo, this);
     }
     
 }

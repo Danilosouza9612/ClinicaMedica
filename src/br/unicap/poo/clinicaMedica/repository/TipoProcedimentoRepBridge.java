@@ -18,5 +18,4 @@ public interface TipoProcedimentoRepBridge {
     public boolean remover(TipoProcedimento item);
     public List<TipoProcedimento> listar();
     public TipoProcedimento selecionar(int codigo);
-    public int lastCode();
 }

@@ -16,8 +16,8 @@ public class Exame extends Agendamento{
     private Consulta consulta;
     private TipoExame tipo;
     
-    public Exame(int codigo, Date data, Consulta consulta, TipoExame tipo) throws AgendamentoException{
-        super(codigo, data);
+    public Exame(Date data, Consulta consulta, TipoExame tipo) throws AgendamentoException{
+        super(data);
         this.tipo=tipo;
         this.consulta=consulta;
     }

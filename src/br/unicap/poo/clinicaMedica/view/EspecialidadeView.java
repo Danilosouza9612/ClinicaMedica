@@ -41,7 +41,7 @@ public class EspecialidadeView {
                     break;
                 case 2:
                     cadastrar = new EditarDescricaoEspecialidadeView();
-                    Especialidade novo = new Especialidade(service.lastCode()+1);
+                    Especialidade novo = new Especialidade();
                     service.inserirEspecialidade(novo);
 
                     cadastrar.editarDescricao(novo);

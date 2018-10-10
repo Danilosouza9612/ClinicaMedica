@@ -45,7 +45,4 @@ public class TipoExameService {
         
         return tiposExames;
     }
-    public int lastCode(){
-        return tipoExames.lastCode();
-    }
 }

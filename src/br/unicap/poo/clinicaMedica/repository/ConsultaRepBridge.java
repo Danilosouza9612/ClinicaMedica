@@ -18,5 +18,4 @@ public interface ConsultaRepBridge {
     public boolean remover(Consulta item);
     public List<Consulta> listar();
     public Consulta selecionar(int codigo);
-    public int lastCode();
 }
