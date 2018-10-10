@@ -18,6 +18,5 @@ public class EditarDescricaoSeguradoraPlanoView {
         System.out.println("Digite a descrição");
         descricao=l.nextLine();
         seguradoraPlano.setDescricao(descricao);
-        service.alterarSeguradora(seguradoraPlano);
      }
 }

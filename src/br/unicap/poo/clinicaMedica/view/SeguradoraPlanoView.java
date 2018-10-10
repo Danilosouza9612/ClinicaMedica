@@ -42,9 +42,10 @@ public class SeguradoraPlanoView {
                 case 2:
                     cadastrar = new EditarDescricaoSeguradoraPlanoView();
                     SeguradoraPlano novo = new SeguradoraPlano();
-                    service.inserirSeguradora(novo);
 
                     cadastrar.editarDescricao(novo);
+                    service.inserirSeguradora(novo);
+
                     break;
                 case 3:
                     break;
