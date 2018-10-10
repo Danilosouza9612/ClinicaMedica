@@ -17,7 +17,7 @@ public class PacienteExcluirView {
     private PacienteService service;
 
     public PacienteExcluirView(){
-        
+        service = new PacienteService();
     }
     public boolean excluirPaciente(Paciente paciente){
         Scanner l = new Scanner(System.in);
@@ -27,7 +27,6 @@ public class PacienteExcluirView {
             System.out.println("Confirmar a exclusão (S/N)?");
             op=l.nextLine().toLowerCase().charAt(0);
             if(op=='s'){
-                service = PacienteService.getInstance();
                 service.removerPaciente(paciente);
                 return true;
             }

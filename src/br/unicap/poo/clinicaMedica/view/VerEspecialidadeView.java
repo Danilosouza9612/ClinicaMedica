@@ -23,11 +23,11 @@ public class VerEspecialidadeView {
         listaEspecialidade = new ListaEspecialidadeView();
         alterarEspecialidadeView = new EditarDescricaoEspecialidadeView();
         selecionar = new EspecialidadeSelecionarView();
+        service = new EspecialidadeService();
 
        
     }
     public void VerEspecialidade(){
-        EspecialidadeService service = EspecialidadeService.getInstance();
         listaEspecialidade = new ListaEspecialidadeView();
         Especialidade selecao;
         Scanner l = new Scanner(System.in);

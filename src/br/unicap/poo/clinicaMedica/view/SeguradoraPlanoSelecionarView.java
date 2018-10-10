@@ -17,11 +17,10 @@ public class SeguradoraPlanoSelecionarView {
     private SeguradoraPlanoService service;
     
     public SeguradoraPlanoSelecionarView(){
-        
+        service = new SeguradoraPlanoService();
     }
     
     public SeguradoraPlano selecionar(){
-        service = SeguradoraPlanoService.getInstance();
         int codigo;
         Scanner l = new Scanner(System.in);
         SeguradoraPlano selecao=null;

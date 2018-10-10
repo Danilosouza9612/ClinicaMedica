@@ -16,11 +16,10 @@ import java.util.Scanner;
 public class ExameSelecionarView {
     private ExameService service;
     public ExameSelecionarView(){
-        
+        service = new ExameService();
     }
     
     public Exame selecionar(){
-        service = ExameService.getInstance();
         int codigo;
         Scanner l = new Scanner(System.in);
         Exame selecao=null;

@@ -18,7 +18,7 @@ public class TipoExameView {
     private VerTipoExameView ver;
     private TipoExameService service;
     public TipoExameView(){
-        
+        service = new TipoExameService();
     }
     public void menu(){
         Scanner l = new Scanner(System.in);
@@ -40,7 +40,6 @@ public class TipoExameView {
                     ver.verTipoExameView();
                     break;
                 case 2:
-                    service = TipoExameService.getInstance();
                     cadastrar = new EditarDescricaoTipoExameView();
                     TipoExame novo = new TipoExame(service.lastCode()+1);
                     service.adicionarTipo(novo);

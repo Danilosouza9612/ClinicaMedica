@@ -14,7 +14,7 @@ public class ExameService {
 
     private ExameRepBridge exames;
 
-    private ExameService(){
+    public ExameService(){
         ExameRepFactory instance = new ExameRepFactory();
         exames = instance.getInstance();
     }

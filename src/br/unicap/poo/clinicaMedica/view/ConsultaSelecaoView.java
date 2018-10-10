@@ -50,7 +50,9 @@ class ConsultaSelecaoView {
         listaTipoProcedimento = new ListaTipoProcedimentosView();
         selecionarTipoProcedimento = new TipoProcedimentoSelecionarView();
         exames = new ExameVerView();
-        service = ConsultaService.getInstance();
+        service = new ConsultaService();
+        exService = new ExameService();
+        tipoExameService = new TipoExameService();
     }
     
     public void selecaoConsulta(Consulta consulta){
@@ -127,8 +129,6 @@ class ConsultaSelecaoView {
                     break;
                 case 6:
                     if(consulta.getStatus()==Status.REALIZADA){
-                        exService = ExameService.getInstance();
-                        tipoExameService = TipoExameService.getInstance();
                         listaTipoExame.listaTipoExame(tipoExameService.listar());
                         if((tipoExame = selecionarTipoExame.selecionar())==null){
                             break;
@@ -153,8 +153,6 @@ class ConsultaSelecaoView {
                     break;
                 case 7:
                     if(consulta.getStatus()==Status.REALIZADA){
-                        proService = ProcedimentoMedicoService.getInstance();
-                        tipoProcecimentoService = TipoProcedimentoService.getInstance();
                         listaTipoProcedimento.listaTipoProcedimento( tipoProcecimentoService.listar());
                         if((tipoProcedimento = selecionarTipoProcedimento.selecionar())==null){
                             break;

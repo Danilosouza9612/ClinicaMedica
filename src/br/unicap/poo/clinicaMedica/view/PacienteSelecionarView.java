@@ -17,14 +17,13 @@ public class PacienteSelecionarView {
     private PacienteSelecaoView selecaoPaciente;
     private PacienteService service;
     public PacienteSelecionarView(){
-        
+        service = new PacienteService();
     }
     
     public Paciente selecionar(boolean voltarQuandoNaoEncontrado){
         String cpf;
         Paciente selecao;
         Scanner l = new Scanner(System.in);
-        service = PacienteService.getInstance();
         do{
             System.out.println("Digite o CPF do Paciente (Digite FIM para voltar):");
             cpf = l.nextLine();

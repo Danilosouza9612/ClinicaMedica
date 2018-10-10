@@ -22,12 +22,11 @@ public class PacientePlanoSaudeView {
     private SeguradoraPlanoService service;
     
     public PacientePlanoSaudeView(){
-        
+        service = new SeguradoraPlanoService();
     }
     public boolean alterarSeguradoraView(Paciente paciente){
         int codigo;
         Scanner l = new Scanner(System.in);
-        service = SeguradoraPlanoService.getInstance();
         SeguradoraPlano selecao=null;
         
         listaSeguradoraPlanoView = new ListaSeguradoraPlanoView();

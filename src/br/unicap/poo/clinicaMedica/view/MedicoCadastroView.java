@@ -36,6 +36,8 @@ public class MedicoCadastroView {
         nomeMedico = new PessoaNomeView();
         telMedico = new PessoaTelefoneView();
         especialidades = new ListaEspecialidadeView();
+        service = new MedicoService();
+        espService = new EspecialidadeService();
     }
     public void cadastrar(){
         Especialidade especialidade;
@@ -43,7 +45,6 @@ public class MedicoCadastroView {
         Medico medico;
         Scanner l = new Scanner(System.in);
         
-        espService = EspecialidadeService.getInstance();
         
         especialidades.listaEspecialidade(espService.listar());
         especialidade=selecionar.selecionar();
@@ -63,7 +64,6 @@ public class MedicoCadastroView {
         if(!diaSemanaView.alterarDiaSemana(horario)){
             return;
         }
-        service = MedicoService.getInstance();
         medico = new Medico(service.lastCode()+1, horario, especialidade);
         if(!nomeMedico.editarNome(medico)){
             return;

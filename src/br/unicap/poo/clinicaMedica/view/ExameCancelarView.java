@@ -19,6 +19,8 @@ public class ExameCancelarView {
     private ExameService service;
     private ConsultaService conService;
     public ExameCancelarView() {
+        service = new ExameService();
+        conService = new ConsultaService();
     }
     
     public boolean cancelarExame(Exame exame){
@@ -30,9 +32,7 @@ public class ExameCancelarView {
             System.out.println("Confirmar o cancelamento (S/N)?");
             op=l.nextLine().toLowerCase().charAt(0);
             if(op=='s'){
-                service = ExameService.getInstance();
                 service.cancelarExame(exame);
-                conService = ConsultaService.getInstance();
                 consulta = exame.getConsulta();
                 consulta.removeExame(exame);
                 conService.alterarConsulta(consulta);

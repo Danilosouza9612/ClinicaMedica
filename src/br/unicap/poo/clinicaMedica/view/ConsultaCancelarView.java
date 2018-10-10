@@ -16,6 +16,7 @@ import java.util.Scanner;
 public class ConsultaCancelarView {
     private ConsultaService service;
     public ConsultaCancelarView() {
+        service = new ConsultaService();
     }
     
     public boolean cancelarConsulta(Consulta consulta){
@@ -26,7 +27,6 @@ public class ConsultaCancelarView {
             System.out.println("Confirmar o cancelamento (S/N)?");
             op=l.nextLine().toLowerCase().charAt(0);
             if(op=='s'){
-                service = ConsultaService.getInstance();
                 service.cancelarConsulta(consulta);
                 return true;
             }

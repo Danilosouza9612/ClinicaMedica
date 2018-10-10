@@ -18,7 +18,7 @@ public class SeguradoraPlanoView {
     private VerSeguradoraPlanoView ver;
     private SeguradoraPlanoService service;
     public SeguradoraPlanoView(){
-        
+        service = new SeguradoraPlanoService();
     }
     public void menu(){
         Scanner l = new Scanner(System.in);
@@ -40,7 +40,6 @@ public class SeguradoraPlanoView {
                     ver.verSeguradoraPlanoView();
                     break;
                 case 2:
-                    service = SeguradoraPlanoService.getInstance();
                     cadastrar = new EditarDescricaoSeguradoraPlanoView();
                     SeguradoraPlano novo = new SeguradoraPlano(service.lastCode()+1);
                     service.inserirSeguradora(novo);

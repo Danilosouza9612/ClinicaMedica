@@ -22,6 +22,7 @@ public class PacienteView {
         pacienteCadastrarView = new PacienteCadastrarView();
         pacienteSelecionarView = new PacienteSelecionarView();
         pacienteSelecaoView = new PacienteSelecaoView();
+        service = new PacienteService();
     }
     public void menu(){
         Scanner l = new Scanner(System.in);
@@ -42,7 +43,6 @@ public class PacienteView {
                 case 1:
                     novo=pacienteCadastrarView.cadastrarPaciente(false);
                     if(novo!=null){
-                        service = PacienteService.getInstance();
                         service.cadastrarPaciente(novo);
                     }
                     break;

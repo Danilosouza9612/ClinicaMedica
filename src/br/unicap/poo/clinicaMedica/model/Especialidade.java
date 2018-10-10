@@ -18,6 +18,10 @@ public class Especialidade{
     public Especialidade(int codigo) {
         this.codigo = codigo;
     }
+    private Especialidade(int codigo, Especialidade especialidade){
+        this.codigo=codigo;
+        this.descricao=especialidade.descricao;
+    }
     public int getCodigo() {
         return codigo;
     }
@@ -26,5 +30,8 @@ public class Especialidade{
     }
     public void setDescricao(String descricao){
         this.descricao=descricao;
+    }
+    public Especialidade clonar(int codigo){
+        return new Especialidade(codigo, this);
     }
 }

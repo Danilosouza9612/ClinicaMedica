@@ -24,7 +24,7 @@ public class VerTipoExameView {
         listaTipoExame = new ListaTipoExameView();
         editar = new EditarDescricaoTipoExameView();
         selecionar = new TipoExameSelecionarView();
-        service = TipoExameService.getInstance();
+        service = new TipoExameService();
     }
     public void verTipoExameView(){
         listaTipoExame = new ListaTipoExameView();

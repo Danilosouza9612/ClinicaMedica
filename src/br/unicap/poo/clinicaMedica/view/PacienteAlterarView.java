@@ -29,12 +29,12 @@ public class PacienteAlterarView {
         pacienteEnderecoNumeroView = new PacienteEnderecoNumeroView();
         pacienteEnderecoComplementoView = new PacienteEnderecoComplementoView();
         pacientePlanoSaudeView = new PacientePlanoSaudeView();
-        pacienteDataNascimentoView = new PacienteDataNascimentoView();        
+        pacienteDataNascimentoView = new PacienteDataNascimentoView(); 
+        service = new PacienteService();
     }
     public void alterar(Paciente paciente){
         Scanner l = new Scanner(System.in);
         int opcao;
-        service = PacienteService.getInstance();
         do{
             System.out.println("..................................");
             System.out.println("1 - Alterar Nome");

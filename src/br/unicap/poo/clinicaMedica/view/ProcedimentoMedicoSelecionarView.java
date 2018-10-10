@@ -16,11 +16,10 @@ import java.util.Scanner;
 public class ProcedimentoMedicoSelecionarView {
     private ProcedimentoMedicoService service;
     public ProcedimentoMedicoSelecionarView(){
-        
+        service = new ProcedimentoMedicoService();
     }
     
     public ProcedimentoMedico selecionar(){
-        service = ProcedimentoMedicoService.getInstance();
         int codigo;
         Scanner l = new Scanner(System.in);
         ProcedimentoMedico selecao=null;

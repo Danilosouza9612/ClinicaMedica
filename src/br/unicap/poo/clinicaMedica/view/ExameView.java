@@ -38,7 +38,7 @@ public class ExameView {
         pacienteSelecao = new PacienteSelecionarView();
         horaSelecao = new AgendamentoHoraView();
         listaMedico = new MedicoListaView();
-        service = ExameService.getInstance();
+        service = new ExameService();
     }
     
     

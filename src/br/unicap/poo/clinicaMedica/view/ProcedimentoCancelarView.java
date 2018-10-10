@@ -18,6 +18,8 @@ class ProcedimentoCancelarView {
     private ProcedimentoMedicoService service;
     private ConsultaService conService;
     public ProcedimentoCancelarView() {
+        service = new ProcedimentoMedicoService();
+        conService = new ConsultaService();
     }
     
     public boolean cancelarProcedimento(ProcedimentoMedico procedimento){
@@ -29,9 +31,7 @@ class ProcedimentoCancelarView {
             System.out.println("Confirmar o cancelamento (S/N)?");
             op=l.nextLine().toLowerCase().charAt(0);
             if(op=='s'){
-                service = ProcedimentoMedicoService.getInstance();
                 service.cancelarProcedimennto(procedimento);
-                conService = ConsultaService.getInstance();
                 consulta = procedimento.getConsulta();
                 consulta.removeProcedimento(procedimento);
                 conService.alterarConsulta(consulta);

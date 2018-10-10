@@ -26,7 +26,6 @@ public class Endereco {
     public Endereco(){
         
     }
-
     public String getCep() {
         return cep;
     }
@@ -66,6 +65,5 @@ public class Endereco {
     public boolean enderecoCompleto(){
         return cep!=null;
     }
-    
     
 }

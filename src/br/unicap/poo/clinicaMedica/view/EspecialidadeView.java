@@ -18,7 +18,7 @@ public class EspecialidadeView {
     private VerEspecialidadeView ver;
     private EspecialidadeService service;
     public EspecialidadeView(){
-        
+        service = new EspecialidadeService();
     }
     public void menu(){
         Scanner l = new Scanner(System.in);
@@ -40,7 +40,6 @@ public class EspecialidadeView {
                     ver.VerEspecialidade();
                     break;
                 case 2:
-                    service = EspecialidadeService.getInstance();
                     cadastrar = new EditarDescricaoEspecialidadeView();
                     Especialidade novo = new Especialidade(service.lastCode()+1);
                     service.inserirEspecialidade(novo);

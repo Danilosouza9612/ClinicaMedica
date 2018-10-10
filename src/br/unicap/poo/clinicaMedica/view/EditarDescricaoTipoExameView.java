@@ -17,12 +17,11 @@ public class EditarDescricaoTipoExameView {
     private TipoExameService service;
 
     public EditarDescricaoTipoExameView(){
-        
+        service = new TipoExameService();
     }
     public void editarDescricao(TipoExame tipoExame){
         System.out.println("..................................");
         System.out.println();
-        service = TipoExameService.getInstance();
         String descricao;
         Scanner l = new Scanner(System.in);
         System.out.println("Digite a descrição");

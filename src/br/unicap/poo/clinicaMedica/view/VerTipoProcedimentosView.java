@@ -24,10 +24,10 @@ public class VerTipoProcedimentosView {
         listaTipoProcedimentos = new ListaTipoProcedimentosView();
         selecionar = new TipoProcedimentoSelecionarView();
         editar = new EditarDescricaoTipoProcedimentoView();
+        service = new TipoProcedimentoService();
     }
     public void verTipoProcedimentos(){
-        service = TipoProcedimentoService.getInstance();
-        
+       
         Scanner l = new Scanner(System.in);
         TipoProcedimento selecao;
         int opcao;

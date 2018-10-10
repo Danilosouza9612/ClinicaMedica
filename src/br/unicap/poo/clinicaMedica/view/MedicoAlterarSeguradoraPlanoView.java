@@ -26,7 +26,9 @@ public class MedicoAlterarSeguradoraPlanoView {
     private SeguradoraPlanoSelecionarView selecao;
     public MedicoAlterarSeguradoraPlanoView(){
         lista = new ListaSeguradoraPlanoView();       
-        selecao = new SeguradoraPlanoSelecionarView();        
+        selecao = new SeguradoraPlanoSelecionarView();   
+        service = new MedicoService();
+        segService = new SeguradoraPlanoService();
     }
     
     public void alterarMedicoSeguradora(Medico medico){
@@ -34,8 +36,6 @@ public class MedicoAlterarSeguradoraPlanoView {
         Scanner l = new Scanner(System.in);
         int opcao;
         SeguradoraPlano seguradora;
-        segService = SeguradoraPlanoService.getInstance();
-        service = MedicoService.getInstance();
         
         do{
             System.out.println("..................................");

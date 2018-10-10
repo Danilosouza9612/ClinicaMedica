@@ -32,7 +32,7 @@ public class ProcedimentoView {
         pacienteSelecao = new PacienteSelecionarView();
         horaSelecao = new AgendamentoHoraView();
         listaMedico = new MedicoListaView();
-        service = ProcedimentoMedicoService.getInstance();
+        service = new ProcedimentoMedicoService();
         
         
         

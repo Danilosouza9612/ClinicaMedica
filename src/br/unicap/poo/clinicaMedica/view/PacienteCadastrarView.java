@@ -32,6 +32,7 @@ public class PacienteCadastrarView {
         pacienteEnderecoNumeroView = new PacienteEnderecoNumeroView();
         pacienteEnderecoComplementoView = new PacienteEnderecoComplementoView();
         pacienteDataNascimentoView = new PacienteDataNascimentoView();
+        service = new PacienteService();
     }
     
     public Paciente cadastrarPaciente(boolean preCadastro){
@@ -45,7 +46,6 @@ public class PacienteCadastrarView {
             System.out.println("..................................");
             System.out.println("Digite o CPF do Paciente (Digite FIM pra Sair):");
             cpf = l.nextLine();
-            service = PacienteService.getInstance();
             if(cpf.equalsIgnoreCase("FIM")){
                 return null;
             }

@@ -24,6 +24,7 @@ public class MedicoVerView {
         verMedicoEspecifico = new MedicoInfoView();
         selecionar = new MedicoSelecionarView();
         selecao = new MedicoSelecaoView();
+        service = new MedicoService();
     }
     
     public void verMedicos(){
@@ -31,7 +32,6 @@ public class MedicoVerView {
         int opcao;
         Medico selecaoMedico;
         
-        service = MedicoService.getInstance();
         System.out.println("..................................");
         lista.listar(service.listarMedico());
         do{

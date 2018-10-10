@@ -21,6 +21,11 @@ public abstract class Agendamento{
         this.codigo = codigo;
         setData(data);
     }
+    protected Agendamento(int codigo, Agendamento agendamento){
+        this.codigo=codigo;
+        this.data=agendamento.data;
+        this.status=agendamento.status;
+    }
     public int getCodigo() {
         return codigo;
     }
@@ -59,4 +64,5 @@ public abstract class Agendamento{
     }
     public abstract Medico getMedico();
     public abstract Paciente getPaciente();
+    public abstract Agendamento clonar(int codigo);
 }

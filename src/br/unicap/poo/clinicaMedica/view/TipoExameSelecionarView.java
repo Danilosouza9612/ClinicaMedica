@@ -17,11 +17,10 @@ public class TipoExameSelecionarView {
     private TipoExameService service;
 
     public TipoExameSelecionarView(){
-        
+        service = new TipoExameService();
     }
     
     public TipoExame selecionar(){
-        service = TipoExameService.getInstance();
         int codigo;
         Scanner l = new Scanner(System.in);
         TipoExame selecao=null;

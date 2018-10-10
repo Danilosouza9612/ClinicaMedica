@@ -27,6 +27,8 @@ public class MedicoAlterarEspecialidadeView {
     public MedicoAlterarEspecialidadeView(){
         lista = new ListaEspecialidadeView();
         selecao = new EspecialidadeSelecionarView();
+        espService = new EspecialidadeService();
+        service = new MedicoService();
     }
     
     public void alterarMedicoEspecialidade(Medico medico){
@@ -34,8 +36,6 @@ public class MedicoAlterarEspecialidadeView {
         Scanner l = new Scanner(System.in);
         int opcao;
         Especialidade especialidade;
-        espService = EspecialidadeService.getInstance();
-        service = MedicoService.getInstance();
         
         do{
             System.out.println("..................................");

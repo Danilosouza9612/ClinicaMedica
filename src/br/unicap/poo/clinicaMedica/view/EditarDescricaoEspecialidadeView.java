@@ -17,6 +17,7 @@ public class EditarDescricaoEspecialidadeView {
     private EspecialidadeService service;
 
     public EditarDescricaoEspecialidadeView() {
+        service = new EspecialidadeService();
     }
     
     public void editarDescricao(Especialidade especialidade){
@@ -24,7 +25,6 @@ public class EditarDescricaoEspecialidadeView {
         System.out.println();
         String descricao;
         Scanner l = new Scanner(System.in);
-        service = EspecialidadeService.getInstance();
         System.out.println("Digite a descrição");
         descricao=l.nextLine();
         especialidade.setDescricao(descricao);

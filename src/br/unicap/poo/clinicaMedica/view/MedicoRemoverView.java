@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class MedicoRemoverView {
     private MedicoService service;
     public MedicoRemoverView(){
-        
+        service = new MedicoService();
     }
     public boolean removerMedico(Medico medico){
         Scanner l = new Scanner(System.in);
@@ -26,7 +26,6 @@ public class MedicoRemoverView {
             System.out.println("Confirmar a exclusão (S/N)?");
             op=l.nextLine().toLowerCase().charAt(0);
             if(op=='s'){
-                service = MedicoService.getInstance();
                 service.removerMedico(medico);
                 return true;
             }

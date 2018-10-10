@@ -17,12 +17,11 @@ import java.util.Scanner;
 public class EditarDescricaoTipoProcedimentoView {
     private TipoProcedimentoService service;
     public EditarDescricaoTipoProcedimentoView(){
-        
+        service = new TipoProcedimentoService();
     }
     public void editarDescricao(TipoProcedimento tipoProcedimento){
         System.out.println("..................................");
         System.out.println();
-        service = TipoProcedimentoService.getInstance();
         String descricao;
         Scanner l = new Scanner(System.in);
         System.out.println("Digite a descrição");

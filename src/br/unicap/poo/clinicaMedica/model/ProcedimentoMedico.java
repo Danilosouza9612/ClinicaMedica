@@ -20,7 +20,11 @@ public class ProcedimentoMedico extends Agendamento{
         super(codigo, data);
         this.consulta = consulta;
     }
-
+    private ProcedimentoMedico(int codigo, ProcedimentoMedico procedimento){
+        super(codigo, procedimento);
+        this.consulta=procedimento.consulta;
+        this.tipo = procedimento.tipo;
+    }
     public Consulta getConsulta() {
         return consulta;
     }
@@ -36,5 +40,9 @@ public class ProcedimentoMedico extends Agendamento{
     @Override
     public Paciente getPaciente() {
         return consulta.getPaciente();
+    }
+    @Override
+    public Agendamento clonar(int codigo){
+        return new ProcedimentoMedico(codigo, this);
     }
 }

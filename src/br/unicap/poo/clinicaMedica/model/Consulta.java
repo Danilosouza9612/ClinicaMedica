@@ -6,8 +6,6 @@
 package br.unicap.poo.clinicaMedica.model;
 
 import br.unicap.poo.clinicaMedica.model.exceptions.AgendamentoException;
-import br.unicap.poo.clinicaMedica.model.exceptions.DataInvalidaException;
-import br.unicap.poo.clinicaMedica.model.exceptions.HorarioIndisponivelException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -21,6 +19,19 @@ public class Consulta extends Agendamento{
     private ArrayList<ProcedimentoMedico> procedimentos;
     private Paciente paciente;
     
+    private Consulta(int codigo, Consulta consulta){
+        super(codigo, consulta);
+        this.medico=consulta.medico;
+        this.exames= new ArrayList();
+        for(Exame item : consulta.exames){
+            exames.add(item);
+        }
+        this.procedimentos = new ArrayList();
+        for(ProcedimentoMedico item : consulta.procedimentos){
+            procedimentos.add(item);
+        }
+        this.paciente=consulta.paciente;
+    }
     public Consulta(int codigo, Date data, Medico medico, Paciente paciente) throws AgendamentoException{
         super(codigo, data);
         this.medico=medico;
@@ -74,5 +85,9 @@ public class Consulta extends Agendamento{
             }
             cont++;
         }
+    }
+    @Override
+    public Agendamento clonar(int codigo){
+        return new Consulta(codigo, this);
     }
 }

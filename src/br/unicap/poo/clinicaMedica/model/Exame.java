@@ -21,19 +21,27 @@ public class Exame extends Agendamento{
         this.tipo=tipo;
         this.consulta=consulta;
     }
-
+    private Exame(int codigo, Exame exame){
+        super(codigo, exame);
+        consulta = exame.consulta;
+        tipo = exame.tipo;
+    }
     public Consulta getConsulta() {
         return consulta;
     }
     public TipoExame getTipoExame() {
         return tipo;
     }
+    @Override
     public Medico getMedico(){
         return consulta.getMedico();
     }
-
     @Override
     public Paciente getPaciente() {
         return consulta.getPaciente();
+    }
+    @Override
+    public Agendamento clonar(int codigo){
+        return new Exame(codigo, this);
     }
 }

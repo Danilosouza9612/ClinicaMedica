@@ -16,11 +16,10 @@ import java.util.Scanner;
 public class EspecialidadeSelecionarView {
     private EspecialidadeService service;
     public EspecialidadeSelecionarView(){
-        
+        service = new EspecialidadeService();
     }
     
     public Especialidade selecionar(){
-        service = EspecialidadeService.getInstance();
         int codigo;
         Scanner l = new Scanner(System.in);
         Especialidade selecao=null;

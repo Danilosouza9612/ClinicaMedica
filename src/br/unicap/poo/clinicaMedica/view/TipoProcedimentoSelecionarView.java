@@ -16,11 +16,10 @@ import java.util.Scanner;
 public class TipoProcedimentoSelecionarView {
     private TipoProcedimentoService service;
     public TipoProcedimentoSelecionarView(){
-        
+        service = new TipoProcedimentoService();
     }
     
     public TipoProcedimento selecionar(){
-        service = TipoProcedimentoService.getInstance();
         int codigo;
         Scanner l = new Scanner(System.in);
         TipoProcedimento selecao=null;

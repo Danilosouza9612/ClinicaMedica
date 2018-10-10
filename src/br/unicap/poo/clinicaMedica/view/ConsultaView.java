@@ -44,11 +44,11 @@ public class ConsultaView {
         horaSelecao = new AgendamentoHoraView();
         listaMedico = new MedicoListaView();
         preCadastro = new ConsultaPacientePreCadastro();
-        pacService = PacienteService.getInstance();
+        pacService = new PacienteService();
         cadastrarPaciente = new PacienteCadastrarView();
-        service = ConsultaService.getInstance();
+        service = new ConsultaService();
         listaMedico = new MedicoListaView();
-        medService = MedicoService.getInstance();
+        medService = new MedicoService();
     }
 
     public void menu() {

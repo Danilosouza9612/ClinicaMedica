@@ -15,11 +15,10 @@ public class VerSeguradoraPlanoView {
         listaSeguradora = new ListaSeguradoraPlanoView();
         alterar = new EditarDescricaoSeguradoraPlanoView();
         selecionar = new SeguradoraPlanoSelecionarView();
-        
+        service = new SeguradoraPlanoService();
     }
     
     public void verSeguradoraPlanoView(){
-        service = SeguradoraPlanoService.getInstance();
         SeguradoraPlano selecao;
         Scanner l = new Scanner(System.in);
         int opcao;

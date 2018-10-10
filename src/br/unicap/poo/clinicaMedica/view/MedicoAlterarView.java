@@ -27,11 +27,11 @@ public class MedicoAlterarView {
         alterarEsp = new MedicoAlterarEspecialidadeView();
         alterarSeg = new MedicoAlterarSeguradoraPlanoView();
         horarios = new MedicoAlterarHorarioView();
+        service = new MedicoService();
     }
     
     public void alterar(Medico medico){
         Scanner l = new Scanner(System.in);
-        service = MedicoService.getInstance();
         int opcao;
         do{
             System.out.println("1 - Alterar Nome");

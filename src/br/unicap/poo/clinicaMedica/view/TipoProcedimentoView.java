@@ -20,7 +20,7 @@ public class TipoProcedimentoView {
 
     
     public TipoProcedimentoView(){
-        
+        service = new TipoProcedimentoService();
     }
     
     public void menu(){
@@ -43,7 +43,6 @@ public class TipoProcedimentoView {
                     verTipoProcedimentosView.verTipoProcedimentos();
                     break;
                 case 2:
-                    service = TipoProcedimentoService.getInstance();
                     cadastrarTipoProcedimento = new EditarDescricaoTipoProcedimentoView();
                     TipoProcedimento novo = new TipoProcedimento(service.lastCode()+1);
                     service.cadastrarTipoProcedimento(novo);

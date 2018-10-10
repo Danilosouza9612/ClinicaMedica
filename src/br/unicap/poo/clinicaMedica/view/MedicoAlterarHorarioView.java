@@ -31,6 +31,7 @@ public class MedicoAlterarHorarioView {
         diaDaSemana = new MedicoDiaSemanaView();
         horaChegada = new MedicoHoraChegadaView();
         horaSaida = new MedicoHoraSaidaView();
+        service = new MedicoService();
     }
     
     public void alterarMedicoSeguradora(Medico medico){
@@ -38,7 +39,6 @@ public class MedicoAlterarHorarioView {
         Scanner l = new Scanner(System.in);
         int opcao;
         Horario horario, novo;
-        service = MedicoService.getInstance();
         
         do{
             System.out.println("..................................");
