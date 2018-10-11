@@ -5,7 +5,6 @@
  */
 package br.unicap.poo.clinicaMedica.service;
 import br.unicap.poo.clinicaMedica.model.TipoExame;
-import br.unicap.poo.clinicaMedica.repository.TipoExameDAO;
 import br.unicap.poo.clinicaMedica.repository.TipoExameRepBridge;
 import br.unicap.poo.clinicaMedica.repository.TipoExameRepFactory;
 import java.util.Collections;

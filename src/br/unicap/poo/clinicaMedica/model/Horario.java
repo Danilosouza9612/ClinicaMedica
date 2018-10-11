@@ -18,11 +18,11 @@ public class Horario {
     private int chegada;
     private int saida;
     
-    public Horario(int codigo){
+    public Horario(){
         this.diaSemana=diaSemana.SEGUNDA;
         this.chegada=0;
         this.saida=23;
-        this.codigo=codigo;
+        this.codigo=0;
     }
     private Horario(Horario horario){
         this.diaSemana=horario.diaSemana;

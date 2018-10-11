@@ -1,7 +1,6 @@
 package br.unicap.poo.clinicaMedica.service;
 
 import br.unicap.poo.clinicaMedica.model.Paciente;
-import br.unicap.poo.clinicaMedica.repository.PacienteDAO;
 import br.unicap.poo.clinicaMedica.repository.PacienteRepBridge;
 import br.unicap.poo.clinicaMedica.repository.PacienteRepFactory;
 

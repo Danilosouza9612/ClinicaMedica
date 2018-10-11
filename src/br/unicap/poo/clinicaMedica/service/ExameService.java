@@ -5,8 +5,6 @@ import br.unicap.poo.clinicaMedica.model.Exame;
 import br.unicap.poo.clinicaMedica.model.Medico;
 import br.unicap.poo.clinicaMedica.repository.ExameRepBridge;
 import br.unicap.poo.clinicaMedica.repository.ExameRepFactory;
-import br.unicap.poo.clinicaMedica.repository.ExameDAO;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 

@@ -5,7 +5,6 @@
  */
 package br.unicap.poo.clinicaMedica.service;
 import br.unicap.poo.clinicaMedica.model.Especialidade;
-import br.unicap.poo.clinicaMedica.repository.EspecialidadeDAO;
 import br.unicap.poo.clinicaMedica.repository.EspecialidadeRepBridge;
 import br.unicap.poo.clinicaMedica.repository.EspecialidadeRepFactory;
 import java.util.Collections;

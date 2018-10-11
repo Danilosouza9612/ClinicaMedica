@@ -53,7 +53,7 @@ public class MedicoCadastroView {
             return;
         }
         
-        horario = new Horario(0);
+        horario = new Horario();
         
         if(!horaChegadaView.alterarHoraChegada(horario)){
             return;

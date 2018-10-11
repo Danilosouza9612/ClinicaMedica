@@ -53,7 +53,7 @@ public class MedicoAlterarHorarioView {
             l.nextLine();
             switch(opcao){
                 case 1:
-                    novo = new Horario(medico.getHorarioMedico().lastCode()+1);
+                    novo = new Horario();
                     if(!horaChegada.alterarHoraChegada(novo)){
                         return;
                     }

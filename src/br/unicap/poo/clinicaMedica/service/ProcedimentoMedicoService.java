@@ -3,10 +3,8 @@ package br.unicap.poo.clinicaMedica.service;
 import br.unicap.poo.clinicaMedica.model.Agendamento;
 import br.unicap.poo.clinicaMedica.model.Medico;
 import br.unicap.poo.clinicaMedica.model.ProcedimentoMedico;
-import br.unicap.poo.clinicaMedica.repository.ProcedimentoMedicoDAO;
 import br.unicap.poo.clinicaMedica.repository.ProcedimentoMedicoRepBridge;
 import br.unicap.poo.clinicaMedica.repository.ProcedimentoMedicoRepFactory;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

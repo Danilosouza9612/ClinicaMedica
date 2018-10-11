@@ -35,7 +35,7 @@ public class HorarioMedico {
     }
     public void addHorario(Horario horario) throws HorarioRepetidoException{
         if(selecionar(horario.getCodigo())==null){
-            horarios.add(horario);
+            horarios.add(horario.clonar(lastCode()+1));
         }else{
             throw new HorarioRepetidoException();
         }
@@ -87,7 +87,7 @@ public class HorarioMedico {
     public HorarioMedico clonar(){
         return new HorarioMedico(this);
     }
-    public int lastCode(){
+    private int lastCode(){
         return horarios.get(horarios.size()-1).getCodigo();
     }
 }

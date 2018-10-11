@@ -8,7 +8,6 @@ package br.unicap.poo.clinicaMedica.service;
 import br.unicap.poo.clinicaMedica.model.SeguradoraPlano;
 import br.unicap.poo.clinicaMedica.repository.SeguradoraPlanoRepBridge;
 import br.unicap.poo.clinicaMedica.repository.SeguradoraPlanoRepFactory;
-import br.unicap.poo.clinicaMedica.repository.SeguradoraPlanoDAO;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
