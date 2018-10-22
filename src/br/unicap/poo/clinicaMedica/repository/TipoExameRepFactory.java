@@ -10,10 +10,11 @@ package br.unicap.poo.clinicaMedica.repository;
  * @author Aluno
  */
 public class TipoExameRepFactory {
+    private TipoExameRepBridge instance;
     public TipoExameRepFactory(){
-        
+        instance = TipoExameDAO.getInstance();
     }
     public TipoExameRepBridge getInstance(){
-        return TipoExameDAO.getInstance();
+        return instance;
     }
 }

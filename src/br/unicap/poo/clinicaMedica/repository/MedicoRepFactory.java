@@ -10,10 +10,11 @@ package br.unicap.poo.clinicaMedica.repository;
  * @author Aluno
  */
 public class MedicoRepFactory {
+    private MedicoRepBridge instance;
     public MedicoRepFactory(){
-        
+        instance = MedicoDAO.getInstance();
     }
     public MedicoRepBridge getInstance(){
-        return MedicoDAO.getInstance();
+        return instance;
     }
 }

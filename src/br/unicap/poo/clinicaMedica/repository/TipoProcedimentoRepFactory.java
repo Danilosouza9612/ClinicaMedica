@@ -10,10 +10,11 @@ package br.unicap.poo.clinicaMedica.repository;
  * @author Aluno
  */
 public class TipoProcedimentoRepFactory {
+    private TipoProcedimentoRepBridge instance;
     public TipoProcedimentoRepFactory(){
-        
+        instance = TipoProcedimentoDAO.getInstance();
     }
     public TipoProcedimentoRepBridge getInstance(){
-        return TipoProcedimentoDAO.getInstance();
+        return instance;
     }
 }
